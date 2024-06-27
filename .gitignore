@@ -1,15 +1,22 @@
 # Godot 4+ specific ignores
 .godot/
+sbig2024/.godot/
 
 # Godot-specific ignores
 .import/
+sbig2024/.import/
 export.cfg
+sbig2024/export.cfg
 export_presets.cfg
+sbig2024/export_presets.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
 
 # Mono-specific ignores
 .mono/
+sbig2024/.mono/
 data_*/
+sbig2024/data_*/
 mono_crash.*.json
+sbig2024/mono_crash.*.json
