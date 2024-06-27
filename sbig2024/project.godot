@@ -14,6 +14,14 @@ config/name="sbig2024"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AppConfig="*res://addons/maaacks_game_template/base/scenes/Autoloads/AppConfig.tscn"
+SceneLoader="*res://addons/maaacks_game_template/base/scenes/Autoloads/SceneLoader.tscn"
+ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectMusicController.tscn"
+ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectUISoundController.tscn"
+BMOD="*res://addons/bmod/autoloads/bmod/bmod.tscn"
+
 [dotnet]
 
 project/assembly_name="sbig2024"
@@ -22,6 +30,14 @@ project/assembly_name="sbig2024"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/bmod/plugin.cfg", "res://addons/inspector_extender/plugin.cfg", "res://addons/local_assets/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg")
+
+[maaacks_game_template]
+
+disable_plugin_dialogues=true
 
 [rendering]
 

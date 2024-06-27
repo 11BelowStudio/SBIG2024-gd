@@ -3,3 +3,21 @@
 	* https://github.com/ColormaticStudios/quality-godot-first-person-2
 	* Colormatic Studios
 	* MIT license
+* Maaack's Game Template Plugin
+	* https://godotengine.org/asset-library/asset/2709
+	* Maaack
+	* MIT license
+* BMOD
+	* https://godotengine.org/asset-library/asset/2884
+	* kpids
+	* MIT license
+
+* Impact sounds
+	* https://kenney.nl/assets/impact-sounds
+	* kenney.nl
+	* CC0
+* Kenney Prototype Tools
+	* https://godotengine.org/asset-library/asset/1630
+	* geroveni
+	* CC0
+
