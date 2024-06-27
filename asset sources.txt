@@ -1,0 +1,5 @@
+
+* Quality First Person Controller v2
+	* https://github.com/ColormaticStudios/quality-godot-first-person-2
+	* Colormatic Studios
+	* MIT license
