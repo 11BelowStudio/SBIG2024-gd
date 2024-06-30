@@ -10,7 +10,58 @@ extends CharacterBody3D
 # TODO: Add descriptions for each value
 
 @export_category("Flyposter variables")
-@export var look_target: Node3D
+@export var look_target: Node3D:
+	set(value):
+		look_target = value
+		look_target_dist = _calc_target_dist()
+		pass
+
+## distance between head and the look target
+var look_target_dist: float = 0
+
+## default value for look target dist when there's no target
+const DEFAULT_NO_TARGET_DIST : float = -1
+
+@export var min_speed: float = 0.5:
+	set(value):
+		min_speed = value
+		_update_speed_range()
+@export var max_speed: float = 3:
+	set(value):
+		max_speed = value
+		_update_speed_range()
+@onready var _speed_range: float = max_speed - min_speed
+func _update_speed_range():
+	_speed_range = max_speed - min_speed
+
+
+
+@export var min_fov: float = 30:
+	set(value):
+		min_fov = value
+		_update_fov_range()
+@export var max_fov: float = 90:
+	set(value):
+		max_fov = value
+		_update_fov_range()
+@onready var _fov_range: float = max_fov - min_fov
+func _update_fov_range():
+	_fov_range = max_fov - min_fov
+@onready var target_fov: float = max_fov
+
+@export var min_modifier_dist: float = 2:
+	set(value):
+		min_modifier_dist = value
+		_update_modifier_dist_range()
+@export var max_modifier_dist: float = 10:
+	set(value):
+		max_modifier_dist = value
+		_update_modifier_dist_range()
+@onready var _modifier_dist_range: float = max_modifier_dist - min_modifier_dist
+func _update_modifier_dist_range():
+	_modifier_dist_range = max_modifier_dist - min_modifier_dist
+
+@export var use_ray_length: float = 0.5
 
 
 @export_category("Character")
@@ -60,7 +111,7 @@ extends CharacterBody3D
 @export var crouch_enabled : bool = false
 @export_enum("Hold to Crouch", "Toggle Crouch") var crouch_mode : int = 0
 @export_enum("Hold to Sprint", "Toggle Sprint") var sprint_mode : int = 0
-@export var dynamic_fov : bool = true
+@export var dynamic_fov_sprint : bool = false
 @export var continuous_jumping : bool = true
 @export var view_bobbing : bool = true
 @export var jump_animation : bool = true
@@ -139,7 +190,45 @@ func change_reticle(reticle): # Yup, this function is kinda strange
 	$UserInterface.add_child(RETICLE)
 
 
-func _physics_process(delta):
+func _calc_target_dist() -> float:
+	if look_target:
+		return HEAD.global_position.distance_to(look_target.global_position)
+	else:
+		return DEFAULT_NO_TARGET_DIST
+
+func _do_look_target_dist_modifiers():
+	if look_target_dist == DEFAULT_NO_TARGET_DIST:
+		_reset_look_target_dist_modifiers()
+		return
+	if look_target_dist <= min_modifier_dist:
+		speed = min_speed
+		target_fov = min_fov
+	elif look_target_dist >= max_modifier_dist:
+		speed = max_speed
+		target_fov = max_fov
+	else:
+		var rawDistScaled = (look_target_dist - min_modifier_dist)/_modifier_dist_range
+		speed = min_speed + (_speed_range * rawDistScaled)
+		target_fov = min_fov + (_fov_range * rawDistScaled)
+		
+	pass
+
+func _reset_look_target_dist_modifiers():
+	speed = max_speed
+	target_fov = max_fov
+	pass
+
+func _physics_process(delta: float):
+	# first things first - check if we have a look target,
+	# then work out how close to the look target we are
+	if look_target:
+		look_target_dist = _calc_target_dist()
+		# then we would modify some stats based on the look target dist
+		_do_look_target_dist_modifiers()
+	else:
+		look_target_dist = 0
+		_reset_look_target_dist_modifiers()
+	
 	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
 	current_speed = Vector3.ZERO.distance_to(get_real_velocity())
 	$UserInterface/DebugPanel.add_property("Speed", snappedf(current_speed, 0.001), 1)
@@ -169,8 +258,8 @@ func _physics_process(delta):
 	low_ceiling = $CrouchCeilingDetection.is_colliding()
 	
 	handle_state(input_dir)
-	if dynamic_fov: # This may be changed to an AnimationPlayer
-		update_camera_fov()
+	if dynamic_fov_sprint: # This may be changed to an AnimationPlayer
+		update_camera_fov_sprint()
 	
 	if view_bobbing:
 		headbob_animation(input_dir)
@@ -226,11 +315,11 @@ func handle_movement(delta, input_dir):
 			velocity.z = direction.z * speed
 
 
-func handle_state(moving):
+func handle_state(input_dir: Vector2):
 	if sprint_enabled:
 		if sprint_mode == 0:
 			if Input.is_action_pressed(SPRINT) and state != "crouching":
-				if moving:
+				if input_dir:
 					if state != "sprinting":
 						enter_sprint_state()
 				else:
@@ -239,7 +328,7 @@ func handle_state(moving):
 			elif state == "sprinting":
 				enter_normal_state()
 		elif sprint_mode == 1:
-			if moving:
+			if input_dir:
 				# If the player is holding sprint before moving, handle that cenerio
 				if Input.is_action_pressed(SPRINT) and state == "normal":
 					enter_sprint_state()
@@ -295,15 +384,19 @@ func enter_sprint_state():
 	speed = sprint_speed
 
 
-func update_camera_fov():
+func update_camera_fov_sprint():
 	if state == "sprinting":
 		CAMERA.fov = lerp(CAMERA.fov, 85.0, 0.3)
 	else:
 		CAMERA.fov = lerp(CAMERA.fov, 75.0, 0.3)
 
 
-func headbob_animation(moving):
-	if moving and is_on_floor():
+func update_camera_fov(target_fov: float):
+	CAMERA.fov = lerp(CAMERA.fov, target_fov, 0.5)
+	pass
+
+func headbob_animation(input_dir: Vector2):
+	if input_dir and is_on_floor():
 		var use_headbob_animation : String
 		match state:
 			"normal","crouching":
@@ -346,13 +439,15 @@ func _process(delta):
 					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	if look_target: # if we have a look target
-		$UserInterface/DebugPanel.add_property("Target dist",HEAD.global_position.distance_to(look_target.global_position), 5)
+		$UserInterface/DebugPanel.add_property("Target dist",look_target_dist, 5)
 		if !Input.is_action_pressed(LOOK_AROUND): # if 'LOOK AROUND' action not held
 			# look at the look target.
 			HEAD.look_at(look_target.global_position)
 		# TODO: also do the other hyperrealism stuff as player approaches the look target.
 	
 	HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+	
+	update_camera_fov(target_fov)
 	
 	# Uncomment if you want full controller support
 	#var controller_view_rotation = Input.get_vector(LOOK_LEFT, LOOK_RIGHT, LOOK_UP, LOOK_DOWN)

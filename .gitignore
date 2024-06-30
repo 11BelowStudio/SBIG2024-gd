@@ -20,3 +20,6 @@ data_*/
 sbig2024/data_*/
 mono_crash.*.json
 sbig2024/mono_crash.*.json
+
+# vs code
+sbig2024/.vscode
