@@ -4,7 +4,7 @@
 # Quality Godot First Person Controller v2
 
 # edited further by 11BelowStudio
-
+class_name FPCharacter
 extends CharacterBody3D
 
 # TODO: Add descriptions for each value
@@ -13,14 +13,17 @@ extends CharacterBody3D
 @export var look_target: Node3D:
 	set(value):
 		look_target = value
-		look_target_dist = _calc_target_dist()
+		_look_target_dist = _get_target_dist()
 		pass
-
-## distance between head and the look target
-var look_target_dist: float = 0
 
 ## default value for look target dist when there's no target
 const DEFAULT_NO_TARGET_DIST : float = -1
+
+## distance between head and the look target
+var _look_target_dist: float = DEFAULT_NO_TARGET_DIST
+
+## 'intensity' of the look target distance
+var _look_target_dist_intensity: float = 0
 
 @export var min_speed: float = 0.5:
 	set(value):
@@ -190,24 +193,47 @@ func change_reticle(reticle): # Yup, this function is kinda strange
 	$UserInterface.add_child(RETICLE)
 
 
-func _calc_target_dist() -> float:
+func _calc_target_dist_intensity() -> void:
+	if look_target:
+		_look_target_dist = HEAD.global_position.distance_to(look_target.global_position)
+		
+		if _look_target_dist < max_modifier_dist:
+			if _look_target_dist <= min_modifier_dist:
+				_look_target_dist_intensity = 1
+			else:
+				_look_target_dist_intensity = 1 - ((_look_target_dist - min_modifier_dist)/_modifier_dist_range)
+		else:
+			_look_target_dist_intensity = 0
+	else:
+		_look_target_dist = DEFAULT_NO_TARGET_DIST
+		_look_target_dist_intensity = 0
+
+
+func get_target_dist() -> float:
+	return _look_target_dist
+
+func get_dist_intensity() -> float:
+	return _look_target_dist_intensity
+
+
+func _get_target_dist() -> float:
 	if look_target:
 		return HEAD.global_position.distance_to(look_target.global_position)
 	else:
 		return DEFAULT_NO_TARGET_DIST
 
 func _do_look_target_dist_modifiers():
-	if look_target_dist == DEFAULT_NO_TARGET_DIST:
+	if _look_target_dist == DEFAULT_NO_TARGET_DIST:
 		_reset_look_target_dist_modifiers()
 		return
-	if look_target_dist <= min_modifier_dist:
+	if _look_target_dist <= min_modifier_dist:
 		speed = min_speed
 		target_fov = min_fov
-	elif look_target_dist >= max_modifier_dist:
+	elif _look_target_dist >= max_modifier_dist:
 		speed = max_speed
 		target_fov = max_fov
 	else:
-		var rawDistScaled = (look_target_dist - min_modifier_dist)/_modifier_dist_range
+		var rawDistScaled = (_look_target_dist - min_modifier_dist)/_modifier_dist_range
 		speed = min_speed + (_speed_range * rawDistScaled)
 		target_fov = min_fov + (_fov_range * rawDistScaled)
 		
@@ -222,11 +248,13 @@ func _physics_process(delta: float):
 	# first things first - check if we have a look target,
 	# then work out how close to the look target we are
 	if look_target:
-		look_target_dist = _calc_target_dist()
+		#_look_target_dist = _get_target_dist()
+		_calc_target_dist_intensity()
 		# then we would modify some stats based on the look target dist
 		_do_look_target_dist_modifiers()
 	else:
-		look_target_dist = 0
+		_look_target_dist = 0
+		_look_target_dist_intensity = 0
 		_reset_look_target_dist_modifiers()
 	
 	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
@@ -423,6 +451,8 @@ func headbob_animation(input_dir: Vector2):
 			HEADBOB_ANIMATION.speed_scale = 1
 
 
+
+
 func _process(delta):
 	$UserInterface/DebugPanel.add_property("FPS", Performance.get_monitor(Performance.TIME_FPS), 0)
 	var status : String = state
@@ -439,7 +469,7 @@ func _process(delta):
 					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	if look_target: # if we have a look target
-		$UserInterface/DebugPanel.add_property("Target dist",look_target_dist, 5)
+		$UserInterface/DebugPanel.add_property("Target dist",_look_target_dist, 5)
 		if !Input.is_action_pressed(LOOK_AROUND): # if 'LOOK AROUND' action not held
 			# look at the look target.
 			HEAD.look_at(look_target.global_position)

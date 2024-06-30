@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://drytmh5sdw0rd" path="res://addons/kenney_prototype_tools/scenes/dark/dark_13.tscn" id="2_gsw0j"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="3_0i54n"]
 [ext_resource type="PackedScene" uid="uid://d0wtf2xutr3tf" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="4_7y2yd"]
-[ext_resource type="AudioStream" uid="uid://fu1t0d577moj" path="res://sounds/718580__brunoauzet__lyon-fourviere-night.ogg" id="6_frxb7"]
 [ext_resource type="PackedScene" uid="uid://cvyxl4g03e8ps" path="res://models/Apartment.gltf" id="6_kxxir"]
 [ext_resource type="PackedScene" uid="uid://plgari2u1yoh" path="res://models/Apartment8.gltf" id="7_v37ok"]
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://white_noise.tscn" id="8_2orm4"]
-[ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://heartbeater.tscn" id="9_7ggkp"]
+[ext_resource type="AudioStream" uid="uid://b0glf02m26dht" path="res://sounds/418788__name__heartbeat-single.wav" id="9_pjqx0"]
+[ext_resource type="Script" path="res://scripts/heartbeater.gd" id="10_rgljl"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_4pc3w")
@@ -28,16 +28,12 @@ realScale = Vector3(50, 3, 1)
 [node name="Character" parent="." node_paths=PackedStringArray("look_target") instance=ExtResource("3_0i54n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 look_target = NodePath("../Cube3")
-min_speed = 0.25
-use_ray_length = 1.0
 
 [node name="Cube3" parent="." instance=ExtResource("4_7y2yd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -9.45)
 realScale = Vector3(1, 1, 0.1)
 
-[node name="Ambience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_frxb7")
-autoplay = true
+[node name="AmbientAudio" type="AudioStreamPlayer" parent="."]
 
 [node name="blockbench_export" parent="." instance=ExtResource("6_kxxir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
@@ -46,6 +42,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
 
 [node name="WhiteNoise" parent="." instance=ExtResource("8_2orm4")]
-volume_db = -20.0
 
-[node name="Heartbeater" parent="." instance=ExtResource("9_7ggkp")]
+[node name="heartbeater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_pjqx0")
+max_polyphony = 2
+bus = &"heartbeat"
+script = ExtResource("10_rgljl")

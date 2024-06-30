@@ -1,0 +1,53 @@
+[gd_resource type="AudioBusLayout" load_steps=7 format=3 uid="uid://dls51gwxiajqq"]
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_8smlf"]
+resource_name = "Amplify"
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_ws5se"]
+resource_name = "Distortion"
+mode = 3
+
+[sub_resource type="AudioEffectBandPassFilter" id="AudioEffectBandPassFilter_gkbsf"]
+resource_name = "BandPassFilter"
+cutoff_hz = 1.0
+resonance = 0.45
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_p7fwa"]
+resource_name = "Distortion"
+mode = 3
+
+[sub_resource type="AudioEffectEQ10" id="AudioEffectEQ10_3afcr"]
+resource_name = "EQ10"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_71dbr"]
+resource_name = "Reverb"
+predelay_feedback = 0.8
+hipass = 0.2
+dry = 0.6
+wet = 0.4
+
+[resource]
+bus/1/name = &"heartbeat"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectAmplify_8smlf")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectDistortion_ws5se")
+bus/1/effect/1/enabled = true
+bus/2/name = &"whitenoise"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -0.00162125
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectBandPassFilter_gkbsf")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectDistortion_p7fwa")
+bus/2/effect/1/enabled = true
+bus/2/effect/2/effect = SubResource("AudioEffectEQ10_3afcr")
+bus/2/effect/2/enabled = true
+bus/2/effect/3/effect = SubResource("AudioEffectReverb_71dbr")
+bus/2/effect/3/enabled = true
