@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bckvunr7sonqx"]
+[gd_scene load_steps=5 format=3 uid="uid://c5f8rdvg42ud2"]
 
-[ext_resource type="Material" uid="uid://1t4lohjeej4d" path="res://addons/kenney_prototype_tools/materials/red/material_07.tres" id="1_2ugh1"]
+[ext_resource type="Script" path="res://addons/kenney_prototype_tools/cube.gd" id="1_cb1sc"]
+[ext_resource type="Material" uid="uid://1t4lohjeej4d" path="res://addons/kenney_prototype_tools/materials/red/material_07.tres" id="2_tfkc2"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_orukj"]
+[sub_resource type="BoxMesh" id="BoxMesh_rgswm"]
 
-[node name="Cube" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4entj"]
+
+[node name="Cube" type="StaticBody3D" node_paths=PackedStringArray("_mesh", "_shape")]
+script = ExtResource("1_cb1sc")
+_mesh = NodePath("Mesh")
+_shape = NodePath("CollisionShape3D")
+realScale = Vector3(1, 1, 1)
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
-material_override = ExtResource("1_2ugh1")
-mesh = SubResource("BoxMesh_orukj")
+material_override = ExtResource("2_tfkc2")
+mesh = SubResource("BoxMesh_rgswm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4entj")

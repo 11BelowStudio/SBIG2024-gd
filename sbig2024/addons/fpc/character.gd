@@ -3,10 +3,14 @@
 # MIT licence
 # Quality Godot First Person Controller v2
 
+# edited further by 11BelowStudio
 
 extends CharacterBody3D
 
 # TODO: Add descriptions for each value
+
+@export_category("Flyposter variables")
+@export var look_target: Node3D
 
 
 @export_category("Character")
@@ -31,13 +35,16 @@ extends CharacterBody3D
 @export_group("Controls")
 # We are using UI controls because they are built into Godot Engine so they can be used right away
 @export var JUMP : String = "ui_accept"
-@export var LEFT : String = "ui_left"
-@export var RIGHT : String = "ui_right"
-@export var FORWARD : String = "ui_up"
-@export var BACKWARD : String = "ui_down"
+@export var LEFT : String = "move_left"
+@export var RIGHT : String = "move_right"
+@export var FORWARD : String = "move_forward"
+@export var BACKWARD : String = "move_back"
 @export var PAUSE : String = "ui_cancel"
 @export var CROUCH : String
 @export var SPRINT : String
+
+@export var LOOK_AROUND : String = "look"
+@export var USE : String = "use"
 
 # Uncomment if you want full controller support
 #@export var LOOK_LEFT : String
@@ -80,7 +87,8 @@ func _ready():
 	#It is safe to comment this line if your game doesn't start with the mouse captured
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	# If the controller is rotated in a certain direction for game design purposes, redirect this rotation into the head.
+	# If the controller is rotated in a certain direction for game design purposes,
+	# redirect this rotation into the head.
 	HEAD.rotation.y = rotation.y
 	rotation.y = 0
 	
@@ -166,6 +174,10 @@ func _physics_process(delta):
 	
 	if view_bobbing:
 		headbob_animation(input_dir)
+	
+	if Input.is_action_just_pressed(USE):
+		# TODO: do a raycast, probably just try signalling a 'use this' event on things it hits idk
+		pass
 	
 	if jump_animation:
 		if !was_on_floor and is_on_floor(): # The player just landed
@@ -333,6 +345,12 @@ func _process(delta):
 				Input.MOUSE_MODE_VISIBLE:
 					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
+	if look_target: # if we have a look target
+		$UserInterface/DebugPanel.add_property("Target dist",HEAD.global_position.distance_to(look_target.global_position), 5)
+		if !Input.is_action_pressed(LOOK_AROUND): # if 'LOOK AROUND' action not held
+			# look at the look target.
+			HEAD.look_at(look_target.global_position)
+		# TODO: also do the other hyperrealism stuff as player approaches the look target.
 	
 	HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	
