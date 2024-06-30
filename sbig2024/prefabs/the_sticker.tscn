@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://dh762ctlju3ks"]
 
 [ext_resource type="Script" path="res://scripts/the_sticker.gd" id="1_srh72"]
-[ext_resource type="Texture2D" uid="uid://cqlteoy3784w" path="res://images/an sticker.png" id="2_q5tbh"]
+[ext_resource type="Texture2D" uid="uid://cqlteoy3784w" path="res://textures/an sticker.png" id="2_4d8er"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pat2h"]
 transparency = 1
-albedo_texture = ExtResource("2_q5tbh")
+albedo_texture = ExtResource("2_4d8er")
 
 [sub_resource type="QuadMesh" id="QuadMesh_pnnxo"]
 
@@ -18,7 +18,7 @@ collision_layer = 9
 script = ExtResource("1_srh72")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_pat2h")
 mesh = SubResource("QuadMesh_pnnxo")
 

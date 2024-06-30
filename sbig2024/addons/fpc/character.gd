@@ -66,7 +66,7 @@ func _update_modifier_dist_range():
 
 @onready var _use_ray_cast: RayCast3D = $Head/UseRayCast
 
-@export var use_ray_length: float = 2:
+@export var use_ray_length: float = 3:
 	set(value):
 		use_ray_length = value
 		if _use_ray_cast:
@@ -302,9 +302,9 @@ func _physics_process(delta: float):
 	if view_bobbing:
 		headbob_animation(input_dir)
 	
-	if Input.is_action_just_pressed(USE):
-		_attempt_use()
-		pass
+	#if Input.is_action_just_pressed(USE):
+	#	_attempt_use()
+	#	pass
 	
 	if jump_animation:
 		if !was_on_floor and is_on_floor(): # The player just landed
@@ -483,6 +483,9 @@ func _process(delta: float) -> void:
 		if !Input.is_action_pressed(LOOK_AROUND): # if 'LOOK AROUND' action not held
 			# look at the look target.
 			HEAD.look_at(look_target.global_position)
+		else:
+			# free look!
+			pass
 		
 	
 	HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
@@ -500,6 +503,11 @@ func _unhandled_input(event):
 		HEAD.rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		HEAD.rotation_degrees.x -= event.relative.y * mouse_sensitivity
 
+
+## calls _use_ray_cast.get_collider()
+func get_use_raycast_target() -> CollisionObject3D:
+	_use_ray_cast.force_raycast_update()
+	return _use_ray_cast.get_collider()
 
 func _attempt_use():
 	# TODO: do a raycast, probably just try signalling a 'use this' event on things it hits idk

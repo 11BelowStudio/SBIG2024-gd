@@ -71,7 +71,7 @@ func _process(delta: float) -> void:
 						delta_lerp = 1 - delta_lerp
 				elif delta_over_half:
 					delta_lerp = 1 - delta_lerp
-		print("track weight %.5f target %.5f delta_lerp %.2f" % [audio_weight, audio_weight_target, delta_lerp])
+		#print("track weight %.5f target %.5f delta_lerp %.2f" % [audio_weight, audio_weight_target, delta_lerp])
 		audio_weight = lerpf(audio_weight, audio_weight_target, delta_lerp * delta)
 	
 	pass
