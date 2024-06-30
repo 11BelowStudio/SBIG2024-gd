@@ -25,7 +25,7 @@ var _look_target_dist: float = DEFAULT_NO_TARGET_DIST
 ## 'intensity' of the look target distance
 var _look_target_dist_intensity: float = 0
 
-@export var min_speed: float = 0.5:
+@export var min_speed: float = 0.25:
 	set(value):
 		min_speed = value
 		_update_speed_range()
@@ -39,11 +39,11 @@ func _update_speed_range():
 
 
 
-@export var min_fov: float = 30:
+@export var min_fov: float = 25:
 	set(value):
 		min_fov = value
 		_update_fov_range()
-@export var max_fov: float = 90:
+@export var max_fov: float = 75:
 	set(value):
 		max_fov = value
 		_update_fov_range()
@@ -52,7 +52,7 @@ func _update_fov_range():
 	_fov_range = max_fov - min_fov
 @onready var target_fov: float = max_fov
 
-@export var min_modifier_dist: float = 2:
+@export var min_modifier_dist: float = 3:
 	set(value):
 		min_modifier_dist = value
 		_update_modifier_dist_range()
@@ -64,7 +64,15 @@ func _update_fov_range():
 func _update_modifier_dist_range():
 	_modifier_dist_range = max_modifier_dist - min_modifier_dist
 
-@export var use_ray_length: float = 0.5
+@onready var _use_ray_cast: RayCast3D = $Head/UseRayCast
+
+@export var use_ray_length: float = 2:
+	set(value):
+		use_ray_length = value
+		if _use_ray_cast:
+			_use_ray_cast.target_position = _use_ray_cast.target_position.normalized() * value
+		pass
+
 
 
 @export_category("Character")
@@ -140,6 +148,8 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") 
 func _ready():
 	#It is safe to comment this line if your game doesn't start with the mouse captured
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	use_ray_length = use_ray_length
 	
 	# If the controller is rotated in a certain direction for game design purposes,
 	# redirect this rotation into the head.
@@ -293,7 +303,7 @@ func _physics_process(delta: float):
 		headbob_animation(input_dir)
 	
 	if Input.is_action_just_pressed(USE):
-		# TODO: do a raycast, probably just try signalling a 'use this' event on things it hits idk
+		_attempt_use()
 		pass
 	
 	if jump_animation:
@@ -419,8 +429,8 @@ func update_camera_fov_sprint():
 		CAMERA.fov = lerp(CAMERA.fov, 75.0, 0.3)
 
 
-func update_camera_fov(target_fov: float):
-	CAMERA.fov = lerp(CAMERA.fov, target_fov, 0.5)
+func update_camera_fov(target_fov: float, delta: float) -> void:
+	CAMERA.fov = lerp(CAMERA.fov, target_fov, 0.5 * delta)
 	pass
 
 func headbob_animation(input_dir: Vector2):
@@ -453,7 +463,7 @@ func headbob_animation(input_dir: Vector2):
 
 
 
-func _process(delta):
+func _process(delta: float) -> void:
 	$UserInterface/DebugPanel.add_property("FPS", Performance.get_monitor(Performance.TIME_FPS), 0)
 	var status : String = state
 	if !is_on_floor():
@@ -473,11 +483,11 @@ func _process(delta):
 		if !Input.is_action_pressed(LOOK_AROUND): # if 'LOOK AROUND' action not held
 			# look at the look target.
 			HEAD.look_at(look_target.global_position)
-		# TODO: also do the other hyperrealism stuff as player approaches the look target.
+		
 	
 	HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	
-	update_camera_fov(target_fov)
+	update_camera_fov(target_fov, delta)
 	
 	# Uncomment if you want full controller support
 	#var controller_view_rotation = Input.get_vector(LOOK_LEFT, LOOK_RIGHT, LOOK_UP, LOOK_DOWN)
@@ -489,3 +499,20 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		HEAD.rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		HEAD.rotation_degrees.x -= event.relative.y * mouse_sensitivity
+
+
+func _attempt_use():
+	# TODO: do a raycast, probably just try signalling a 'use this' event on things it hits idk
+	
+	_use_ray_cast.force_raycast_update()
+	
+	if !_use_ray_cast.is_colliding():
+		print("nothing hit!")
+		return
+	
+	var other: Object = _use_ray_cast.get_collider()
+	print("hit %s" % other)
+	if other.has_method("use"):
+		other.use()
+	
+	pass

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh762ctlju3ks"]
+
+[ext_resource type="Script" path="res://scripts/the_sticker.gd" id="1_srh72"]
+[ext_resource type="Texture2D" uid="uid://cqlteoy3784w" path="res://images/an sticker.png" id="2_q5tbh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pat2h"]
+transparency = 1
+albedo_texture = ExtResource("2_q5tbh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pnnxo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ofkxv"]
+size = Vector3(2, 1, 0.02)
+
+[node name="TheSticker" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -9.49)
+collision_layer = 9
+script = ExtResource("1_srh72")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_pat2h")
+mesh = SubResource("QuadMesh_pnnxo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ofkxv")

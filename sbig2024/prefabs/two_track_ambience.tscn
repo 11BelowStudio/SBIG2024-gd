@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7baexarjgo18"]
+
+[ext_resource type="Script" path="res://scripts/two_track_ambience.gd" id="1_u66aw"]
+
+[node name="TwoTrackAmbience" type="Node"]
+script = ExtResource("1_u66aw")
+
+[node name="Track0" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[node name="Track1" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+autoplay = true

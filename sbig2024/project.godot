@@ -78,6 +78,15 @@ look={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"
+3d_physics/layer_3="enforcer"
+3d_physics/layer_4="use"
+3d_physics/layer_5="door"
+3d_physics/layer_6="trigger"
+
 [maaacks_game_template]
 
 disable_plugin_dialogues=true

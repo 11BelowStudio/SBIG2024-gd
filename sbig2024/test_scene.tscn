@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5qns33x061kd"]
+[gd_scene load_steps=13 format=3 uid="uid://b5qns33x061kd"]
 
-[ext_resource type="Script" path="res://game_scene.gd" id="1_4pc3w"]
+[ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_4pc3w"]
 [ext_resource type="PackedScene" uid="uid://dykr0bp3jd62a" path="res://addons/kenney_prototype_tools/scenes/light/light_01.tscn" id="1_p4202"]
 [ext_resource type="PackedScene" uid="uid://drytmh5sdw0rd" path="res://addons/kenney_prototype_tools/scenes/dark/dark_13.tscn" id="2_gsw0j"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="3_0i54n"]
-[ext_resource type="PackedScene" uid="uid://d0wtf2xutr3tf" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="4_7y2yd"]
-[ext_resource type="AudioStream" uid="uid://fu1t0d577moj" path="res://sounds/718580__brunoauzet__lyon-fourviere-night.ogg" id="6_frxb7"]
 [ext_resource type="PackedScene" uid="uid://cvyxl4g03e8ps" path="res://models/Apartment.gltf" id="6_kxxir"]
 [ext_resource type="PackedScene" uid="uid://plgari2u1yoh" path="res://models/Apartment8.gltf" id="7_v37ok"]
-[ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://white_noise.tscn" id="8_2orm4"]
-[ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://heartbeater.tscn" id="9_7ggkp"]
+[ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise.tscn" id="8_2orm4"]
+[ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="9_7ggkp"]
+[ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="10_pisy3"]
+[ext_resource type="AudioStream" uid="uid://bmj2cmshpv10g" path="res://sounds/740972__nexotron__semibusy-citystreet-construction-site.ogg" id="11_2bjc3"]
+[ext_resource type="AudioStream" uid="uid://cvm4tyndq8cyn" path="res://sounds/427840__leonelmail__air-tone-school-yard-dawn-empty-city-air-faint-bird-chirps.ogg" id="12_80kju"]
+[ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/the_sticker.tscn" id="12_bu4e5"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_4pc3w")
@@ -25,19 +27,8 @@ realScale = Vector3(50, 1, 50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -10)
 realScale = Vector3(50, 3, 1)
 
-[node name="Character" parent="." node_paths=PackedStringArray("look_target") instance=ExtResource("3_0i54n")]
+[node name="Character" parent="." instance=ExtResource("3_0i54n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-look_target = NodePath("../Cube3")
-min_speed = 0.25
-use_ray_length = 1.0
-
-[node name="Cube3" parent="." instance=ExtResource("4_7y2yd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -9.45)
-realScale = Vector3(1, 1, 0.1)
-
-[node name="Ambience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_frxb7")
-autoplay = true
 
 [node name="blockbench_export" parent="." instance=ExtResource("6_kxxir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
@@ -49,3 +40,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
 volume_db = -20.0
 
 [node name="Heartbeater" parent="." instance=ExtResource("9_7ggkp")]
+
+[node name="TwoTrackAmbience" parent="." instance=ExtResource("10_pisy3")]
+audio0 = ExtResource("11_2bjc3")
+audio1 = ExtResource("12_80kju")
+_delta_lerp_amount = 0.8
+_track_bias = 2
+
+[node name="TheSticker" parent="." instance=ExtResource("12_bu4e5")]
+
+[connection signal="sticker_placed" from="TheSticker" to="." method="_on_sticker_placed"]
