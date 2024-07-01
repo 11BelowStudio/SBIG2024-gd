@@ -81,6 +81,8 @@ func _update_modifier_dist_range():
 		if _held_sticker:
 			_held_sticker.visible = value
 
+@export var capture_mouse: bool = true
+
 @export_category("Character")
 @export var base_speed : float = 3.0
 @export var sprint_speed : float = 6.0
@@ -153,7 +155,8 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") 
 
 func _ready():
 	#It is safe to comment this line if your game doesn't start with the mouse captured
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if capture_mouse:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	use_ray_length = use_ray_length
 	holding_sticker = holding_sticker
@@ -483,7 +486,8 @@ func _process(delta: float) -> void:
 				Input.MOUSE_MODE_CAPTURED:
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				Input.MOUSE_MODE_VISIBLE:
-					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+					if capture_mouse:
+						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	if look_target: # if we have a look target
 		$UserInterface/DebugPanel.add_property("Target dist",_look_target_dist, 5)

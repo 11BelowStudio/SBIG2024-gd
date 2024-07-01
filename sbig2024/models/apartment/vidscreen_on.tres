@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://lbtmllp418rx"]
+
+[ext_resource type="Texture2D" uid="uid://cjwebwlhv0234" path="res://models/apartment/vidscreen_on.png" id="1_5lh8b"]
+
+[resource]
+resource_name = "material_1"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_5lh8b")
+texture_filter = 0
+texture_repeat = false

@@ -1,19 +1,23 @@
-# Attribution
-## Collaborators
 
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+# Flypost
+[https://11BelowStudio.itch.io/Flypost](https://11BelowStudio.itch.io/Flypost)
+Made for the 2024 So Bad It's Good Jam
 
+Developed by [11BelowStudio](https://11BelowStudio.itch.io)
 
-## Sourced / Unaffiliated
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
+3D models by [Delta100](https://itch.io/profile/delta100)
 
+## License stuff
+
+#### Quality First Person Controller v2
+Author: [ColormaticStudios](https://github.com/ColormaticStudios)
+Source:[https://github.com/ColormaticStudios/quality-godot-first-person-2](https://github.com/ColormaticStudios/quality-godot-first-person-2)
+License: [MIT License](https://github.com/ColormaticStudios/quality-godot-first-person-2/blob/main/LICENSE)
+
+#### Heartbeat Single
+Author: [.name](https://freesound.org/people/.name)
+Source: [https://freesound.org/people/.name/sounds/418788/](https://freesound.org/people/.name/sounds/418788/)
+License: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
 
 ## Tools
 #### Godot

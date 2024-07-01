@@ -108,25 +108,32 @@ _subresources={
 "physics/shape_type": 1
 },
 "PATH:Node/Lights/Light": {
-"mesh_instance/cast_shadow": 0
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 4
 },
 "PATH:Node/Lights/Light2": {
-"mesh_instance/cast_shadow": 0
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 4
 },
 "PATH:Node/Lights/Light3": {
-"mesh_instance/cast_shadow": 0
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 4
 },
 "PATH:Node/Lights/Light4": {
-"mesh_instance/cast_shadow": 0
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 4
 },
 "PATH:Node/Lights/Light5": {
-"mesh_instance/cast_shadow": 0
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 4
 },
 "PATH:Node/Lights/Light6": {
-"mesh_instance/cast_shadow": 0
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 4
 },
 "PATH:Node/Lights/Light7": {
-"mesh_instance/cast_shadow": 0
+"mesh_instance/cast_shadow": 0,
+"mesh_instance/layers": 4
 },
 "PATH:Node/Walls/Doorframe_textured": {
 "generate/physics": true,

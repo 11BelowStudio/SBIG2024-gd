@@ -47,6 +47,7 @@ func _event_skips_intro(event : InputEvent):
 		_event_is_mouse_button_released(event)
 
 func _input(event):
+	
 	if event.is_action_released("ui_accept") and get_viewport().gui_get_focus_owner() == null:
 		%MenuButtons.focus_first()
 

@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="sbig2024"
+config/name="Flypost"
+config/version="0.0.1"
 run/main_scene="res://maaack_examples/scenes/Menus/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -81,6 +82,9 @@ look={
 
 [layer_names]
 
+3d_render/layer_1="default"
+3d_render/layer_2="viewmodel"
+3d_render/layer_3="lightmodels"
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
 3d_physics/layer_3="enforcer"

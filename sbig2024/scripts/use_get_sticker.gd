@@ -4,7 +4,7 @@ extends StaticBody3D
 
 @onready var visual: MeshInstance3D = $sticker_get_visual
 
-@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var audio: AudioStreamPlayer3D = $StickerAudio
 
 @export var spin_duration: float = 5
 
@@ -32,5 +32,6 @@ func _process(delta: float) -> void:
 	pass
 
 func use() -> void:
+	visual.visible = false
 	
 	pass
