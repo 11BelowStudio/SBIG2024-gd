@@ -108,7 +108,7 @@ _subresources={
 },
 "PATH:Node/Walls/Side Wall": {
 "generate/physics": true,
-"physics/shape_type": 2
+"physics/shape_type": 1
 },
 "PATH:Node/Walls/Side Wall2": {
 "generate/physics": true,

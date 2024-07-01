@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/apt_door.glb-1b1edb13fa18ed00bf16b444db19646b
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
+nodes/root_type="Node3D"
+nodes/root_name="door_dynamic"
 nodes/apply_root_scale=true
 nodes/root_scale=2.0
 meshes/ensure_tangents=true
@@ -34,7 +34,10 @@ _subresources={
 "PATH:Node/door": {
 "generate/physics": true,
 "physics/body_type": 1,
-"physics/shape_type": 1
+"physics/layer": 16,
+"physics/mask": 6,
+"physics/shape_type": 3,
+"primitive/size": Vector3(0.05, 1.05, 0.8)
 }
 }
 }

@@ -1,11 +1,6 @@
 class_name GameScene
 extends Node3D
 
-@export var ambientAudio: AudioStreamPlayer
-
-@export var standardAmbient: AudioStreamOggVorbis
-@export var tenseAmbient: AudioStreamOggVorbis
-
 
 @onready var heartbeater: Heartbeater = $Heartbeater
 @onready var whitenoise: WhiteNoise = $WhiteNoise
@@ -16,8 +11,8 @@ extends Node3D
 
 @onready var character: FPCharacter = $Character
 
-@onready var stickerProgress: CircularProgressBar = $UI/StickerProgressBar
-@onready var instructionLabel: Label = $UI/InstructionLabel
+@onready var ui: FPUI = $FPUI
+
 
 @export var _instruction_1: String = "Act natural, walk up to the wall, get it done."
 @export var _instruction_2: String = "Get a bit closer, keep an eye out for enforcers (Q)..."
@@ -40,7 +35,7 @@ func _ready() -> void:
 	
 	character.look_target = theSticker
 	character.holding_sticker = true
-	stickerProgress.max_value = _sticker_placing_duration
+	ui.progressBar().max_value = _sticker_placing_duration
 	pass # Replace with function body.
 
 
@@ -57,15 +52,15 @@ func _process(delta: float) -> void:
 		StickerStates.NOT_PLACED:
 			
 			if intensity == 0:
-				instructionLabel.text = _instruction_1
+				ui.show_instruction(_instruction_1)
 			elif (intensity >= 0.35) and (intensity <= 0.8):
-				instructionLabel.text = _instruction_2
+				ui.show_instruction(_instruction_2)
 			
 			_sticker_placing_progress = lerpf(_sticker_placing_progress, 0, _sticker_placing_decay_delta * delta)
-			stickerProgress.value = _sticker_placing_progress
+			ui.progressBar().value = _sticker_placing_progress
 		StickerStates.PLACING:
 			_sticker_placing_progress += delta
-			stickerProgress.value = _sticker_placing_progress
+			ui.progressBar().value = _sticker_placing_progress
 			if _sticker_placing_progress >= _sticker_placing_duration:
 				_sticker_placed()
 		_:
@@ -82,12 +77,12 @@ func _physics_process(delta: float) -> void:
 		StickerStates.NOT_PLACED:
 			var characterUseObj: TheSticker = character.get_use_raycast_target() as TheSticker
 			if characterUseObj and characterUseObj == theSticker:
-				instructionLabel.text = _instruction_3
+				ui.show_instruction(_instruction_3)
 				if Input.is_action_just_pressed(USE):
 					sticker_state = StickerStates.PLACING
 					theSticker.placing_started()
 			else:
-				instructionLabel.text = _instruction_2
+				ui.show_instruction(_instruction_2)
 		StickerStates.PLACING:
 			if Input.is_action_pressed(USE):
 				var characterUseObj: TheSticker = character.get_use_raycast_target()  as TheSticker
@@ -111,7 +106,7 @@ func _sticker_placed() -> void:
 	heartbeater.intensity_target = 0
 	dualAmbience.audio_weight_target = 0
 	character.look_target = null
-	instructionLabel.text = _instruction_4
+	ui.show_instruction(_instruction_4)
 
 func _on_sticker_placed() -> void:
 	sticker_state = StickerStates.PLACED

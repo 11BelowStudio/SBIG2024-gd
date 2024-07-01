@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c77yvk1jsoi7h"]
+
+[ext_resource type="Script" path="res://scripts/dynamic_door.gd" id="1_3hwqg"]
+[ext_resource type="PackedScene" uid="uid://dg2ywt0a4ti7n" path="res://models/apt_door/apt_door.glb" id="1_xjht4"]
+
+[node name="dynamic_door" type="Node3D"]
+script = ExtResource("1_3hwqg")
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
+node_a = NodePath("../door_anchor")
+node_b = NodePath("../door_dynamic/Node/door")
+angular_limit/enable = true
+angular_limit/upper = 0.0
+angular_limit/lower = 0.0
+angular_limit/bias = 0.99
+
+[node name="door_anchor" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="door_dynamic" parent="." instance=ExtResource("1_xjht4")]
+
+[node name="CollisionShape3D" parent="door_dynamic/Node/door" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0.8)
+
+[editable path="door_dynamic"]

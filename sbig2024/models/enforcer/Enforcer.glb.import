@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bvwd6fp6eftlj"
-path="res://.godot/imported/apt_door_red.glb-c9f60e3f0db8696abaca248c9fbb34ed.scn"
+uid="uid://d3uf2qesl3svc"
+path="res://.godot/imported/Enforcer.glb-1a05244a575b49d6fef40c30126a745f.scn"
 
 [deps]
 
-source_file="res://models/apt_door/apt_door_red.glb"
-dest_files=["res://.godot/imported/apt_door_red.glb-c9f60e3f0db8696abaca248c9fbb34ed.scn"]
+source_file="res://models/enforcer/Enforcer.glb"
+dest_files=["res://.godot/imported/Enforcer.glb-1a05244a575b49d6fef40c30126a745f.scn"]
 
 [params]
 
-nodes/root_type=""
-nodes/root_name="red_door"
+nodes/root_type="CharacterBody3D"
+nodes/root_name="Enforcer"
 nodes/apply_root_scale=true
 nodes/root_scale=2.0
 meshes/ensure_tangents=true
@@ -29,14 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Node/door": {
-"generate/physics": true,
-"physics/body_type": 1,
-"physics/shape_type": 1
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

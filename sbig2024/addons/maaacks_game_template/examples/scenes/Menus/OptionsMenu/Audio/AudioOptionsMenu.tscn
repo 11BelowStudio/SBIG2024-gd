@@ -5,3 +5,4 @@
 
 [node name="Audio" instance=ExtResource("1_ro573")]
 script = ExtResource("2_g4nfi")
+hide_busses = Array[String](["heartbeat", "whitenoise"])
