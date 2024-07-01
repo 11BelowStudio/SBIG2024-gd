@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8aaqfp7m50qs"
-path="res://.godot/imported/apt_door_texture.png-3209e18a6325a785e45ee56fb10a3199.ctex"
+uid="uid://w6hjkqve5y1k"
+path="res://.godot/imported/apt_hallway_enforcer_hole_texture.png-5babf0fd32185bb13174737263a8c2a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/Hallway/apt_door_texture.png"
-dest_files=["res://.godot/imported/apt_door_texture.png-3209e18a6325a785e45ee56fb10a3199.ctex"]
+source_file="res://models/blockbench/Hallway/apt_hallway_enforcer_hole_texture.png"
+dest_files=["res://.godot/imported/apt_hallway_enforcer_hole_texture.png-5babf0fd32185bb13174737263a8c2a9.ctex"]
 
 [params]
 

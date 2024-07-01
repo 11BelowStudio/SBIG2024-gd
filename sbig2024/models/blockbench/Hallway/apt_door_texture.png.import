@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b026foi6e6k3"
-path="res://.godot/imported/apt_texture.png-2afcd4dbfe7c7fd9afdf33eea9e23e21.ctex"
+uid="uid://8aaqfp7m50qs"
+path="res://.godot/imported/apt_door_texture.png-df09e7dcb2ef52550116cd6db7191152.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/Apartment/apt_texture.png"
-dest_files=["res://.godot/imported/apt_texture.png-2afcd4dbfe7c7fd9afdf33eea9e23e21.ctex"]
+source_file="res://models/blockbench/Hallway/apt_door_texture.png"
+dest_files=["res://.godot/imported/apt_door_texture.png-df09e7dcb2ef52550116cd6db7191152.ctex"]
 
 [params]
 

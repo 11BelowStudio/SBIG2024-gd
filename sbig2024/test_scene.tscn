@@ -1,11 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5qns33x061kd"]
+[gd_scene load_steps=12 format=3 uid="uid://b5qns33x061kd"]
 
 [ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_4pc3w"]
 [ext_resource type="PackedScene" uid="uid://dykr0bp3jd62a" path="res://addons/kenney_prototype_tools/scenes/light/light_01.tscn" id="1_p4202"]
 [ext_resource type="PackedScene" uid="uid://drytmh5sdw0rd" path="res://addons/kenney_prototype_tools/scenes/dark/dark_13.tscn" id="2_gsw0j"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="3_0i54n"]
-[ext_resource type="PackedScene" uid="uid://cvyxl4g03e8ps" path="res://models/Apartment.gltf" id="6_kxxir"]
-[ext_resource type="PackedScene" uid="uid://plgari2u1yoh" path="res://models/Apartment8.gltf" id="7_v37ok"]
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise.tscn" id="8_2orm4"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="9_7ggkp"]
 [ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="10_pisy3"]
@@ -30,12 +28,6 @@ realScale = Vector3(50, 3, 1)
 
 [node name="Character" parent="." instance=ExtResource("3_0i54n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="blockbench_export" parent="." instance=ExtResource("6_kxxir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
-
-[node name="blockbench_export2" parent="." instance=ExtResource("7_v37ok")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
 
 [node name="WhiteNoise" parent="." instance=ExtResource("8_2orm4")]
 volume_db = -20.0

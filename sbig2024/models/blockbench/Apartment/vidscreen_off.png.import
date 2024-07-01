@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmyrpa5x538h7"
-path="res://.godot/imported/apt_hallway_floor_ceiling_texture.png-c4525e54ca5020af0affd11ff5b033bb.ctex"
+uid="uid://bxiimil4jsnse"
+path="res://.godot/imported/vidscreen_off.png-f0b89f41340d7cda5e6f06fb8eb35d2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/Hallway/apt_hallway_floor_ceiling_texture.png"
-dest_files=["res://.godot/imported/apt_hallway_floor_ceiling_texture.png-c4525e54ca5020af0affd11ff5b033bb.ctex"]
+source_file="res://models/blockbench/Apartment/vidscreen_off.png"
+dest_files=["res://.godot/imported/vidscreen_off.png-f0b89f41340d7cda5e6f06fb8eb35d2b.ctex"]
 
 [params]
 

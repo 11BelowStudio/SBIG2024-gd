@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blg8bgsh2a8gu"
-path.s3tc="res://.godot/imported/Apartment_1.png-b0efc4e2b401564f6e12c7e66c88bb4e.s3tc.ctex"
+uid="uid://cig5hr32e1nnv"
+path.s3tc="res://.godot/imported/apt_door_0.png-dcbb211d1c5c95545e0eb897c6c12fed.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a60ba0c52e617c8194aa31c61addb289"
+"md5": "777f4f3b13e495b49960fd8e8f1da0a9"
 }
 
 [deps]
 
-source_file="res://models/Apartment_1.png"
-dest_files=["res://.godot/imported/Apartment_1.png-b0efc4e2b401564f6e12c7e66c88bb4e.s3tc.ctex"]
+source_file="res://models/apt_door/apt_door_0.png"
+dest_files=["res://.godot/imported/apt_door_0.png-dcbb211d1c5c95545e0eb897c6c12fed.s3tc.ctex"]
 
 [params]
 

@@ -2,30 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw4qvik64vr5j"
-path.s3tc="res://.godot/imported/Apartment_0.png-6b746e05f6faf2082064476766a2f4d8.s3tc.ctex"
+uid="uid://cl7jj1trewhh3"
+path="res://.godot/imported/apt_door_red_texture.png-c25a8a41ad6c7b8a8658811d404d2039.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "49f861925f8b0c048d13d6b78b9d03a0"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/Apartment_0.png"
-dest_files=["res://.godot/imported/Apartment_0.png-6b746e05f6faf2082064476766a2f4d8.s3tc.ctex"]
+source_file="res://models/blockbench/Hallway/apt_door_red_texture.png"
+dest_files=["res://.godot/imported/apt_door_red_texture.png-c25a8a41ad6c7b8a8658811d404d2039.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -35,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

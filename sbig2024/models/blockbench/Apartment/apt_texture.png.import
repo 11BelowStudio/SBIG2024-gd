@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctjreecwuho2l"
-path="res://.godot/imported/vidscreen_on.png-322974697e6d5b0f38e301fa3678712f.ctex"
+uid="uid://b026foi6e6k3"
+path="res://.godot/imported/apt_texture.png-2c04bb9170c5ddf2d5a186ad33fbd3f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/Apartment/vidscreen_on.png"
-dest_files=["res://.godot/imported/vidscreen_on.png-322974697e6d5b0f38e301fa3678712f.ctex"]
+source_file="res://models/blockbench/Apartment/apt_texture.png"
+dest_files=["res://.godot/imported/apt_texture.png-2c04bb9170c5ddf2d5a186ad33fbd3f6.ctex"]
 
 [params]
 

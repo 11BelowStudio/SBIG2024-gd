@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xt458ayo7fm0"
-path="res://.godot/imported/apt_hallway_light_texture.png-08a904fc120a49a2778ec0b0365a3a2d.ctex"
+uid="uid://c51633mf0y1l"
+path="res://.godot/imported/vidscreen_flipbook.png-dc4fc0d1571395ff21088dbdf6be510d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/Hallway/apt_hallway_light_texture.png"
-dest_files=["res://.godot/imported/apt_hallway_light_texture.png-08a904fc120a49a2778ec0b0365a3a2d.ctex"]
+source_file="res://models/blockbench/Apartment/vidscreen_flipbook.png"
+dest_files=["res://.godot/imported/vidscreen_flipbook.png-dc4fc0d1571395ff21088dbdf6be510d.ctex"]
 
 [params]
 
