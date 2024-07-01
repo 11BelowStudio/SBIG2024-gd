@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duibfx0lc7eew"
-path="res://.godot/imported/apt_door_0.png-dcbb211d1c5c95545e0eb897c6c12fed.ctex"
+uid="uid://difngr3gt4qf0"
+path="res://.godot/imported/apt_hallway_3.png-61a39d5f545e4a21774f3d0931739cd1.ctex"
 metadata={
 "vram_texture": false
 }
@@ -13,8 +13,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/apt_door/apt_door_0.png"
-dest_files=["res://.godot/imported/apt_door_0.png-dcbb211d1c5c95545e0eb897c6c12fed.ctex"]
+source_file="res://models/hallway/apt_hallway_3.png"
+dest_files=["res://.godot/imported/apt_hallway_3.png-61a39d5f545e4a21774f3d0931739cd1.ctex"]
 
 [params]
 

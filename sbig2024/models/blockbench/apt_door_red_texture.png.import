@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duibfx0lc7eew"
-path="res://.godot/imported/apt_door_0.png-dcbb211d1c5c95545e0eb897c6c12fed.ctex"
+uid="uid://cl7jj1trewhh3"
+path="res://.godot/imported/apt_door_red_texture.png-680d2cfd0a834157816938dc5a548b98.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "777f4f3b13e495b49960fd8e8f1da0a9"
 }
 
 [deps]
 
-source_file="res://models/apt_door/apt_door_0.png"
-dest_files=["res://.godot/imported/apt_door_0.png-dcbb211d1c5c95545e0eb897c6c12fed.ctex"]
+source_file="res://models/blockbench/apt_door_red_texture.png"
+dest_files=["res://.godot/imported/apt_door_red_texture.png-680d2cfd0a834157816938dc5a548b98.ctex"]
 
 [params]
 
@@ -24,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -34,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
