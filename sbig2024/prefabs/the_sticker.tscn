@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh762ctlju3ks"]
+[gd_scene load_steps=8 format=3 uid="uid://dh762ctlju3ks"]
 
 [ext_resource type="Script" path="res://scripts/the_sticker.gd" id="1_srh72"]
 [ext_resource type="Texture2D" uid="uid://cqlteoy3784w" path="res://textures/an sticker.png" id="2_4d8er"]
+[ext_resource type="AudioStream" uid="uid://dah2y3cquj2vn" path="res://addons/kenney impact sounds/impact_bell_heavy_002.ogg" id="3_pyqcq"]
+[ext_resource type="AudioStream" uid="uid://b7jthip0ygys1" path="res://addons/kenney impact sounds/impact_mining_001.ogg" id="4_6papa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pat2h"]
 transparency = 1
@@ -24,3 +26,9 @@ mesh = SubResource("QuadMesh_pnnxo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ofkxv")
+
+[node name="DoneNoisePlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_pyqcq")
+
+[node name="PlacingNoisePlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_6papa")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=23 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
+[ext_resource type="Material" uid="uid://b3vcufg347no" path="res://materials/an_sticker_viewmodel.tres" id="2_7s5gy"]
 [ext_resource type="Script" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 
@@ -376,6 +377,8 @@ _data = {
 "land_right": SubResource("Animation_vsknp")
 }
 
+[sub_resource type="QuadMesh" id="QuadMesh_r2odi"]
+
 [sub_resource type="Theme" id="Theme_wdf0f"]
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
@@ -430,9 +433,15 @@ libraries = {
 speed_scale = 4.0
 
 [node name="UseRayCast" type="RayCast3D" parent="Head"]
-visible = false
 target_position = Vector3(0, 0, -1)
 collision_mask = 8
+
+[node name="HeldSticker" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.849184, 0, 0.528098, -0.199912, 0.46279, 0.32146, -0.488797, -0.189276, 0.785988, -0.887404, -0.678349, -1.24334)
+layers = 2
+sorting_offset = 100000.0
+material_override = ExtResource("2_7s5gy")
+mesh = SubResource("QuadMesh_r2odi")
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3

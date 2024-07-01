@@ -74,6 +74,12 @@ func _update_modifier_dist_range():
 		pass
 
 
+@onready var _held_sticker: MeshInstance3D = $Head/HeldSticker
+@export var holding_sticker: bool = false:
+	set(value):
+		holding_sticker = value
+		if _held_sticker:
+			_held_sticker.visible = value
 
 @export_category("Character")
 @export var base_speed : float = 3.0
@@ -150,6 +156,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	use_ray_length = use_ray_length
+	holding_sticker = holding_sticker
 	
 	# If the controller is rotated in a certain direction for game design purposes,
 	# redirect this rotation into the head.

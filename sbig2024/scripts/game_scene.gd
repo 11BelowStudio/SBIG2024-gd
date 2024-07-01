@@ -39,6 +39,7 @@ var sticker_state: StickerStates = StickerStates.NOT_PLACED
 func _ready() -> void:
 	
 	character.look_target = theSticker
+	character.holding_sticker = true
 	stickerProgress.max_value = _sticker_placing_duration
 	pass # Replace with function body.
 
@@ -84,6 +85,7 @@ func _physics_process(delta: float) -> void:
 				instructionLabel.text = _instruction_3
 				if Input.is_action_just_pressed(USE):
 					sticker_state = StickerStates.PLACING
+					theSticker.placing_started()
 			else:
 				instructionLabel.text = _instruction_2
 		StickerStates.PLACING:
@@ -91,8 +93,10 @@ func _physics_process(delta: float) -> void:
 				var characterUseObj: TheSticker = character.get_use_raycast_target()  as TheSticker
 				if (not characterUseObj) or (characterUseObj != theSticker):
 					sticker_state = StickerStates.NOT_PLACED
+					theSticker.placing_aborted()
 			else:
 				sticker_state = StickerStates.NOT_PLACED
+				theSticker.placing_aborted()
 		_:
 			pass
 	
@@ -102,6 +106,7 @@ func _physics_process(delta: float) -> void:
 
 func _sticker_placed() -> void:
 	theSticker.use()
+	character.holding_sticker = false
 	sticker_state = StickerStates.PLACED
 	heartbeater.intensity_target = 0
 	dualAmbience.audio_weight_target = 0
