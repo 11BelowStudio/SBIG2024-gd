@@ -29,6 +29,96 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Node/Bathroom/Back Wall": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Bathroom/Ceiling": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Bathroom/Floor": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Bathroom/Side Wall3": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Bathroom/Side Wall4": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Ceiling2/Apartment ceiling": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Floor2/Apt Floor": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Lighting/Ceiling Light": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Node/StaticFurniture/Bed2/Bed": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/StaticFurniture/Bed2/Pillow": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/StaticFurniture/Bed2/Sheet": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/StaticFurniture/Cooker/Microwave": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/StaticFurniture/Cooker/Noodles": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/StaticFurniture/Cooker/Table": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/StaticFurniture/Desk/Leg": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/StaticFurniture/Desk/Leg2": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/StaticFurniture/Desk/Surface": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/StaticFurniture/VidphoneStatic/Mount": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Node/Walls/Door Wall": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Node/Walls/Side Wall": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Node/Walls/Side Wall2": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Window Wall": {
+"generate/physics": true,
+"physics/shape_type": 1
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

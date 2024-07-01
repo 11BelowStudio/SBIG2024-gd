@@ -29,6 +29,170 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Node/AptDoors/door": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door10": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door11": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door12": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door2": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door3": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door4": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door5": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door6": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door7": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door8": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/AptDoors/door9": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Ceiling": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole/Ceiling2": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole/Floor2": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole/Wall": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole/Wall2": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole/Wall3": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Floor": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Lights/Light": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Node/Lights/Light2": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Node/Lights/Light3": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Node/Lights/Light4": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Node/Lights/Light5": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Node/Lights/Light6": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Node/Lights/Light7": {
+"mesh_instance/cast_shadow": 0
+},
+"PATH:Node/Walls/Doorframe_textured": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured10": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured11": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured12": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Node/Walls/Doorframe_textured13": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured14": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Node/Walls/Doorframe_textured15": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured2": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured3": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured4": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured5": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured6": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured7": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/Doorframe_textured8": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Node/Walls/Doorframe_textured9": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/Walls/cuboid": {
+"generate/physics": true,
+"physics/shape_type": 1
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
