@@ -6,5 +6,5 @@
 [node name="WhiteNoise" type="AudioStreamPlayer"]
 stream = ExtResource("1_xhc2r")
 autoplay = true
-bus = &"whitenoise"
+bus = &"_whitenoise"
 script = ExtResource("2_pycxj")

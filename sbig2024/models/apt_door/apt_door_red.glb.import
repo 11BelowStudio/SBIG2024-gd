@@ -33,7 +33,6 @@ _subresources={
 "nodes": {
 "PATH:Node/door": {
 "generate/physics": true,
-"physics/body_type": 1,
 "physics/shape_type": 1
 }
 }

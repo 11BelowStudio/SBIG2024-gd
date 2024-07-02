@@ -83,6 +83,8 @@ func _update_modifier_dist_range():
 
 @export var capture_mouse: bool = true
 
+signal hit_by_enforcer
+
 @export_category("Character")
 @export var base_speed : float = 3.0
 @export var sprint_speed : float = 6.0
@@ -544,3 +546,9 @@ func _attempt_use():
 		other.use()
 	
 	pass
+
+
+func _on_enforcer_collision_area_body_entered(body: Node3D) -> void:
+	print("got hit by an enforcer!")
+	hit_by_enforcer.emit()
+	pass # Replace with function body.

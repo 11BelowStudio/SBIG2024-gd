@@ -135,3 +135,5 @@ func set_enforcer_door_open(open: bool) -> void:
 		enforcerDoor.set_open(open)
 
 
+func _on_use_get_sticker_sticker_obtained_signal() -> void:
+	pass # Replace with function body.

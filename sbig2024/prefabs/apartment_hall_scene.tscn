@@ -81,6 +81,10 @@ mesh = SubResource("BoxMesh_v4k1m")
 
 [node name="Doors" type="Node" parent="."]
 
+[node name="exitDoor" parent="Doors" instance=ExtResource("4_l73ky")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.75, 0, 5.75)
+
 [node name="EnforcerDoor" parent="Doors" instance=ExtResource("3_gml1m")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 0, 6.625)
@@ -88,10 +92,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 
 [node name="ApartmentDoor" parent="Doors" instance=ExtResource("3_gml1m")]
 unique_name_in_owner = true
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.75, 0, 3.375)
-
-[node name="exitDoor" parent="Doors" instance=ExtResource("4_l73ky")]
-unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.75, 0, 5.75)
 
 [node name="use_get_sticker" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.256272, 1.24503, -2.27222)

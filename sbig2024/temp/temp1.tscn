@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/Autoloads/AppConfig.tscn" id="1_eemlj"]
+[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/Autoloads/SceneLoader.tscn" id="2_mx8r8"]
+[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectMusicController.tscn" id="3_gvkk1"]
+[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectUISoundController.tscn" id="4_uvdvh"]
+[ext_resource type="PackedScene" path="res://addons/bmod/autoloads/bmod/bmod.tscn" id="5_cpde0"]
+[ext_resource type="PackedScene" path="res://scenes/Scene_Final.tscn" id="6_urf5b"]
+[ext_resource type="PackedScene" path="res://prefabs/enforcer.tscn" id="7_yh5jo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_14yv8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_t472g"]
+sky_material = SubResource("ProceduralSkyMaterial_14yv8")
+
+[sub_resource type="Environment" id="Environment_thyp3"]
+background_mode = 2
+sky = SubResource("Sky_t472g")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+fog_enabled = true
+
+[sub_resource type="World3D" id="World3D_26whs"]
+environment = SubResource("Environment_thyp3")
+
+[node name="root" type="Window"]
+process_mode = 1
+world_3d = SubResource("World3D_26whs")
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+physics_object_picking = true
+gui_embed_subwindows = true
+positional_shadow_atlas_size = 4096
+title = "Flypost"
+position = Vector2i(384, 196)
+size = Vector2i(1152, 648)
+min_size = Vector2i(64, 64)
+content_scale_size = Vector2i(1152, 648)
+content_scale_aspect = 1
+
+[node name="AppConfig" parent="." instance=ExtResource("1_eemlj")]
+
+[node name="SceneLoader" parent="." instance=ExtResource("2_mx8r8")]
+
+[node name="ProjectMusicController" parent="." instance=ExtResource("3_gvkk1")]
+audio_bus = &"Music"
+fade_out_duration = 0.0
+fade_in_duration = 0.0
+blend_volume_duration = 0.0
+empty_streams_stop_player = true
+
+[node name="ProjectUISoundController" parent="." instance=ExtResource("4_uvdvh")]
+root_path = NodePath("..")
+audio_bus = &"SFX"
+persistent = true
+button_hovered = null
+button_focused = null
+button_pressed = null
+tab_hovered = null
+tab_changed = null
+tab_selected = null
+slider_hovered = null
+slider_focused = null
+slider_drag_started = null
+slider_drag_ended = null
+line_hovered = null
+line_focused = null
+line_text_changed = null
+line_text_submitted = null
+line_text_change_rejected = null
+
+[node name="BMOD" parent="." instance=ExtResource("5_cpde0")]
+
+[node name="SceneFinal" parent="." instance=ExtResource("6_urf5b")]
+
+[node name="Enforcer" parent="SceneFinal" instance=ExtResource("7_yh5jo")]
+transform = Transform3D(-0.0447739, -0.0783401, -0.995913, 0, 0.996911, -0.0784189, 0.998988, -0.00351114, -0.0446361, 20.2415, 0.000940047, 5.17257)
+_moveSpeed = 3.0
+_rotateSpeed = 60.0

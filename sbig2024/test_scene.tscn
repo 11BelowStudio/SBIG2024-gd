@@ -33,7 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="WhiteNoise" parent="." instance=ExtResource("8_2orm4")]
 volume_db = -20.0
-bus = &"Master"
 
 [node name="Heartbeater" parent="." instance=ExtResource("9_7ggkp")]
 bus = &"Master"

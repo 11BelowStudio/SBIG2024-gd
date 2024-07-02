@@ -12,7 +12,6 @@ extends AudioStreamPlayer
 
 var wnoise_filter: AudioEffectFilter
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -34,6 +33,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	wnoise_filter.cutoff_hz = lerpf(wnoise_filter.cutoff_hz, target_filter_hz, _filter_target_lerp)
 	pass
+
 
 ## call this to set the intensity of the noise (as a value between 0 and 1)
 func set_intensity01(intensity01: float) -> void:
