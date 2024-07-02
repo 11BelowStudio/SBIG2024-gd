@@ -13,7 +13,7 @@ extends StaticBody3D
 		if _mesh:
 			_mesh.scale = value
 		if _shape:
-			var box: BoxShape3D = _shape.get_shape() as BoxShape3D
+			var box: BoxShape3D = BoxShape3D.new()
 			box.set_size(value)
 			_shape.set_shape(box)
 		# return

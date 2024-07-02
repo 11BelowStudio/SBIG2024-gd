@@ -15,7 +15,7 @@ albedo_texture = ExtResource("2_4d8er")
 size = Vector3(2, 1, 0.02)
 
 [node name="TheSticker" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -9.49)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 collision_layer = 9
 script = ExtResource("1_srh72")
 

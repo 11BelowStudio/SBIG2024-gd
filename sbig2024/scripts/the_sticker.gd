@@ -8,7 +8,7 @@ extends StaticBody3D
 @onready var _doneNoise: AudioStreamPlayer3D = $DoneNoisePlayer
 @onready var _placingNoise: AudioStreamPlayer3D = $PlacingNoisePlayer
 
-var _stickered: bool = false
+@export var _stickered: bool = false
 
 
 ## emitted when the sticker gets placed
@@ -19,8 +19,6 @@ func _ready() -> void:
 	
 	_mesh.visible = false
 	_stickered = false
-	
-	
 	
 	pass # Replace with function body.
 

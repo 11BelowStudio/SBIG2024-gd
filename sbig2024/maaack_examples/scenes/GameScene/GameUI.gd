@@ -7,7 +7,8 @@ func _ready():
 	InGameMenuController.scene_tree = get_tree()
 
 func _on_level_lost():
-	InGameMenuController.open_menu(lose_scene, get_viewport())
+	#InGameMenuController.open_menu(lose_scene, get_viewport())
+	$LevelLoader.reload_level()
 
 func _on_level_won():
 	$LevelLoader.advance_and_load_level()

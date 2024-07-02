@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7baexarjgo18"]
+[gd_scene load_steps=3 format=3 uid="uid://c7baexarjgo18"]
 
 [ext_resource type="Script" path="res://scripts/two_track_ambience.gd" id="1_u66aw"]
+[ext_resource type="AudioStream" uid="uid://cvm4tyndq8cyn" path="res://sounds/427840__leonelmail__air-tone-school-yard-dawn-empty-city-air-faint-bird-chirps.ogg" id="2_btgn1"]
 
 [node name="TwoTrackAmbience" type="Node"]
 script = ExtResource("1_u66aw")
+audio1 = ExtResource("2_btgn1")
+_delta_lerp_amount = 0.8
+_track_bias = 2
 
 [node name="Track0" type="AudioStreamPlayer" parent="."]
 autoplay = true

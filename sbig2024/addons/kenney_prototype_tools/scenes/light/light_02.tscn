@@ -5,7 +5,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_rgswm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4entj"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rglli"]
 
 [node name="Cube" type="StaticBody3D" node_paths=PackedStringArray("_mesh", "_shape")]
 script = ExtResource("1_kcuy4")
@@ -18,4 +18,4 @@ material_override = ExtResource("2_uq386")
 mesh = SubResource("BoxMesh_rgswm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_4entj")
+shape = SubResource("BoxShape3D_rglli")

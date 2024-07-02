@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5qns33x061kd"]
+[gd_scene load_steps=13 format=3 uid="uid://b5qns33x061kd"]
 
 [ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_4pc3w"]
 [ext_resource type="PackedScene" uid="uid://dykr0bp3jd62a" path="res://addons/kenney_prototype_tools/scenes/light/light_01.tscn" id="1_p4202"]
 [ext_resource type="PackedScene" uid="uid://drytmh5sdw0rd" path="res://addons/kenney_prototype_tools/scenes/dark/dark_13.tscn" id="2_gsw0j"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="3_0i54n"]
-[ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise.tscn" id="8_2orm4"]
+[ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="8_2orm4"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="9_7ggkp"]
 [ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="10_pisy3"]
 [ext_resource type="AudioStream" uid="uid://bmj2cmshpv10g" path="res://sounds/740972__nexotron__semibusy-citystreet-construction-site.ogg" id="11_2bjc3"]
 [ext_resource type="PackedScene" uid="uid://dw7r4hu0l2ybu" path="res://models/apartment/Apartment.glb" id="12_27hn0"]
-[ext_resource type="AudioStream" uid="uid://cvm4tyndq8cyn" path="res://sounds/427840__leonelmail__air-tone-school-yard-dawn-empty-city-air-faint-bird-chirps.ogg" id="12_80kju"]
 [ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/the_sticker.tscn" id="12_bu4e5"]
 [ext_resource type="PackedScene" uid="uid://vtsrnm2snj21" path="res://models/hallway/apt_hallway.glb" id="13_6m3uw"]
 [ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/fpui.tscn" id="13_tsxr6"]
@@ -28,8 +27,9 @@ realScale = Vector3(50, 1, 50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -10)
 realScale = Vector3(50, 3, 1)
 
-[node name="Character" parent="." instance=ExtResource("3_0i54n")]
+[node name="Character" parent="." node_paths=PackedStringArray("look_target") instance=ExtResource("3_0i54n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+look_target = NodePath("../TheSticker")
 
 [node name="WhiteNoise" parent="." instance=ExtResource("8_2orm4")]
 volume_db = -20.0
@@ -39,11 +39,9 @@ bus = &"Master"
 
 [node name="TwoTrackAmbience" parent="." instance=ExtResource("10_pisy3")]
 audio0 = ExtResource("11_2bjc3")
-audio1 = ExtResource("12_80kju")
-_delta_lerp_amount = 0.8
-_track_bias = 2
 
 [node name="TheSticker" parent="." instance=ExtResource("12_bu4e5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -9.49)
 
 [node name="blockbench_export" parent="." instance=ExtResource("12_27hn0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.25, 0, 0)

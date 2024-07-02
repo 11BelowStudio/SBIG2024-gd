@@ -25,6 +25,34 @@ var _look_target_dist: float = DEFAULT_NO_TARGET_DIST
 ## 'intensity' of the look target distance
 var _look_target_dist_intensity: float = 0
 
+@export_range(0,1) var speed_intensity: float = 0:
+	set(value):
+		if value > 1:
+			value = 1
+		elif value < 0:
+			value = 0
+		speed_intensity = value
+
+@onready var _base_speed: float = _calc_base_speed()
+@export var _sprint_multiplier: float = 2
+@export var _crouch_multiplier: float = 0.5
+
+func _calc_base_speed() -> float:
+	_base_speed = max_speed - (_speed_range * speed_intensity)
+	return _base_speed
+
+## obtains the appropriate speed for the player's current state
+func _speed() -> float:
+	match state:
+		CharStates.NORMAL:
+			return _base_speed
+		CharStates.SPRINTING:
+			return _base_speed * _sprint_multiplier
+		CharStates.CROUCHING:
+			return _base_speed * _crouch_multiplier
+		_:
+			return _base_speed
+
 @export var min_speed: float = 0.25:
 	set(value):
 		min_speed = value
@@ -36,8 +64,16 @@ var _look_target_dist_intensity: float = 0
 @onready var _speed_range: float = max_speed - min_speed
 func _update_speed_range():
 	_speed_range = max_speed - min_speed
+	_calc_base_speed()
 
-
+@export_range(0,1) var fov_intensity: float = 0:
+	set(value):
+		if value > 1:
+			value = 1
+		elif value < 0:
+			value = 0
+		fov_intensity = value
+		_update_fov_target()
 
 @export var min_fov: float = 25:
 	set(value):
@@ -50,7 +86,13 @@ func _update_speed_range():
 @onready var _fov_range: float = max_fov - min_fov
 func _update_fov_range():
 	_fov_range = max_fov - min_fov
-@onready var target_fov: float = max_fov
+	_update_fov_target()
+
+func _update_fov_target() -> float:
+	target_fov = max_fov - (_fov_range * fov_intensity)
+	return target_fov
+@onready var target_fov: float = _update_fov_target()
+
 
 @export var min_modifier_dist: float = 3:
 	set(value):
@@ -113,7 +155,7 @@ signal hit_by_enforcer
 @export var BACKWARD : String = "move_back"
 @export var PAUSE : String = "ui_cancel"
 @export var CROUCH : String
-@export var SPRINT : String
+@export var SPRINT : String = "sprint"
 
 @export var LOOK_AROUND : String = "look"
 @export var USE : String = "use"
@@ -144,7 +186,8 @@ signal hit_by_enforcer
 var speed : float = base_speed
 var current_speed : float = 0.0
 # States: normal, crouching, sprinting
-var state : String = "normal"
+enum CharStates { NORMAL, CROUCHING, SPRINTING }
+var state : CharStates = CharStates.NORMAL
 var low_ceiling : bool = false # This is for when the cieling is too low and the player needs to crouch.
 var was_on_floor : bool = true # Was the player on the floor last frame (for landing animation)
 
@@ -250,20 +293,20 @@ func _do_look_target_dist_modifiers():
 		return
 	if _look_target_dist <= min_modifier_dist:
 		speed = min_speed
-		target_fov = min_fov
+		#target_fov = min_fov
 	elif _look_target_dist >= max_modifier_dist:
 		speed = max_speed
-		target_fov = max_fov
+		#target_fov = max_fov
 	else:
 		var rawDistScaled = (_look_target_dist - min_modifier_dist)/_modifier_dist_range
 		speed = min_speed + (_speed_range * rawDistScaled)
-		target_fov = min_fov + (_fov_range * rawDistScaled)
+		#target_fov = min_fov + (_fov_range * rawDistScaled)
 		
 	pass
 
 func _reset_look_target_dist_modifiers():
 	speed = max_speed
-	target_fov = max_fov
+	#target_fov = max_fov
 	pass
 
 func _physics_process(delta: float):
@@ -275,14 +318,14 @@ func _physics_process(delta: float):
 		# then we would modify some stats based on the look target dist
 		_do_look_target_dist_modifiers()
 	else:
-		_look_target_dist = 0
+		_look_target_dist = DEFAULT_NO_TARGET_DIST
 		_look_target_dist_intensity = 0
 		_reset_look_target_dist_modifiers()
 	
 	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
 	current_speed = Vector3.ZERO.distance_to(get_real_velocity())
 	$UserInterface/DebugPanel.add_property("Speed", snappedf(current_speed, 0.001), 1)
-	$UserInterface/DebugPanel.add_property("Target speed", speed, 2)
+	$UserInterface/DebugPanel.add_property("Target speed", _speed(), 2)
 	var cv : Vector3 = get_real_velocity()
 	var vd : Array[float] = [
 		snappedf(cv.x, 0.001),
@@ -308,8 +351,8 @@ func _physics_process(delta: float):
 	low_ceiling = $CrouchCeilingDetection.is_colliding()
 	
 	handle_state(input_dir)
-	if dynamic_fov_sprint: # This may be changed to an AnimationPlayer
-		update_camera_fov_sprint()
+	#if dynamic_fov_sprint: # This may be changed to an AnimationPlayer
+		#update_camera_fov_sprint()
 	
 	if view_bobbing:
 		headbob_animation(input_dir)
@@ -357,62 +400,63 @@ func handle_movement(delta, input_dir):
 			if col2.has_method("bump"):
 				col2.bump()
 	
+	var _currSpeed = _speed()
 	if in_air_momentum:
 		if is_on_floor():
 			if motion_smoothing:
-				velocity.x = lerp(velocity.x, direction.x * speed, acceleration * delta)
-				velocity.z = lerp(velocity.z, direction.z * speed, acceleration * delta)
+				velocity.x = lerp(velocity.x, direction.x * _currSpeed, acceleration * delta)
+				velocity.z = lerp(velocity.z, direction.z * _currSpeed, acceleration * delta)
 			else:
-				velocity.x = direction.x * speed
-				velocity.z = direction.z * speed
+				velocity.x = direction.x * _currSpeed
+				velocity.z = direction.z * _currSpeed
 	else:
 		if motion_smoothing:
-			velocity.x = lerp(velocity.x, direction.x * speed, acceleration * delta)
-			velocity.z = lerp(velocity.z, direction.z * speed, acceleration * delta)
+			velocity.x = lerp(velocity.x, direction.x * _currSpeed, acceleration * delta)
+			velocity.z = lerp(velocity.z, direction.z * _currSpeed, acceleration * delta)
 		else:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
+			velocity.x = direction.x * _currSpeed
+			velocity.z = direction.z * _currSpeed
 
 
 func handle_state(input_dir: Vector2):
 	if sprint_enabled:
 		if sprint_mode == 0:
-			if Input.is_action_pressed(SPRINT) and state != "crouching":
+			if Input.is_action_pressed(SPRINT) and state != CharStates.CROUCHING:
 				if input_dir:
-					if state != "sprinting":
+					if state != CharStates.SPRINTING:
 						enter_sprint_state()
 				else:
-					if state == "sprinting":
+					if state == CharStates.SPRINTING:
 						enter_normal_state()
-			elif state == "sprinting":
+			elif state == CharStates.SPRINTING:
 				enter_normal_state()
 		elif sprint_mode == 1:
 			if input_dir:
 				# If the player is holding sprint before moving, handle that cenerio
-				if Input.is_action_pressed(SPRINT) and state == "normal":
+				if Input.is_action_pressed(SPRINT) and state == CharStates.NORMAL:
 					enter_sprint_state()
 				if Input.is_action_just_pressed(SPRINT):
 					match state:
-						"normal":
+						CharStates.NORMAL:
 							enter_sprint_state()
-						"sprinting":
+						CharStates.SPRINTING:
 							enter_normal_state()
-			elif state == "sprinting":
+			elif state == CharStates.SPRINTING:
 				enter_normal_state()
 	
 	if crouch_enabled:
 		if crouch_mode == 0:
-			if Input.is_action_pressed(CROUCH) and state != "sprinting":
-				if state != "crouching":
+			if Input.is_action_pressed(CROUCH) and state != CharStates.SPRINTING:
+				if state != CharStates.CROUCHING:
 					enter_crouch_state()
-			elif state == "crouching" and !$CrouchCeilingDetection.is_colliding():
+			elif state == CharStates.CROUCHING and !$CrouchCeilingDetection.is_colliding():
 				enter_normal_state()
 		elif crouch_mode == 1:
 			if Input.is_action_just_pressed(CROUCH):
 				match state:
-					"normal":
+					CharStates.NORMAL:
 						enter_crouch_state()
-					"crouching":
+					CharStates.CROUCHING:
 						if !$CrouchCeilingDetection.is_colliding():
 							enter_normal_state()
 
@@ -422,45 +466,45 @@ func handle_state(input_dir: Vector2):
 func enter_normal_state():
 	#print("entering normal state")
 	var prev_state = state
-	if prev_state == "crouching":
+	if prev_state == CharStates.CROUCHING:
 		CROUCH_ANIMATION.play_backwards("crouch")
-	state = "normal"
+	state = CharStates.NORMAL
 	speed = base_speed
 
 func enter_crouch_state():
 	#print("entering crouch state")
 	var prev_state = state
-	state = "crouching"
+	state = CharStates.CROUCHING
 	speed = crouch_speed
 	CROUCH_ANIMATION.play("crouch")
 
 func enter_sprint_state():
 	#print("entering sprint state")
 	var prev_state = state
-	if prev_state == "crouching":
+	if prev_state == CharStates.CROUCHING:
 		CROUCH_ANIMATION.play_backwards("crouch")
-	state = "sprinting"
+	state = CharStates.SPRINTING
 	speed = sprint_speed
 
 
 func update_camera_fov_sprint():
-	if state == "sprinting":
+	if state == CharStates.SPRINTING:
 		CAMERA.fov = lerp(CAMERA.fov, 85.0, 0.3)
 	else:
 		CAMERA.fov = lerp(CAMERA.fov, 75.0, 0.3)
 
 
 func update_camera_fov(target_fov: float, delta: float) -> void:
-	CAMERA.fov = lerp(CAMERA.fov, target_fov, 0.5 * delta)
+	CAMERA.fov = lerp(CAMERA.fov, target_fov, delta)
 	pass
 
 func headbob_animation(input_dir: Vector2):
 	if input_dir and is_on_floor():
 		var use_headbob_animation : String
 		match state:
-			"normal","crouching":
+			CharStates.NORMAL,CharStates.CROUCHING:
 				use_headbob_animation = "walk"
-			"sprinting":
+			CharStates.SPRINTING:
 				use_headbob_animation = "sprint"
 		
 		var was_playing : bool = false
@@ -468,7 +512,7 @@ func headbob_animation(input_dir: Vector2):
 			was_playing = true
 		
 		HEADBOB_ANIMATION.play(use_headbob_animation, 0.25)
-		HEADBOB_ANIMATION.speed_scale = (current_speed / base_speed) * 1.75
+		HEADBOB_ANIMATION.speed_scale = (current_speed / _base_speed) * 1.75
 		if !was_playing:
 			HEADBOB_ANIMATION.seek(float(randi() % 2)) # Randomize the initial headbob direction
 			# Let me explain that piece of code because it looks like it does the opposite of what it actually does.
@@ -486,7 +530,7 @@ func headbob_animation(input_dir: Vector2):
 
 func _process(delta: float) -> void:
 	$UserInterface/DebugPanel.add_property("FPS", Performance.get_monitor(Performance.TIME_FPS), 0)
-	var status : String = state
+	var status : String = CharStates.keys()[state]
 	if !is_on_floor():
 		status += " in the air"
 	$UserInterface/DebugPanel.add_property("State", status, 4)

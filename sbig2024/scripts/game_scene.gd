@@ -3,7 +3,7 @@ extends Node3D
 
 
 @onready var heartbeater: Heartbeater = $Heartbeater
-@onready var whitenoise: WhiteNoise = $WhiteNoise
+@onready var whitenoise: WhiteNoiseControl = $WhiteNoise
 @onready var dualAmbience: TwoTrackAmbience = $TwoTrackAmbience
 
 

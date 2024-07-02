@@ -1,0 +1,162 @@
+[gd_scene load_steps=21 format=3 uid="uid://4b5jwug58moo"]
+
+[ext_resource type="PackedScene" uid="uid://tt1dhet81x6t" path="res://addons/kenney_prototype_tools/scenes/light/light_02.tscn" id="1_6ucl6"]
+[ext_resource type="Script" path="res://scenes/Scene2.gd" id="1_218to"]
+[ext_resource type="PackedScene" uid="uid://dvabagf4huwm6" path="res://prefabs/enforcer.tscn" id="2_4sot8"]
+[ext_resource type="PackedScene" uid="uid://dccpq5leu8x5s" path="res://addons/kenney_prototype_tools/scenes/dark/dark_01.tscn" id="3_ckymu"]
+[ext_resource type="PackedScene" uid="uid://c2xigu1idajsp" path="res://addons/kenney_prototype_tools/scenes/dark/dark_08.tscn" id="3_nqewy"]
+[ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="4_o4mxg"]
+[ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/the_sticker.tscn" id="5_1myyf"]
+[ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="5_qhtn7"]
+[ext_resource type="AudioStream" uid="uid://fu1t0d577moj" path="res://sounds/718580__brunoauzet__lyon-fourviere-night.ogg" id="6_16rhk"]
+[ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="7_jprn3"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="10_atl1s"]
+[ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/fpui.tscn" id="11_fyrmw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbb7a"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_6bkpn"]
+sky_material = SubResource("ProceduralSkyMaterial_wbb7a")
+
+[sub_resource type="Environment" id="Environment_82i1e"]
+background_mode = 2
+sky = SubResource("Sky_6bkpn")
+reflected_light_source = 2
+tonemap_mode = 2
+fog_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_v74qx"]
+vertices = PackedVector3Array(7, 0.02, -12, 7.25, 0.02, -10, 9, 0.02, -10.25, 9, 0.02, -14.5, -14.5, 0.02, -14.5, -14.5, 0.02, -12, 7, 0.02, -12, 9, 0.02, -14.5, 11.25, 0.02, -14.5, 11.25, 0.02, 14.5, 14.5, 0.02, 14.5, 14.5, 0.02, -14.5, -16, 3.02, 5, 6.25, 3.02, 5, 6, 3.02, -11, -16, 3.02, -11, -14.5, 0.02, -10.75, -14.5, 0.02, 5, 6, 0.02, 5, 6, 0.02, -10.75, 7, 0.02, 8, 7.25, 0.02, 9.25, 9, 0.02, 9.25, 7.25, 0.02, 5.75, 6.75, 0.02, 6.25, 6.75, 0.02, 6.25, -7.25, 0.02, 6.25, -7, 0.02, 8, 7, 0.02, 8, 7.25, 0.02, 5.75, 9, 0.02, 9.25, 9, 0.02, -10.25, 7.25, 0.02, -10, -9, 0.02, 8.25, -7, 0.02, 8, -7.25, 0.02, 6.25, -14.5, 0.02, 6.25, -7.5, 0.02, 14.5, -7, 0.02, 12.25, -9, 0.02, 12, -14.5, 0.02, 14.5, -9, 0.02, 12, -9, 0.02, 8.25, -14.5, 0.02, 6.25, -14.5, 0.02, 14.5, -8, 3.02, 11.25, 6.25, 3.02, 11, 6, 3.02, 9, -8, 3.02, 9, -7.75, 0.02, 9.25, -7.75, 0.02, 11, 6, 0.02, 11, 6, 0.02, 9.25, 9, 0.02, 14.5, 9, 0.02, 12.25, -7, 0.02, 12.25, -7.5, 0.02, 14.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(24, 23, 20), PackedInt32Array(20, 23, 21), PackedInt32Array(21, 23, 22), PackedInt32Array(28, 27, 25), PackedInt32Array(25, 27, 26), PackedInt32Array(32, 31, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 44), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 45), PackedInt32Array(52, 51, 49), PackedInt32Array(49, 51, 50), PackedInt32Array(54, 53, 55), PackedInt32Array(55, 53, 56)]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 4294967041
+cell_height = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4jejl"]
+size = Vector3(3, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i1y63"]
+size = Vector3(1, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yhct5"]
+size = Vector3(3, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1cjn"]
+size = Vector3(1, 3, 3)
+
+[node name="Scene2" type="Node3D"]
+script = ExtResource("1_218to")
+_enforcerScene = ExtResource("2_4sot8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_82i1e")
+
+[node name="World" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_v74qx")
+
+[node name="TheFloor" parent="World" instance=ExtResource("1_6ucl6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+realScale = Vector3(30, 1, 30)
+
+[node name="Walls" type="Node3D" parent="World"]
+
+[node name="Cube" parent="World/Walls" instance=ExtResource("3_ckymu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 0)
+realScale = Vector3(1, 3, 30)
+
+[node name="Cube2" parent="World/Walls" instance=ExtResource("3_ckymu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, -3)
+realScale = Vector3(23, 3, 17)
+
+[node name="Cube3" parent="World/Walls" instance=ExtResource("3_ckymu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 10)
+realScale = Vector3(15, 3, 3)
+
+[node name="Cube4" parent="World/Walls" instance=ExtResource("3_ckymu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 11)
+realScale = Vector3(3, 3, 1)
+
+[node name="StickerBox" parent="World" instance=ExtResource("3_nqewy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 10.5)
+realScale = Vector3(2, 2, 1)
+
+[node name="TheSticker" parent="World" instance=ExtResource("5_1myyf")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 1.5, 9.99)
+
+[node name="TriggerAreas" type="Node3D" parent="World"]
+
+[node name="ExitJumpscareTrigger" type="Area3D" parent="World/TriggerAreas"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/TriggerAreas/ExitJumpscareTrigger"]
+shape = SubResource("BoxShape3D_4jejl")
+
+[node name="LevelExitTrigger" type="Area3D" parent="World/TriggerAreas"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 7)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/TriggerAreas/LevelExitTrigger"]
+shape = SubResource("BoxShape3D_i1y63")
+
+[node name="PlayerBlockers" type="Node3D" parent="World"]
+
+[node name="Blocker1" type="StaticBody3D" parent="World/PlayerBlockers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, -10)
+collision_layer = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/PlayerBlockers/Blocker1"]
+shape = SubResource("BoxShape3D_yhct5")
+
+[node name="Blocker2" type="StaticBody3D" parent="World/PlayerBlockers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.5, 7)
+collision_layer = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/PlayerBlockers/Blocker2"]
+shape = SubResource("BoxShape3D_n1cjn")
+
+[node name="Buildings" type="Node3D" parent="World"]
+
+[node name="Spawnpoints" type="Node" parent="World"]
+
+[node name="EnforcerSpawn" type="Node3D" parent="World/Spawnpoints"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -13)
+
+[node name="Geometry" type="Node" parent="."]
+
+[node name="Effects" type="Node" parent="."]
+
+[node name="WhiteNoiseControl" parent="Effects" instance=ExtResource("4_o4mxg")]
+unique_name_in_owner = true
+
+[node name="TwoTrackAmbience" parent="Effects" instance=ExtResource("5_qhtn7")]
+unique_name_in_owner = true
+audio0 = ExtResource("6_16rhk")
+
+[node name="Heartbeater" parent="Effects" instance=ExtResource("7_jprn3")]
+unique_name_in_owner = true
+bus = &"Master"
+
+[node name="Character" parent="." node_paths=PackedStringArray("look_target") instance=ExtResource("10_atl1s")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 0, -8)
+look_target = NodePath("../World/TheSticker")
+min_modifier_dist = 5.0
+max_modifier_dist = 15.0
+holding_sticker = true
+
+[node name="FPUI" parent="." instance=ExtResource("11_fyrmw")]
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(0.62941, -0.662447, -0.406211, 0.53474, -0.0100549, 0.844957, -0.563824, -0.749041, 0.347908, 0, 6, 0)
+
+[connection signal="body_entered" from="World/TriggerAreas/ExitJumpscareTrigger" to="." method="_on_exit_jumpscare_trigger_body_entered"]
+[connection signal="body_entered" from="World/TriggerAreas/LevelExitTrigger" to="." method="_on_player_reached_exit"]
+[connection signal="hit_by_enforcer" from="Character" to="." method="_on_character_hit_by_enforcer"]

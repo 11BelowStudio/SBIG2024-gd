@@ -4,3 +4,6 @@
 
 [resource]
 default_font = ExtResource("1_wsnke")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 2
+Label/constants/shadow_outline_size = 1

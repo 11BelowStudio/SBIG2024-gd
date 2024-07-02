@@ -1,5 +1,5 @@
-
-class_name WhiteNoise
+## class which is used to control white noise-related stuff
+class_name WhiteNoiseControl
 extends AudioStreamPlayer
 
 @export var target_filter_hz: float = 0

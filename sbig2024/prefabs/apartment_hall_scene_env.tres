@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://d2i24c60caf43"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_14yv8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_t472g"]
+sky_material = SubResource("ProceduralSkyMaterial_14yv8")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_t472g")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+fog_enabled = true
