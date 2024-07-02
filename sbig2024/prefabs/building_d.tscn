@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkmyui3vwa31k"]
 
 [ext_resource type="PackedScene" uid="uid://cc0ge1u14shv" path="res://models/buildings/Building_D.glb" id="1_e5vu2"]
-[ext_resource type="Script" path="res://models/buildings/BuildingModelThing.gd" id="2_qc6o7"]
+[ext_resource type="Script" path="res://prefabs/BuildingModelThing.gd" id="2_qc6o7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_70wio"]
 size = Vector3(1, 3, 1)

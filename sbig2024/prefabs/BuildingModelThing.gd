@@ -4,9 +4,6 @@ extends StaticBody3D
 @export var _meshParent: Node3D
 @export var _shape: CollisionShape3D
 
-## DO NOT MODIFY THIS WITHIN INSTANCES!
-@export var _initialBoxSize: Vector3
-
 @export var realScale: Vector3:
 	set(value):
 		realScale = value
@@ -19,3 +16,13 @@ extends StaticBody3D
 	get:
 		var box: BoxShape3D = _shape.shape as BoxShape3D
 		return box.size
+
+@export var _pos: Vector3:
+	set(value):
+		position = value
+	get:
+		return position
+
+@export_group("do not touch!")
+## DO NOT MODIFY THIS WITHIN INSTANCES!
+@export var _initialBoxSize: Vector3
