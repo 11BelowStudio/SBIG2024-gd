@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dubmgmel3dhc6"]
+
+[ext_resource type="PackedScene" uid="uid://dchud1wbunnf7" path="res://models/buildings/Building_B.glb" id="1_1dekl"]
+[ext_resource type="Script" path="res://models/buildings/BuildingModelThing.gd" id="2_m6h18"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_prp35"]
+size = Vector3(1, 4, 1)
+
+[node name="BuildingB" node_paths=PackedStringArray("_meshParent", "_shape") instance=ExtResource("1_1dekl")]
+script = ExtResource("2_m6h18")
+_meshParent = NodePath("Node")
+_shape = NodePath("CollisionShape3D")
+_initialBoxSize = Vector3(1, 4, 1)
+realScale = Vector3(1, 4, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("BoxShape3D_prp35")

@@ -23,6 +23,7 @@ sky_material = SubResource("ProceduralSkyMaterial_wbb7a")
 [sub_resource type="Environment" id="Environment_82i1e"]
 background_mode = 2
 sky = SubResource("Sky_6bkpn")
+ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 2
 fog_enabled = true
@@ -121,6 +122,7 @@ collision_layer = 64
 shape = SubResource("BoxShape3D_n1cjn")
 
 [node name="Buildings" type="Node3D" parent="World"]
+visible = false
 
 [node name="Spawnpoints" type="Node" parent="World"]
 
