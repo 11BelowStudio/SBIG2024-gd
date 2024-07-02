@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://4vssfy3grfkq"]
+
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_p0hxh"]
+[ext_resource type="Script" path="res://scenes/Scene1.gd" id="1_yanx3"]
+[ext_resource type="PackedScene" uid="uid://dvh2vqgob2niq" path="res://prefabs/apartment_hall_scene.tscn" id="3_j6g3p"]
+
+[node name="Scene1" type="Node3D"]
+script = ExtResource("1_yanx3")
+
+[node name="Character" parent="." instance=ExtResource("1_p0hxh")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 0, 0)
+
+[node name="ApartmentHallScene" parent="." instance=ExtResource("3_j6g3p")]
+
+[connection signal="player_door_area" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_door_area"]
+[connection signal="player_exit_area" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_exit_area"]
+[connection signal="player_hall_1" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_hall_1"]
+[connection signal="player_hall_2" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_hall_2"]
+[connection signal="player_hall_3" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_hall_3"]

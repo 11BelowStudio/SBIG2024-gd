@@ -200,14 +200,14 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.2, -3.125)
 stream = ExtResource("5_r13cg")
 autoplay = true
-max_distance = 6.0
+max_distance = 10.0
 bus = &"Ambience"
 
 [node name="lights" type="Node" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="lights"]
 transform = Transform3D(0.98578, -0.0593877, -0.157198, 0, -0.935469, 0.353409, -0.168042, -0.348384, -0.922166, -6.44069, 11, -14)
-light_cull_mask = 4294967291
+light_cull_mask = 4294967283
 shadow_enabled = true
 
 [node name="ApartmentLight" type="OmniLight3D" parent="lights"]
@@ -215,28 +215,28 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.75, 
 visible = false
 light_color = Color(1, 0.968627, 0.615686, 1)
 light_energy = 0.2
-light_cull_mask = 4294967291
+light_cull_mask = 4294967283
 shadow_enabled = true
 
 [node name="HallLight" type="OmniLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.75, 5)
 light_color = Color(1, 0.968627, 0.615686, 1)
 light_energy = 0.2
-light_cull_mask = 4294967291
+light_cull_mask = 4294967283
 shadow_enabled = true
 
 [node name="HallLight2" type="OmniLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.5, 2.75, 5)
 light_color = Color(1, 0.968627, 0.615686, 1)
 light_energy = 0.2
-light_cull_mask = 4294967291
+light_cull_mask = 4294967283
 shadow_enabled = true
 
 [node name="HallLight3" type="OmniLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21, 2.75, 5)
 light_color = Color(1, 0.968627, 0.615686, 1)
 light_energy = 0.2
-light_cull_mask = 4294967291
+light_cull_mask = 4294967283
 shadow_enabled = true
 
 [connection signal="body_entered" from="AreaTriggers/ExitTrigger" to="." method="_on_exit_trigger_body_entered"]

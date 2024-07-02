@@ -19,11 +19,11 @@ func is_open() -> bool:
 	return door_state == DoorStates.OPEN
 
 func lock_door() -> void:
-	door_state == DoorStates.LOCKED
+	door_state = DoorStates.LOCKED
 	_on_update_door_state(DoorStates.LOCKED)
 
 func open_door() -> void:
-	door_state == DoorStates.OPEN
+	door_state = DoorStates.OPEN
 	_on_update_door_state(DoorStates.OPEN)
 
 func set_open(open: bool) -> void:
@@ -42,7 +42,7 @@ func _on_update_door_state(newState: DoorStates) -> void:
 		if newState == DoorStates.LOCKED:
 			_door.mass = 100
 		else:
-			_door.mass = 0.1
+			_door.mass = 1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,8 +55,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_door_body_entered(body: Node) -> void:
+func _on_door_bumped() -> void:
 	if !_doorNoisePlayer.playing:
 		_doorNoisePlayer.play()
 	pass # Replace with function body.
+
+func _on_door_body_entered(_body: Node) -> void:
+	_on_door_bumped()

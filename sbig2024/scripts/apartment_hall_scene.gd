@@ -30,6 +30,16 @@ extends Node3D
 
 @export var discard_ui: bool = false
 
+@export var _apartment_door_open: bool = false:
+	set(value):
+		_apartment_door_open = value
+		set_apartment_door_open(value)
+
+@export var _enforcer_door_open: bool = false:
+	set(value):
+		_enforcer_door_open = value
+		set_enforcer_door_open(value)
+
 ## emitted when player at door area
 signal player_door_area
 
@@ -45,12 +55,16 @@ signal player_hall_3
 ## emitted when player at exit area
 signal player_exit_area
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
 	if discard_ui:
 		fpui.free()
 		fpui = null
+	
+	set_apartment_door_open(_apartment_door_open)
+	set_enforcer_door_open(_enforcer_door_open)
 	
 	pass # Replace with function body.
 
@@ -113,7 +127,11 @@ func _on_vidscreen_audio_finished() -> void:
 
 
 func set_apartment_door_open(open: bool) -> void:
-	apartmentDoor.set_open(open)
+	if apartmentDoor:
+		apartmentDoor.set_open(open)
 
 func set_enforcer_door_open(open: bool) -> void:
-	enforcerDoor.set_open(open)
+	if enforcerDoor:
+		enforcerDoor.set_open(open)
+
+

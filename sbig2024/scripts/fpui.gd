@@ -6,6 +6,12 @@ extends Control
 @onready var label: Label = $TextLabel
 
 
+func show_intro_a(showThis: String) -> void:
+	$IntroLabelA.text = showThis
+	
+func show_intro_b(showThis: String) -> void:
+	$IntroLabelB.text = showThis
+
 func show_instruction(showThis: String) -> void:
 	label.text = showThis
 	

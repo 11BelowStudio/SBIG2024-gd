@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 				ui.show_instruction(_instruction_2)
 		StickerStates.PLACING:
 			if Input.is_action_pressed(USE):
-				var characterUseObj: TheSticker = character.get_use_raycast_target()  as TheSticker
+				var characterUseObj: TheSticker = character.get_use_raycast_target() as TheSticker
 				if (not characterUseObj) or (characterUseObj != theSticker):
 					sticker_state = StickerStates.NOT_PLACED
 					theSticker.placing_aborted()

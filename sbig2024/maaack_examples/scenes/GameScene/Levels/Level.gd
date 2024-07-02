@@ -1,3 +1,4 @@
+class_name Level
 extends Node
 
 signal level_won

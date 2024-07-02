@@ -37,6 +37,10 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/bmod/plugin.cfg", "res://addons/godot_sfxr/plugin.cfg", "res://addons/inspector_extender/plugin.cfg", "res://addons/local_assets/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/script-tabs/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://fonts/comic_neue_theme.tres"
+
 [input]
 
 move_forward={
@@ -85,6 +89,7 @@ look={
 3d_render/layer_1="default"
 3d_render/layer_2="viewmodel"
 3d_render/layer_3="lightmodels"
+3d_render/layer_4="player"
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
 3d_physics/layer_3="enforcer"

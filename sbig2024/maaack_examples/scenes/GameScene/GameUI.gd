@@ -13,6 +13,7 @@ func _on_level_won():
 	$LevelLoader.advance_and_load_level()
 
 func _on_level_loader_level_loaded():
+	print($LevelLoader.get_current_level_id())
 	await $LevelLoader.current_level.ready
 	if $LevelLoader.current_level.has_signal("level_won"):
 		$LevelLoader.current_level.level_won.connect(_on_level_won)

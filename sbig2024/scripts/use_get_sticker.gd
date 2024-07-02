@@ -33,5 +33,5 @@ func _process(delta: float) -> void:
 
 func use() -> void:
 	visual.visible = false
-	
+	audio.play()
 	pass

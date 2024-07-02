@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqqa714610ej0"]
+[gd_scene load_steps=4 format=3 uid="uid://dqqa714610ej0"]
 
 [ext_resource type="Script" path="res://scripts/fpui.gd" id="1_7rpqr"]
 [ext_resource type="PackedScene" uid="uid://ceovtynttqc77" path="res://prefabs/CircularProgressBar.tscn" id="1_gprxi"]
+[ext_resource type="Theme" uid="uid://ckl3wagahv1hk" path="res://fonts/comic_neue_theme.tres" id="3_pfyto"]
 
 [node name="FPUI" type="Control"]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("3_pfyto")
 script = ExtResource("1_7rpqr")
 
 [node name="ProgressBar" parent="." instance=ExtResource("1_gprxi")]
@@ -20,10 +22,46 @@ layout_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
-anchor_top = 0.65
+anchor_top = 0.7
 anchor_right = 0.8
-anchor_bottom = 0.8
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="IntroLabelA" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.4
+anchor_right = 0.8
+anchor_bottom = 0.6
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntroLabelB" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.4
+anchor_right = 0.8
+anchor_bottom = 0.6
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 128
 horizontal_alignment = 1
 vertical_alignment = 1
