@@ -94,7 +94,8 @@ func _process(delta: float) -> void:
 	heartbeater.intensity_target = _intensity
 	dualAmbience.audio_weight_target = _intensity
 	whitenoise.set_intensity01(_intensity)
-	character.fov_intensity = _intensity
+	character.fov_intensity_target = _intensity
+	ui.vignette_intensity(_intensity)
 	
 	match sticker_state:
 		StickerStates.NOT_DONE:

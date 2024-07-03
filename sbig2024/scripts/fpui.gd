@@ -4,7 +4,7 @@ extends Control
 
 @onready var progress: CircularProgressBar = $ProgressBar
 @onready var label: Label = $TextLabel
-
+@onready var vignette: CanvasItem = $VignetteRect
 
 func show_intro_a(showThis: String) -> void:
 	$IntroLabelA.text = showThis
@@ -20,6 +20,10 @@ func hide_instruction() -> void:
 
 func progressBar() -> CircularProgressBar:
 	return progress
+
+
+func vignette_intensity(intensity: float) -> void:
+	vignette.material.set_shader_parameter("vignette_intensity",intensity)
 
 
 # Called when the node enters the scene tree for the first time.

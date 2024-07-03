@@ -66,14 +66,27 @@ func _update_speed_range():
 	_speed_range = max_speed - min_speed
 	_calc_base_speed()
 
-@export_range(0,1) var fov_intensity: float = 0:
+@export_range(0,1) var fov_intensity_target: float = 0:
 	set(value):
 		if value > 1:
 			value = 1
 		elif value < 0:
 			value = 0
-		fov_intensity = value
+		fov_intensity_target = value
 		_update_fov_target()
+
+@export var real_fov_intensity: float:
+	set(value):
+		pass
+	get:
+		if !CAMERA:
+			return fov_intensity_target
+		var my_fov: float = CAMERA.fov
+		if my_fov <= min_fov:
+			return 0
+		elif my_fov >= max_fov:
+			return 1
+		return 1 - ((my_fov - min_fov)/_fov_range)
 
 @export_range(0,1) var _initial_fov_intensity: float = 0:
 	set(value):
@@ -100,7 +113,7 @@ func _calc_fov_target(intensity: float) -> float:
 	return max_fov - (_fov_range * intensity)
 
 func _update_fov_target() -> float:
-	target_fov = _calc_fov_target(fov_intensity)
+	target_fov = _calc_fov_target(fov_intensity_target)
 	return target_fov
 @onready var target_fov: float = _update_fov_target()
 

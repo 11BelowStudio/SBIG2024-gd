@@ -27,7 +27,8 @@ func _process(delta: float) -> void:
 	
 	heartbeater.intensity_target = _enforcer_dist_intensity
 	wNoiseControl.set_intensity01(_enforcer_dist_intensity)
-	character.fov_intensity = _enforcer_dist_intensity
+	character.fov_intensity_target = _enforcer_dist_intensity
+	apartment.fpui.vignette_intensity(_enforcer_dist_intensity)
 
 
 func _on_apartment_hall_scene_player_hall_3() -> void:

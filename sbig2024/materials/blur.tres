@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://3pvht66corts"]
-
-[ext_resource type="Shader" path="res://materials/blur.gdshader" id="1_gsb6d"]
-
-[resource]
-shader = ExtResource("1_gsb6d")
-shader_parameter/step = null
-shader_parameter/radius = 10.0

@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqqa714610ej0"]
+[gd_scene load_steps=6 format=3 uid="uid://dqqa714610ej0"]
 
 [ext_resource type="Script" path="res://scripts/fpui.gd" id="1_7rpqr"]
 [ext_resource type="PackedScene" uid="uid://ceovtynttqc77" path="res://prefabs/CircularProgressBar.tscn" id="1_gprxi"]
 [ext_resource type="Theme" uid="uid://ckl3wagahv1hk" path="res://fonts/comic_neue_theme.tres" id="3_pfyto"]
+[ext_resource type="Shader" path="res://addons/post_processing/shaders/vignette.gdshader" id="3_qgmcr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7o0an"]
+shader = ExtResource("3_qgmcr")
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="FPUI" type="Control"]
 layout_mode = 3
@@ -14,6 +21,17 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("3_pfyto")
 script = ExtResource("1_7rpqr")
+
+[node name="VignetteRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_7o0an")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
 
 [node name="ProgressBar" parent="." instance=ExtResource("1_gprxi")]
 layout_mode = 1
