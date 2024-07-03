@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dw7r4hu0l2ybu" path="res://models/apartment/Apartment.glb" id="12_27hn0"]
 [ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/sticker_place_outside.tscn" id="12_bu4e5"]
 [ext_resource type="PackedScene" uid="uid://vtsrnm2snj21" path="res://models/hallway/apt_hallway.glb" id="13_6m3uw"]
-[ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/fpui.tscn" id="13_tsxr6"]
+[ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/ui/fpui.tscn" id="13_tsxr6"]
 
 [node name="TestScene" type="Node3D"]
 script = ExtResource("1_4pc3w")

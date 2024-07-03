@@ -1,21 +1,21 @@
 [gd_scene load_steps=17 format=3 uid="uid://dvh2vqgob2niq"]
 
+[ext_resource type="Script" path="res://prefabs/apartment/apartment_hall_scene.gd" id="1_mmlsi"]
 [ext_resource type="PackedScene" uid="uid://dw7r4hu0l2ybu" path="res://models/apartment/Apartment.glb" id="1_oc4nn"]
-[ext_resource type="Script" path="res://scripts/apartment_hall_scene.gd" id="1_q5i1i"]
 [ext_resource type="PackedScene" uid="uid://vtsrnm2snj21" path="res://models/hallway/apt_hallway.glb" id="2_niqg6"]
 [ext_resource type="Material" uid="uid://lbtmllp418rx" path="res://models/apartment/vidscreen_on.tres" id="2_o4kl1"]
-[ext_resource type="PackedScene" uid="uid://c77yvk1jsoi7h" path="res://prefabs/dynamic_door.tscn" id="3_gml1m"]
-[ext_resource type="Environment" uid="uid://d2i24c60caf43" path="res://prefabs/apartment_hall_scene_env.tres" id="3_jmxjh"]
+[ext_resource type="PackedScene" uid="uid://c77yvk1jsoi7h" path="res://prefabs/interior/dynamic_door.tscn" id="3_gml1m"]
+[ext_resource type="Environment" uid="uid://d2i24c60caf43" path="res://prefabs/apartment/apartment_hall_scene_env.tres" id="3_jmxjh"]
 [ext_resource type="PackedScene" uid="uid://bvwd6fp6eftlj" path="res://models/apt_door/apt_door_red.glb" id="4_l73ky"]
 [ext_resource type="Material" uid="uid://dm157s57mfhfe" path="res://addons/kenney_prototype_tools/materials/dark/material_02.tres" id="5_qjosj"]
 [ext_resource type="AudioStream" uid="uid://cpd7kdxk7g6nu" path="res://sounds/686845__pblzr__ambience-open-window-room-wind-city-noise-001.ogg" id="5_r13cg"]
-[ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/fpui.tscn" id="8_btxj1"]
+[ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/ui/fpui.tscn" id="8_btxj1"]
 [ext_resource type="PackedScene" uid="uid://tiwtut8n2d8x" path="res://prefabs/sticker_get_apartment.tscn" id="9_lh6nj"]
 [ext_resource type="AudioStream" uid="uid://b0t8hvjqe7vex" path="res://sounds/198957__mydo1__roomtone.ogg" id="11_1he6f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cy88a"]
-vertices = PackedVector3Array(-0.75, 3.27, 3.5, -1.25, 3.27, 3.75, -1.25, 3.27, 6.25, 5, 3.27, 6.25, 3.25, 3.27, 3.75, 2.75, 3.27, 3.25, 5, 3.27, 6.25, 5, 3.27, 3.75, 3.25, 3.27, 3.75, 2.75, 3.27, 3.25, 2.75, 3.27, -2.75, -0.75, 3.27, -2.75, -0.75, 3.27, 3.5, 2, 0.64, -1.5, 2, 0.64, -1, 2.5, 0.64, -1, 2.5, 0.64, -2.25, 0.75, 0.02, -0.25, 0.75, 0.02, -1, -0.25, 0.02, -1, 0, 0.02, 3.5, 0.25, 0.02, 2.75, 22, 0.02, 6, 22.25, 0.02, 5.5, 22, 0.02, 4.25, 0.5, 0.02, 4.25, 7.5, 0.02, 6, 6.75, 0.02, 8.25, 7.5, 0.02, 8.25, 7.5, 0.02, 6, 6.5, 0.02, 6, 0.5, 0.02, 4.25, 6.5, 0.02, 6, 7.5, 0.02, 6, 2, 0.02, 2, 1.75, 0.02, 0.25, 0.75, 0.02, -0.25, 0.25, 0.02, 2.75, 0, 0.02, 3.5, -0.75, 0.02, 4.25, -0.75, 0.02, 6, 0.5, 0.02, 4.25, 0.5, 0.02, 4.25, -0.75, 0.02, 6, 6.5, 0.02, 6, 0.5, 0.02, 4.25, 0.25, 0.02, 2.75, 0, 0.02, 3.5, -2.75, 2.77, 0.75, -2.75, 2.77, 2, -1.75, 2.77, 2, -1.75, 2.77, 0.75, 6.25, 3.27, 6.5, 6.25, 3.27, 8.5, 7.75, 3.27, 8.5, 8, 3.27, 6.25, 5, 3.27, 6.25, 6.25, 3.27, 6.5, 8, 3.27, 6.25, 5, 3.27, 3.75, 21.75, 3.27, 6.5, 22.25, 3.27, 6.25, 22.25, 3.27, 3.75, 5, 3.27, 3.75, 8, 3.27, 6.25)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 21), PackedInt32Array(19, 21, 20), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 26), PackedInt32Array(24, 26, 25), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 30), PackedInt32Array(33, 32, 31), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(38, 41, 39), PackedInt32Array(39, 41, 40), PackedInt32Array(44, 43, 42), PackedInt32Array(47, 46, 45), PackedInt32Array(51, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(61, 60, 62), PackedInt32Array(62, 60, 64), PackedInt32Array(62, 64, 63)]
+vertices = PackedVector3Array(-0.75, 3.27, 3.5, -1.25, 3.27, 3.75, -1.25, 3.27, 6.25, 5, 3.27, 6.25, 3.25, 3.27, 3.75, 2.75, 3.27, 3.25, 5, 3.27, 6.25, 5, 3.27, 3.75, 3.25, 3.27, 3.75, 2.75, 3.27, 3.25, 2.75, 3.27, -2.75, -0.75, 3.27, -2.75, -0.75, 3.27, 3.5, 2, 0.64, -1.5, 2, 0.64, -1, 2.5, 0.64, -1, 2.5, 0.64, -2.25, -0.5, 0.02, 1.25, -2.25, 0.02, 1.25, -0.25, 0.02, 1.75, 0.75, 0.02, -0.25, 0.75, 0.02, -1, -0.25, 0.02, -1, -0.5, 0.02, 1.25, -0.25, 0.02, 1.75, 22, 0.02, 6, 22.25, 0.02, 5.5, 22, 0.02, 4.25, 0.5, 0.02, 4.25, 7.5, 0.02, 6, 0.25, 0.02, 2.75, -0.25, 0.02, 1.75, 0, 0.02, 3.5, 0.5, 0.02, 4.25, 0.5, 0.02, 4.25, 0, 0.02, 3.5, -0.75, 0.02, 4.25, 6.75, 0.02, 8.25, 7.5, 0.02, 8.25, 7.5, 0.02, 6, 6.5, 0.02, 6, 0.5, 0.02, 4.25, 6.5, 0.02, 6, 7.5, 0.02, 6, 2, 0.02, 2, 1.75, 0.02, 0.25, 0.75, 0.02, -0.25, -0.25, 0.02, 1.75, 0.25, 0.02, 2.75, -0.75, 0.02, 6, 6.5, 0.02, 6, 0.5, 0.02, 4.25, -0.75, 0.02, 4.25, -2.75, 2.77, 0.75, -2.75, 2.77, 2, -1.75, 2.77, 2, -1.75, 2.77, 0.75, 6.25, 3.27, 6.5, 6.25, 3.27, 8.5, 7.75, 3.27, 8.5, 8, 3.27, 6.25, 5, 3.27, 6.25, 6.25, 3.27, 6.5, 8, 3.27, 6.25, 5, 3.27, 3.75, 21.75, 3.27, 6.5, 22.25, 3.27, 6.25, 22.25, 3.27, 3.75, 5, 3.27, 3.75, 8, 3.27, 6.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(19, 18, 17), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(23, 20, 24), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 29), PackedInt32Array(27, 29, 28), PackedInt32Array(33, 32, 30), PackedInt32Array(30, 32, 31), PackedInt32Array(34, 36, 35), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(43, 42, 41), PackedInt32Array(48, 47, 44), PackedInt32Array(44, 47, 45), PackedInt32Array(45, 47, 46), PackedInt32Array(52, 51, 49), PackedInt32Array(49, 51, 50), PackedInt32Array(56, 55, 53), PackedInt32Array(53, 55, 54), PackedInt32Array(58, 57, 59), PackedInt32Array(59, 57, 60), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(66, 65, 67), PackedInt32Array(67, 65, 69), PackedInt32Array(67, 69, 68)]
 geometry_parsed_geometry_type = 1
 geometry_collision_mask = 4294967169
 cell_height = 0.01
@@ -31,7 +31,7 @@ size = Vector3(0.25, 3, 3)
 size = Vector3(4, 3, 1)
 
 [node name="ApartmentHallScene" type="Node3D"]
-script = ExtResource("1_q5i1i")
+script = ExtResource("1_mmlsi")
 _vidscreen_on_texture = ExtResource("2_o4kl1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -46,7 +46,7 @@ navigation_mesh = SubResource("NavigationMesh_cy88a")
 unique_name_in_owner = true
 
 [node name="hallway" parent="Geometry/navmesh" instance=ExtResource("2_niqg6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -0.25, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 5)
 
 [node name="outside" type="Node" parent="Geometry"]
 
@@ -78,7 +78,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.75,
 
 [node name="EnforcerDoor" parent="Doors" instance=ExtResource("3_gml1m")]
 unique_name_in_owner = true
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 6.25, 0, 6.625)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 6.25, 0, 6.75)
 
 [node name="ApartmentDoor" parent="Doors" instance=ExtResource("3_gml1m")]
 unique_name_in_owner = true

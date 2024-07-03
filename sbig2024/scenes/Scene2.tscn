@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/sticker_place_outside.tscn" id="5_1myyf"]
 [ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="5_qhtn7"]
 [ext_resource type="AudioStream" uid="uid://fu1t0d577moj" path="res://sounds/718580__brunoauzet__lyon-fourviere-night.ogg" id="6_16rhk"]
-[ext_resource type="PackedScene" uid="uid://kkfbqa8vyuq7" path="res://prefabs/building_a.tscn" id="7_3to5q"]
+[ext_resource type="PackedScene" uid="uid://kkfbqa8vyuq7" path="res://prefabs/buildings/building_a.tscn" id="7_3to5q"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="7_jprn3"]
-[ext_resource type="PackedScene" uid="uid://dubmgmel3dhc6" path="res://prefabs/building_b.tscn" id="8_5hy1m"]
-[ext_resource type="PackedScene" uid="uid://by83ykpu0hlhi" path="res://prefabs/building_c.tscn" id="9_2ld66"]
+[ext_resource type="PackedScene" uid="uid://dubmgmel3dhc6" path="res://prefabs/buildings/building_b.tscn" id="8_5hy1m"]
+[ext_resource type="PackedScene" uid="uid://by83ykpu0hlhi" path="res://prefabs/buildings/building_c.tscn" id="9_2ld66"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="10_atl1s"]
-[ext_resource type="PackedScene" uid="uid://bkmyui3vwa31k" path="res://prefabs/building_d.tscn" id="10_rvlrq"]
-[ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/fpui.tscn" id="11_fyrmw"]
+[ext_resource type="PackedScene" uid="uid://bkmyui3vwa31k" path="res://prefabs/buildings/building_d.tscn" id="10_rvlrq"]
+[ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/ui/fpui.tscn" id="11_fyrmw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbb7a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

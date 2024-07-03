@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/Scene_Final.gd" id="1_lcaip"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_qlmnn"]
 [ext_resource type="PackedScene" uid="uid://dvabagf4huwm6" path="res://prefabs/enforcer.tscn" id="2_qaarp"]
-[ext_resource type="PackedScene" uid="uid://dvh2vqgob2niq" path="res://prefabs/apartment_hall_scene.tscn" id="2_qgcx3"]
+[ext_resource type="PackedScene" uid="uid://dvh2vqgob2niq" path="res://prefabs/apartment/apartment_hall_scene.tscn" id="2_qgcx3"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="4_4eqkm"]
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="5_wfnxm"]
 

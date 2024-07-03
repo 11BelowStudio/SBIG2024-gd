@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7mxwe6x3p10m"]
+
+[ext_resource type="PackedScene" uid="uid://c77yvk1jsoi7h" path="res://prefabs/interior/dynamic_door.tscn" id="1_ixn2e"]
+[ext_resource type="PackedScene" uid="uid://b475g16p45mrf" path="res://models/hallway/doorway.glb" id="2_ydxl5"]
+
+[node name="dynamic_door_larger" instance=ExtResource("1_ixn2e")]
+
+[node name="HingeJoint3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.75)
+
+[node name="door_anchor" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+
+[node name="door_dynamic" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+
+[node name="doorway" parent="." index="3" instance=ExtResource("2_ydxl5")]
+
+[editable path="door_dynamic"]
