@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmkb4vilpnwxo"]
+
+[ext_resource type="Script" path="res://prefabs/enforcer/enforcer_patrol_node.gd" id="1_fyu22"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_svort"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p8cub"]
+radius = 5.0
+
+[node name="EnfPatrolNode" type="StaticBody3D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_fyu22")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_svort")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="NearbyCast" type="ShapeCast3D" parent="."]
+shape = SubResource("SphereShape3D_p8cub")
+collision_mask = 128

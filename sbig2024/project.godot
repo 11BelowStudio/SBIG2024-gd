@@ -105,6 +105,7 @@ sprint={
 3d_physics/layer_5="door"
 3d_physics/layer_6="trigger"
 3d_physics/layer_7="block_player"
+3d_physics/layer_8="patrol_node"
 
 [maaacks_game_template]
 

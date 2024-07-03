@@ -187,7 +187,11 @@ func _jumpscare_time() -> void:
 	
 	character.sprint_enabled = true
 	
+	
 	_enforcer = _enforcerScene.instantiate()
+	
+	_enforcer.ai_type = Enforcer.AiType.GIGA_MONTY
+	
 	_enforcer.look_at_from_position(
 		_enforcerSpawn.position,
 		character.position,
@@ -195,7 +199,7 @@ func _jumpscare_time() -> void:
 	)
 	
 	add_child(_enforcer)
-	_enforcer.set_target(character)
+	_enforcer.set_target_gm(character)
 	enforcers.append(_enforcer)
 	
 

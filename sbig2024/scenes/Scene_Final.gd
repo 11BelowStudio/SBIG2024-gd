@@ -47,9 +47,11 @@ func _on_apartment_hall_scene_player_hall_3() -> void:
 	
 	_enforcer.navigation_finished.connect(Callable(_on_enforcer_navigation_finished))
 	
+	_enforcer.ai_type = Enforcer.AiType.GIGA_MONTY
+	
 	add_child(_enforcer)
 	
-	_enforcer.set_target(apartment.enforcerMidHall)
+	_enforcer.set_target_gm(apartment.enforcerMidHall)
 	#_enforcer._target = apartment.enforcerMidHall
 	
 	apartment.enforcerDoor.open_door()
@@ -65,7 +67,7 @@ func _on_enforcer_navigation_finished() -> void:
 	if _enforcerReachedMiddle:
 		pass
 	_enforcerReachedMiddle = true
-	_enforcer.set_target(character)
+	_enforcer.set_target_gm(character)
 	#wNoiseControl.set_intensity01(1)
 	#heartbeater.intensity = 1
 
