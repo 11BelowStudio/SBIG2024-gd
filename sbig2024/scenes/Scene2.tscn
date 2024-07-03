@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://tt1dhet81x6t" path="res://addons/kenney_prototype_tools/scenes/light/light_02.tscn" id="1_6ucl6"]
 [ext_resource type="Script" path="res://scenes/Scene2.gd" id="1_218to"]
-[ext_resource type="PackedScene" uid="uid://dvabagf4huwm6" path="res://prefabs/enforcer.tscn" id="2_4sot8"]
+[ext_resource type="PackedScene" uid="uid://dvabagf4huwm6" path="res://prefabs/enforcer/enforcer.tscn" id="2_4sot8"]
 [ext_resource type="PackedScene" uid="uid://c2xigu1idajsp" path="res://addons/kenney_prototype_tools/scenes/dark/dark_08.tscn" id="3_nqewy"]
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="4_o4mxg"]
 [ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/sticker_place_outside.tscn" id="5_1myyf"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="7_jprn3"]
 [ext_resource type="PackedScene" uid="uid://dubmgmel3dhc6" path="res://prefabs/buildings/building_b.tscn" id="8_5hy1m"]
 [ext_resource type="PackedScene" uid="uid://by83ykpu0hlhi" path="res://prefabs/buildings/building_c.tscn" id="9_2ld66"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="10_atl1s"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://prefabs/character/character.tscn" id="10_atl1s"]
 [ext_resource type="PackedScene" uid="uid://bkmyui3vwa31k" path="res://prefabs/buildings/building_d.tscn" id="10_rvlrq"]
 [ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/ui/fpui.tscn" id="11_fyrmw"]
 

@@ -151,6 +151,8 @@ func _update_modifier_dist_range():
 
 signal hit_by_enforcer
 
+signal bumped_object
+
 @export_category("Character")
 @export var base_speed : float = 3.0
 @export var sprint_speed : float = 6.0
@@ -222,7 +224,7 @@ var RETICLE : Control
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") # Don't set this as a const, see the gravity section in _physics_process
 
 
-func _ready():
+func _ready() -> void:
 	#It is safe to comment this line if your game doesn't start with the mouse captured
 	if capture_mouse:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -248,7 +250,7 @@ func _ready():
 	
 	CAMERA.fov = _calc_fov_target(_initial_fov_intensity)
 
-func check_controls(): # If you add a control, you might want to add a check for it here.
+func check_controls() -> void: # If you add a control, you might want to add a check for it here.
 	if !InputMap.has_action(JUMP):
 		push_error("No control mapped for jumping. Please add an input map control. Disabling jump.")
 		jumping_enabled = false
@@ -275,7 +277,7 @@ func check_controls(): # If you add a control, you might want to add a check for
 		sprint_enabled = false
 
 
-func change_reticle(reticle): # Yup, this function is kinda strange
+func change_reticle(reticle) -> void: # Yup, this function is kinda strange
 	if RETICLE:
 		RETICLE.queue_free()
 	
@@ -313,7 +315,7 @@ func _get_target_dist() -> float:
 	else:
 		return DEFAULT_NO_TARGET_DIST
 
-func _do_look_target_dist_modifiers():
+func _do_look_target_dist_modifiers() -> void:
 	if _look_target_dist == DEFAULT_NO_TARGET_DIST:
 		_reset_look_target_dist_modifiers()
 		return
@@ -330,7 +332,7 @@ func _do_look_target_dist_modifiers():
 		
 	pass
 
-func _reset_look_target_dist_modifiers():
+func _reset_look_target_dist_modifiers() -> void:
 	speed = max_speed
 	#target_fov = max_fov
 	pass
@@ -412,11 +414,7 @@ func handle_jumping():
 				velocity.y += jump_velocity
 
 
-func handle_movement(delta, input_dir):
-	var direction = input_dir.rotated(-HEAD.rotation.y)
-	direction = Vector3(direction.x, 0, direction.y)
-	move_and_slide()
-	
+func _bump_into_things() -> void:
 	for col_idx in get_slide_collision_count():
 		var col := get_slide_collision(col_idx)
 		if col.get_collider() is RigidBody3D:
@@ -425,6 +423,14 @@ func handle_movement(delta, input_dir):
 			col2.apply_impulse(-col.get_normal() * 0.01, col.get_position())
 			if col2.has_method("bump"):
 				col2.bump()
+				bumped_object.emit()
+
+
+func handle_movement(delta: float, input_dir: Vector2) -> void:
+	var direction = input_dir.rotated(-HEAD.rotation.y)
+	direction = Vector3(direction.x, 0, direction.y)
+	move_and_slide()
+	_bump_into_things()
 	
 	var _currSpeed = _speed()
 	if in_air_momentum:
@@ -444,7 +450,7 @@ func handle_movement(delta, input_dir):
 			velocity.z = direction.z * _currSpeed
 
 
-func handle_state(input_dir: Vector2):
+func handle_state(input_dir: Vector2) -> void:
 	if sprint_enabled:
 		if sprint_mode == 0:
 			if Input.is_action_pressed(SPRINT) and state != CharStates.CROUCHING:
@@ -489,7 +495,7 @@ func handle_state(input_dir: Vector2):
 
 # Any enter state function should only be called once when you want to enter that state, not every frame.
 
-func enter_normal_state():
+func enter_normal_state() -> void:
 	#print("entering normal state")
 	var prev_state = state
 	if prev_state == CharStates.CROUCHING:
@@ -497,14 +503,14 @@ func enter_normal_state():
 	state = CharStates.NORMAL
 	speed = base_speed
 
-func enter_crouch_state():
+func enter_crouch_state() -> void:
 	#print("entering crouch state")
 	var prev_state = state
 	state = CharStates.CROUCHING
 	speed = crouch_speed
 	CROUCH_ANIMATION.play("crouch")
 
-func enter_sprint_state():
+func enter_sprint_state() -> void:
 	#print("entering sprint state")
 	var prev_state = state
 	if prev_state == CharStates.CROUCHING:
@@ -513,7 +519,7 @@ func enter_sprint_state():
 	speed = sprint_speed
 
 
-func update_camera_fov_sprint():
+func update_camera_fov_sprint() -> void:
 	if state == CharStates.SPRINTING:
 		CAMERA.fov = lerp(CAMERA.fov, 85.0, 0.3)
 	else:
@@ -524,7 +530,7 @@ func update_camera_fov(target_fov: float, delta: float) -> void:
 	CAMERA.fov = lerp(CAMERA.fov, target_fov, delta)
 	pass
 
-func headbob_animation(input_dir: Vector2):
+func headbob_animation(input_dir: Vector2) -> void:
 	if input_dir and is_on_floor():
 		var use_headbob_animation : String
 		match state:
@@ -590,7 +596,7 @@ func _process(delta: float) -> void:
 	#HEAD.rotation_degrees.x -= controller_view_rotation.y * 1.5
 
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		HEAD.rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		HEAD.rotation_degrees.x -= event.relative.y * mouse_sensitivity
@@ -601,7 +607,7 @@ func get_use_raycast_target() -> CollisionObject3D:
 	_use_ray_cast.force_raycast_update()
 	return _use_ray_cast.get_collider()
 
-func _attempt_use():
+func _attempt_use() -> void:
 	# TODO: do a raycast, probably just try signalling a 'use this' event on things it hits idk
 	
 	_use_ray_cast.force_raycast_update()

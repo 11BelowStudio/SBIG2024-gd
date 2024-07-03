@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dyxxelmn6wkga"]
 
 [ext_resource type="Script" path="res://scenes/Scene3.gd" id="1_ldwx0"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_wacd2"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://prefabs/character/character.tscn" id="1_wacd2"]
 [ext_resource type="PackedScene" uid="uid://dvh2vqgob2niq" path="res://prefabs/apartment/apartment_hall_scene.tscn" id="2_g8wg5"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="3_ff1at"]
 

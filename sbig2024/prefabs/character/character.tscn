@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://cc1m2a1obsyn4"]
 
-[ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
+[ext_resource type="Script" path="res://prefabs/character/character.gd" id="1_0t4e8"]
 [ext_resource type="Material" uid="uid://b3vcufg347no" path="res://materials/an_sticker_viewmodel.tres" id="2_7s5gy"]
 [ext_resource type="Script" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
@@ -407,6 +407,7 @@ CROUCH = "crouch"
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 layers = 8
+cast_shadow = 0
 mesh = SubResource("CapsuleMesh_jw1de")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
