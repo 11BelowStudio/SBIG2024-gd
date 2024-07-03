@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dvh2vqgob2niq"]
+[gd_scene load_steps=17 format=3 uid="uid://dvh2vqgob2niq"]
 
 [ext_resource type="PackedScene" uid="uid://dw7r4hu0l2ybu" path="res://models/apartment/Apartment.glb" id="1_oc4nn"]
 [ext_resource type="Script" path="res://scripts/apartment_hall_scene.gd" id="1_q5i1i"]
@@ -7,11 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://c77yvk1jsoi7h" path="res://prefabs/dynamic_door.tscn" id="3_gml1m"]
 [ext_resource type="Environment" uid="uid://d2i24c60caf43" path="res://prefabs/apartment_hall_scene_env.tres" id="3_jmxjh"]
 [ext_resource type="PackedScene" uid="uid://bvwd6fp6eftlj" path="res://models/apt_door/apt_door_red.glb" id="4_l73ky"]
-[ext_resource type="Script" path="res://scripts/use_get_sticker.gd" id="5_di0uu"]
 [ext_resource type="Material" uid="uid://dm157s57mfhfe" path="res://addons/kenney_prototype_tools/materials/dark/material_02.tres" id="5_qjosj"]
 [ext_resource type="AudioStream" uid="uid://cpd7kdxk7g6nu" path="res://sounds/686845__pblzr__ambience-open-window-room-wind-city-noise-001.ogg" id="5_r13cg"]
-[ext_resource type="Material" uid="uid://5lriymwl1hwe" path="res://materials/an_sticker.tres" id="6_nih5q"]
 [ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/fpui.tscn" id="8_btxj1"]
+[ext_resource type="PackedScene" uid="uid://tiwtut8n2d8x" path="res://prefabs/sticker_get_apartment.tscn" id="9_lh6nj"]
 [ext_resource type="AudioStream" uid="uid://b0t8hvjqe7vex" path="res://sounds/198957__mydo1__roomtone.ogg" id="11_1he6f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cy88a"]
@@ -25,17 +24,11 @@ agent_max_climb = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_v4k1m"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_diobt"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_h2ram"]
-size = Vector3(2.5, 1, 1.5)
-
-[sub_resource type="QuadMesh" id="QuadMesh_snnsk"]
-material = ExtResource("6_nih5q")
-size = Vector2(0.75, 0.375)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_kedbr"]
 size = Vector3(0.25, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_20jms"]
+size = Vector3(4, 3, 1)
 
 [node name="ApartmentHallScene" type="Node3D"]
 script = ExtResource("1_q5i1i")
@@ -85,35 +78,13 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.75,
 
 [node name="EnforcerDoor" parent="Doors" instance=ExtResource("3_gml1m")]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 0, 6.625)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 6.25, 0, 6.625)
 
 [node name="ApartmentDoor" parent="Doors" instance=ExtResource("3_gml1m")]
 unique_name_in_owner = true
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.75, 0, 3.375)
 
-[node name="use_get_sticker" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.256272, 1.24503, -2.27222)
-collision_layer = 8
-script = ExtResource("5_di0uu")
-
-[node name="_use_zone_mesh" type="MeshInstance3D" parent="use_get_sticker"]
-transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
-visible = false
-mesh = SubResource("BoxMesh_diobt")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="use_get_sticker"]
-shape = SubResource("BoxShape3D_h2ram")
-
-[node name="sticker_get_visual" type="MeshInstance3D" parent="use_get_sticker"]
-mesh = SubResource("QuadMesh_snnsk")
-
-[node name="sticker_get_visual_rear" type="MeshInstance3D" parent="use_get_sticker/sticker_get_visual"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
-mesh = SubResource("QuadMesh_snnsk")
-skeleton = NodePath("../..")
-
-[node name="StickerAudio" type="AudioStreamPlayer3D" parent="use_get_sticker"]
-bus = &"SFX"
+[node name="StickerGet" parent="." instance=ExtResource("9_lh6nj")]
 
 [node name="SpawnPoints" type="Node" parent="."]
 
@@ -176,6 +147,14 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaTriggers/AptDoorTrigger"]
 shape = SubResource("BoxShape3D_kedbr")
+
+[node name="InRoomTrigger" type="Area3D" parent="AreaTriggers"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0.25)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaTriggers/InRoomTrigger"]
+shape = SubResource("BoxShape3D_20jms")
 
 [node name="FPUI" parent="." instance=ExtResource("8_btxj1")]
 
@@ -242,6 +221,7 @@ shadow_enabled = true
 [connection signal="body_entered" from="AreaTriggers/HallTrigger2" to="." method="_on_hall_trigger_2_body_entered"]
 [connection signal="body_entered" from="AreaTriggers/HallTrigger1" to="." method="_on_hall_trigger_1_body_entered"]
 [connection signal="body_entered" from="AreaTriggers/AptDoorTrigger" to="." method="_on_apt_door_trigger_body_entered"]
+[connection signal="body_entered" from="AreaTriggers/InRoomTrigger" to="." method="_on_in_room_trigger_body_entered"]
 [connection signal="finished" from="AudioSources/VidscreenAudio" to="." method="_on_vidscreen_audio_finished"]
 
 [editable path="Geometry/navmesh/Apartment"]

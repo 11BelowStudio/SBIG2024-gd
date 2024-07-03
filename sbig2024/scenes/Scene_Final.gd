@@ -20,22 +20,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-
-func _physics_process(delta: float) -> void:
 	
-	#if _enforcer:
-		#if _enforcerReachedMiddle:
-			#pass
-		#else:
-			#if _enforcer.position.z <= apartment.enforcerMidHall.position.z:
-				#_enforcerReachedMiddle = true
-				#_enforcer._target = character
-				#wNoiseControl.set_intensity01(1)
-				#heartbeater.intensity = 1
+	_update_enforcer_dist_intensity()
 	
-	pass
+	#print(_intensity)
+	
+	heartbeater.intensity_target = _enforcer_dist_intensity
+	wNoiseControl.set_intensity01(_enforcer_dist_intensity)
+	character.fov_intensity = _enforcer_dist_intensity
 
 
 func _on_apartment_hall_scene_player_hall_3() -> void:
@@ -61,8 +53,9 @@ func _on_apartment_hall_scene_player_hall_3() -> void:
 	
 	apartment.enforcerDoor.open_door()
 	
-	wNoiseControl.set_intensity01(0.75)
-	heartbeater.intensity = 0.75
+	_update_enforcer_dist_intensity()
+	wNoiseControl.set_intensity01(_enforcer_dist_intensity)
+	heartbeater.intensity = _enforcer_dist_intensity
 	
 	pass # Replace with function body.
 
@@ -72,8 +65,8 @@ func _on_enforcer_navigation_finished() -> void:
 		pass
 	_enforcerReachedMiddle = true
 	_enforcer.set_target(character)
-	wNoiseControl.set_intensity01(1)
-	heartbeater.intensity = 1
+	#wNoiseControl.set_intensity01(1)
+	#heartbeater.intensity = 1
 
 
 func _on_character_hit_by_enforcer() -> void:
@@ -81,3 +74,56 @@ func _on_character_hit_by_enforcer() -> void:
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
 	pass # Replace with function body.
+
+
+
+
+
+
+
+const DEFAULT_NO_ENFORCER_DIST: float = -1
+
+@export var min_enforcer_dist: float = 4:
+	set(value):
+		min_enforcer_dist = value
+		_enforcer_dist_range = _get_enforcer_dist_range()
+@export var max_enforcer_dist: float = 25:
+	set(value):
+		max_enforcer_dist = value
+		_enforcer_dist_range = _get_enforcer_dist_range()
+@onready var _enforcer_dist_range: float = _get_enforcer_dist_range()
+
+func _get_enforcer_dist_range() -> float:
+	return max_enforcer_dist - min_enforcer_dist
+
+var _enforcer_dist_intensity: float = 0
+
+
+
+func _calc_enforcer_dist_intensity(closestDist: float) -> float:
+	if (closestDist == DEFAULT_NO_ENFORCER_DIST) or (closestDist >= max_enforcer_dist):
+		_enforcer_dist_intensity = 0
+	elif closestDist <= min_enforcer_dist:
+		_enforcer_dist_intensity = 1
+	else:
+		_enforcer_dist_intensity = 1 - ((closestDist - min_enforcer_dist)/_enforcer_dist_range)
+	return _enforcer_dist_intensity
+
+
+
+func _update_enforcer_dist_intensity() -> void:
+	var closest_dist: float = _get_closest_enforcer_dist()
+	if closest_dist == DEFAULT_NO_ENFORCER_DIST or closest_dist >= max_enforcer_dist:
+		_enforcer_dist_intensity = 0
+		return
+	elif closest_dist <= min_enforcer_dist:
+		_enforcer_dist_intensity = 1
+		return
+	_enforcer_dist_intensity = 1 - ((closest_dist - min_enforcer_dist)/_enforcer_dist_range)
+	pass
+
+func _get_closest_enforcer_dist() -> float:
+	if _enforcer:
+		return character.global_position.distance_to(_enforcer.global_position)
+	else:
+		return DEFAULT_NO_ENFORCER_DIST

@@ -14,12 +14,12 @@ albedo_texture = ExtResource("2_4d8er")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ofkxv"]
 size = Vector3(2, 1, 0.02)
 
-[node name="TheSticker" type="StaticBody3D"]
+[node name="StickerPlace" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 collision_layer = 9
 script = ExtResource("1_srh72")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="StickerVisual" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_pat2h")
 mesh = SubResource("QuadMesh_pnnxo")
@@ -29,6 +29,8 @@ shape = SubResource("BoxShape3D_ofkxv")
 
 [node name="DoneNoisePlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_pyqcq")
+bus = &"SFX"
 
-[node name="PlacingNoisePlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="ProgressNoisePlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_6papa")
+bus = &"SFX"

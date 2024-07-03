@@ -7,7 +7,7 @@ extends AudioStreamPlayer
 
 @export var _delta_lerp_amount: float = 0.75
 
-@export var intensity_target: float = 0:
+@export_range(0,1) var intensity_target: float = 0:
 	set(value):
 		if value > 1:
 			value = 1
@@ -17,15 +17,13 @@ extends AudioStreamPlayer
 
 
 
-@export var intensity: float = 0:
+@export_range(0,1) var intensity: float = 0:
 	set(value):
 		if value < 0:
 			value = 0
 		elif value > 1:
 			value = 1
-		
 		intensity = value
-		intensity_target = value
 		var delay_range : float = _max_delay_delta - _min_delay_delta
 		_current_delay = _max_delay_delta - (delay_range * value)
 		
@@ -40,6 +38,9 @@ const second_beat_delay: float = 0.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	intensity = intensity
+	_timer0 = _current_delay
+	_timer1 = _current_delay + second_beat_delay
 	pass # Replace with function body.
 
 

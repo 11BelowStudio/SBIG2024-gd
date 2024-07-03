@@ -75,6 +75,14 @@ func _update_speed_range():
 		fov_intensity = value
 		_update_fov_target()
 
+@export_range(0,1) var _initial_fov_intensity: float = 0:
+	set(value):
+		if value > 1:
+			value = 1
+		elif value < 0:
+			value = 0
+		_initial_fov_intensity = value
+
 @export var min_fov: float = 25:
 	set(value):
 		min_fov = value
@@ -88,8 +96,11 @@ func _update_fov_range():
 	_fov_range = max_fov - min_fov
 	_update_fov_target()
 
+func _calc_fov_target(intensity: float) -> float:
+	return max_fov - (_fov_range * intensity)
+
 func _update_fov_target() -> float:
-	target_fov = max_fov - (_fov_range * fov_intensity)
+	target_fov = _calc_fov_target(fov_intensity)
 	return target_fov
 @onready var target_fov: float = _update_fov_target()
 
@@ -221,6 +232,8 @@ func _ready():
 	CROUCH_ANIMATION.play("RESET")
 	
 	check_controls()
+	
+	CAMERA.fov = _calc_fov_target(_initial_fov_intensity)
 
 func check_controls(): # If you add a control, you might want to add a check for it here.
 	if !InputMap.has_action(JUMP):

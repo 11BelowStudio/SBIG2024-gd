@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl03t5imc42nl"]
+[gd_scene load_steps=7 format=3 uid="uid://cl03t5imc42nl"]
 
 [ext_resource type="Script" path="res://scenes/Scene_Final.gd" id="1_lcaip"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_qlmnn"]
@@ -7,44 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="4_4eqkm"]
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="5_wfnxm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i8h23"]
-size = Vector3(3, 3, 1)
-
 [node name="SceneFinal" type="Node3D"]
 script = ExtResource("1_lcaip")
 _enforcerScene = ExtResource("2_qaarp")
+max_enforcer_dist = 50.0
 
 [node name="Character" parent="." instance=ExtResource("1_qlmnn")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21, 0, 5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.5, 0, 5)
+_initial_fov_intensity = 1.0
 
 [node name="ApartmentHallScene" parent="." instance=ExtResource("2_qgcx3")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ApartmentHallScene"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 22, 1.5, 4)
-visible = false
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ApartmentHallScene/StaticBody3D"]
-shape = SubResource("BoxShape3D_i8h23")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="ApartmentHallScene"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 22, 1.5, 6)
-visible = false
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ApartmentHallScene/StaticBody3D2"]
-shape = SubResource("BoxShape3D_i8h23")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="ApartmentHallScene"]
-transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 22, 1.5, 5)
-visible = false
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ApartmentHallScene/StaticBody3D3"]
-shape = SubResource("BoxShape3D_i8h23")
-
 [node name="Heartbeater" parent="." instance=ExtResource("4_4eqkm")]
 bus = &"Master"
+intensity = 1.0
 
 [node name="WhiteNoiseControl" parent="." instance=ExtResource("5_wfnxm")]
 

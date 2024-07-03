@@ -5,7 +5,7 @@ extends Node3D
 @onready var enforcerDoor: DynamicDoor = %EnforcerDoor
 @onready var apartmentDoor: DynamicDoor = %ApartmentDoor
 
-@onready var sticker: UseGetSticker = $use_get_sticker
+@onready var sticker: UseGetSticker = $StickerGet
 
 @onready var bedroomSpawn: Node3D = %BedroomSpawnPoint
 @onready var hallSpawn: Node3D = %HallwaySpawnPoint
@@ -28,6 +28,8 @@ extends Node3D
 ## fpui instance
 @onready var fpui: FPUI = $FPUI
 
+@export var hide_sticker: bool = false
+
 @export var discard_ui: bool = false
 
 @export var _apartment_door_open: bool = false:
@@ -39,6 +41,9 @@ extends Node3D
 	set(value):
 		_enforcer_door_open = value
 		set_enforcer_door_open(value)
+
+## emitted when player in room
+signal player_in_room
 
 ## emitted when player at door area
 signal player_door_area
@@ -58,6 +63,9 @@ signal player_exit_area
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	if hide_sticker:
+		sticker.sticker_shown = false
 	
 	if discard_ui:
 		fpui.free()
@@ -112,6 +120,13 @@ func _on_apt_door_trigger_body_entered(body: Node3D) -> void:
 	pass # Replace with function body.
 
 
+func _on_in_room_trigger_body_entered(body: Node3D) -> void:
+	var player: FPCharacter = body as FPCharacter
+	if player:
+		player_in_room.emit()
+	pass # Replace with function body.
+
+
 ## call this to play some audio from the vidscreen (will also turn the vidscreen on)
 func play_vidscreen_audio(play_this: AudioStream) -> void:
 	vidscreen_audio.stream = play_this
@@ -137,3 +152,6 @@ func set_enforcer_door_open(open: bool) -> void:
 
 func _on_use_get_sticker_sticker_obtained_signal() -> void:
 	pass # Replace with function body.
+
+
+

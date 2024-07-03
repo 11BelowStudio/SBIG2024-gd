@@ -37,7 +37,7 @@ func _calc_enforcer_dist_intensity(closestDist: float) -> float:
 var _enforcer: Enforcer
 @onready var _enforcerSpawn = %EnforcerSpawn
 
-@onready var theSticker: TheSticker = %TheSticker
+var theSticker: StickerBase
 
 @onready var character: FPCharacter = $Character
 
@@ -52,9 +52,9 @@ var _enforcer: Enforcer
 
 @export var USE : String = "use"
 
-@export var _sticker_placing_duration: float = 3
-@export var _sticker_placing_progress: float = 0
-@export var _sticker_placing_decay_delta: float = 0.9
+@export var _sticker_duration: float = 3
+@export var _sticker_progress: float = 0
+@export var _sticker_decay_delta: float = 0.9
 
 enum Scene2States {
 	SPAWNED,
@@ -64,20 +64,20 @@ enum Scene2States {
 }
 var _state: Scene2States = Scene2States.SPAWNED
 
-enum StickerStates { NOT_PLACED, PLACING, PLACED }
+enum StickerStates { NOT_DONE, DOING, DONE }
 
-var sticker_state: StickerStates = StickerStates.NOT_PLACED
+var sticker_state: StickerStates = StickerStates.NOT_DONE
 
-var enforcers: Array[Enforcer] = []
+@export var enforcers: Array[Enforcer] = []
 
 var _intensity: float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	theSticker = %StickerPlace
 	character.look_target = theSticker
 	character.holding_sticker = true
-	ui.progress.max_value = _sticker_placing_duration
+	ui.progress.max_value = _sticker_duration
 	pass # Replace with function body.
 
 
@@ -97,20 +97,20 @@ func _process(delta: float) -> void:
 	character.fov_intensity = _intensity
 	
 	match sticker_state:
-		StickerStates.NOT_PLACED:
+		StickerStates.NOT_DONE:
 			
 			if char_intensity == 0:
 				ui.show_instruction(_instruction_1)
 			elif (char_intensity >= 0.35) and (char_intensity <= 0.8):
 				ui.show_instruction(_instruction_2)
 			
-			_sticker_placing_progress = lerpf(_sticker_placing_progress, 0, _sticker_placing_decay_delta * delta)
-			ui.progressBar().value = _sticker_placing_progress
-		StickerStates.PLACING:
-			_sticker_placing_progress += delta
-			ui.progressBar().value = _sticker_placing_progress
-			if _sticker_placing_progress >= _sticker_placing_duration:
-				_sticker_placed()
+			_sticker_progress = lerpf(_sticker_progress, 0, _sticker_decay_delta * delta)
+			ui.progressBar().value = _sticker_progress
+		StickerStates.DOING:
+			_sticker_progress += delta
+			ui.progressBar().value = _sticker_progress
+			if _sticker_progress >= _sticker_duration:
+				_sticker_done()
 		_:
 			pass
 	pass
@@ -122,24 +122,24 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	
 	match sticker_state:
-		StickerStates.NOT_PLACED:
-			var characterUseObj: TheSticker = character.get_use_raycast_target() as TheSticker
+		StickerStates.NOT_DONE:
+			var characterUseObj: StickerBase = character.get_use_raycast_target() as StickerBase
 			if characterUseObj and characterUseObj == theSticker:
 				ui.show_instruction(_instruction_3)
 				if Input.is_action_just_pressed(USE):
-					sticker_state = StickerStates.PLACING
-					theSticker.placing_started()
+					sticker_state = StickerStates.DOING
+					theSticker.start_stickering()
 			else:
 				ui.show_instruction(_instruction_2)
-		StickerStates.PLACING:
+		StickerStates.DOING:
 			if Input.is_action_pressed(USE):
-				var characterUseObj: TheSticker = character.get_use_raycast_target() as TheSticker
+				var characterUseObj: StickerBase = character.get_use_raycast_target() as StickerBase
 				if (not characterUseObj) or (characterUseObj != theSticker):
-					sticker_state = StickerStates.NOT_PLACED
-					theSticker.placing_aborted()
+					sticker_state = StickerStates.NOT_DONE
+					theSticker.abort_stickering()
 			else:
-				sticker_state = StickerStates.NOT_PLACED
-				theSticker.placing_aborted()
+				sticker_state = StickerStates.NOT_DONE
+				theSticker.abort_stickering()
 		_:
 			pass
 	
@@ -147,10 +147,10 @@ func _physics_process(delta: float) -> void:
 	pass
 
 
-func _sticker_placed() -> void:
+func _sticker_done() -> void:
 	theSticker.use()
 	character.holding_sticker = false
-	sticker_state = StickerStates.PLACED
+	sticker_state = StickerStates.DONE
 	_state = Scene2States.STICKER_PLACED
 	heartbeater.intensity_target = 0
 	dualAmbience.audio_weight_target = 0

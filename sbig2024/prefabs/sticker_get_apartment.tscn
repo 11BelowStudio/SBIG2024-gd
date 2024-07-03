@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://tiwtut8n2d8x"]
+
+[ext_resource type="Script" path="res://scripts/use_get_sticker.gd" id="1_y8eq8"]
+[ext_resource type="Material" uid="uid://5lriymwl1hwe" path="res://materials/an_sticker.tres" id="2_2yrog"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_diobt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2ram"]
+size = Vector3(2.5, 1, 1.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_snnsk"]
+material = ExtResource("2_2yrog")
+size = Vector2(0.75, 0.375)
+
+[node name="StickerGet" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.256272, 1.24503, -2.27222)
+collision_layer = 8
+script = ExtResource("1_y8eq8")
+
+[node name="_use_zone_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_diobt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_h2ram")
+
+[node name="StickerVisual" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_snnsk")
+
+[node name="StickerVisualRear" type="MeshInstance3D" parent="StickerVisual"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("QuadMesh_snnsk")
+skeleton = NodePath("../..")
+
+[node name="ProgressNoisePlayer" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+
+[node name="DoneNoisePlayer" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"

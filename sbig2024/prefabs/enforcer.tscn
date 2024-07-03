@@ -16,7 +16,7 @@ _moveSpeed = 4.0
 [node name="SpotLight3D" type="SpotLight3D" parent="Node/Torso2" index="1"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.77876, -0.532987)
 light_color = Color(1, 0, 0, 1)
-light_energy = 4.0
+light_energy = 5.0
 light_cull_mask = 4294967287
 shadow_enabled = true
 distance_fade_enabled = true

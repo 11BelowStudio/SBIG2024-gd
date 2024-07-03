@@ -1,10 +1,6 @@
 
 class_name UseGetSticker
-extends StaticBody3D
-
-@onready var visual: MeshInstance3D = $sticker_get_visual
-
-@onready var audio: AudioStreamPlayer3D = $StickerAudio
+extends StickerBase
 
 @export var spin_duration: float = 5
 
@@ -14,12 +10,9 @@ extends StaticBody3D
 		if visual:
 			visual.visible = value
 
-
-signal sticker_obtained_signal
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super._ready()
 	visual.visible = sticker_shown
 	pass # Replace with function body.
 
@@ -33,5 +26,4 @@ func _process(delta: float) -> void:
 
 func use() -> void:
 	visual.visible = false
-	audio.play()
 	pass

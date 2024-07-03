@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	if _state == Scene1State.SPAWNED:
 		match sticker_state:
 			StickerStates.NOT_DONE:
-				var characterUseObj: UseGetSticker = character.get_use_raycast_target() as UseGetSticker
+				var characterUseObj: StickerBase = character.get_use_raycast_target() as StickerBase
 				if characterUseObj and characterUseObj == apartment.sticker:
 					apartment.fpui.show_instruction(_instruction_2)
 					if Input.is_action_just_pressed(character.USE):
@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 					apartment.fpui.show_instruction(_instruction_1)
 			StickerStates.DOING:
 				if Input.is_action_pressed(character.USE):
-					var characterUseObj: UseGetSticker = character.get_use_raycast_target() as UseGetSticker
+					var characterUseObj: StickerBase = character.get_use_raycast_target() as StickerBase
 					if (not characterUseObj) or (characterUseObj != apartment.sticker):
 						sticker_state = StickerStates.NOT_DONE
 						#theSticker.placing_aborted()

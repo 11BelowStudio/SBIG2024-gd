@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dvabagf4huwm6" path="res://prefabs/enforcer.tscn" id="2_4sot8"]
 [ext_resource type="PackedScene" uid="uid://c2xigu1idajsp" path="res://addons/kenney_prototype_tools/scenes/dark/dark_08.tscn" id="3_nqewy"]
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="4_o4mxg"]
-[ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/the_sticker.tscn" id="5_1myyf"]
+[ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/sticker_place_outside.tscn" id="5_1myyf"]
 [ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="5_qhtn7"]
 [ext_resource type="AudioStream" uid="uid://fu1t0d577moj" path="res://sounds/718580__brunoauzet__lyon-fourviere-night.ogg" id="6_16rhk"]
 [ext_resource type="PackedScene" uid="uid://kkfbqa8vyuq7" path="res://prefabs/building_a.tscn" id="7_3to5q"]
@@ -69,7 +69,7 @@ realScale = Vector3(30, 1, 30)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 10.5)
 realScale = Vector3(2, 2, 1)
 
-[node name="TheSticker" parent="World" instance=ExtResource("5_1myyf")]
+[node name="StickerPlace" parent="World" instance=ExtResource("5_1myyf")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 1.5, 9.99)
 
@@ -178,7 +178,7 @@ bus = &"Master"
 
 [node name="Character" parent="." node_paths=PackedStringArray("look_target") instance=ExtResource("10_atl1s")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 0, -8)
-look_target = NodePath("../World/TheSticker")
+look_target = NodePath("../World/StickerPlace")
 min_modifier_dist = 5.0
 max_modifier_dist = 15.0
 holding_sticker = true
