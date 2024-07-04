@@ -124,7 +124,7 @@ func _ready() -> void:
 	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
 	
-	init_ai(_ai_type, _ai_override, _ai_state)
+	#init_ai(_ai_type, _ai_override, _ai_state)
 	
 	pass
 
@@ -132,8 +132,9 @@ func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
 	_can_set_target = true
-	# Now that the navigation map is no longer empty, set the movement target.
 	
+	# Now that the navigation map is no longer empty, set the movement target.
+	init_ai(_ai_type, _ai_override, _ai_state)
 	if _pre_physics_target != Vector3.INF:
 		set_movement_target(_pre_physics_target)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://4b5jwug58moo"]
+[gd_scene load_steps=27 format=3 uid="uid://4b5jwug58moo"]
 
 [ext_resource type="PackedScene" uid="uid://tt1dhet81x6t" path="res://addons/kenney_prototype_tools/scenes/light/light_02.tscn" id="1_6ucl6"]
 [ext_resource type="Script" path="res://scenes/Scene2.gd" id="1_218to"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="4_o4mxg"]
 [ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/sticker_place_outside.tscn" id="5_1myyf"]
 [ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="5_qhtn7"]
+[ext_resource type="PackedScene" uid="uid://bo3jnqgmmc0w3" path="res://prefabs/interior/dynamic_doorway.tscn" id="6_8ikas"]
 [ext_resource type="AudioStream" uid="uid://fu1t0d577moj" path="res://sounds/ambient/718580__brunoauzet__lyon-fourviere-night.ogg" id="6_16rhk"]
 [ext_resource type="PackedScene" uid="uid://kkfbqa8vyuq7" path="res://prefabs/buildings/building_a.tscn" id="7_3to5q"]
+[ext_resource type="Material" uid="uid://dxqiwkenhptvr" path="res://materials/red_door_material.tres" id="7_8txiw"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="7_jprn3"]
 [ext_resource type="PackedScene" uid="uid://dubmgmel3dhc6" path="res://prefabs/buildings/building_b.tscn" id="8_5hy1m"]
 [ext_resource type="PackedScene" uid="uid://by83ykpu0hlhi" path="res://prefabs/buildings/building_c.tscn" id="9_2ld66"]
@@ -20,12 +22,12 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_6bkpn"]
+[sub_resource type="Sky" id="Sky_0f5hc"]
 sky_material = SubResource("ProceduralSkyMaterial_wbb7a")
 
 [sub_resource type="Environment" id="Environment_82i1e"]
 background_mode = 2
-sky = SubResource("Sky_6bkpn")
+sky = SubResource("Sky_0f5hc")
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 2
@@ -43,7 +45,7 @@ cell_height = 0.01
 size = Vector3(3, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1y63"]
-size = Vector3(1, 3, 3)
+size = Vector3(2.5, 3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhct5"]
 size = Vector3(3, 3, 1)
@@ -88,12 +90,16 @@ shape = SubResource("BoxShape3D_4jejl")
 
 [node name="LevelExitTrigger" type="Area3D" parent="World/TriggerAreas"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.5, 7)
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -6, 2.5, 10.5)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/TriggerAreas/LevelExitTrigger"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 1)
 shape = SubResource("BoxShape3D_i1y63")
+
+[node name="exit_door" parent="World" instance=ExtResource("6_8ikas")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 8.125)
+door_state = 1
+_doorMaterialOverride = ExtResource("7_8txiw")
 
 [node name="PlayerBlockers" type="Node3D" parent="World"]
 
@@ -109,6 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.5, 10)
 collision_layer = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/PlayerBlockers/Blocker2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 1)
 shape = SubResource("BoxShape3D_n1cjn")
 
 [node name="AlleyBlocker" type="AnimatableBody3D" parent="World/PlayerBlockers"]
@@ -139,7 +146,7 @@ _pos = Vector3(-0.5, 1, -8.5)
 
 [node name="BuildingB2" parent="World/Buildings" instance=ExtResource("8_5hy1m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 11, 1)
-realScale = Vector3(10, 40, 15)
+realScale = Vector3(10, 40, 14)
 _pos = Vector3(-12.5, 11, 1)
 
 [node name="BuildingD" parent="World/Buildings" instance=ExtResource("10_rvlrq")]
@@ -166,6 +173,11 @@ _pos = Vector3(-1, -9, 11.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -15, 8)
 realScale = Vector3(14, 49, 14)
 _pos = Vector3(-22, -15, 8)
+
+[node name="BuildingB3" parent="World/Buildings" instance=ExtResource("8_5hy1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 15, 9.75)
+realScale = Vector3(6, 24, 3.5)
+_pos = Vector3(-7.5, 15, 9.75)
 
 [node name="Spawnpoints" type="Node" parent="World"]
 

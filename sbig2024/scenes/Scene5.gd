@@ -95,4 +95,47 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	var char_intensity: float = character.get_dist_intensity()
+	character.speed_intensity = char_intensity
+	_update_enforcer_dist_intensity()
+	
+	_intensity = max(char_intensity, _enforcer_dist_intensity)
+	#print(_intensity)
+	
+	heartbeater.intensity_target = _intensity
+	dualAmbience.audio_weight_target = _intensity
+	whitenoise.set_intensity01(_intensity)
+	character.fov_intensity_target = _intensity
+	ui.vignette_intensity(_intensity)
+	
 	pass
+
+
+
+
+
+func _update_enforcer_dist_intensity() -> void:
+	var closest_dist: float = _get_closest_enforcer_dist()
+	if closest_dist == DEFAULT_NO_ENFORCER_DIST or closest_dist >= max_enforcer_dist:
+		_enforcer_dist_intensity = 0
+		return
+	elif closest_dist <= min_enforcer_dist:
+		_enforcer_dist_intensity = 1
+		return
+	_enforcer_dist_intensity = 1 - ((closest_dist - min_enforcer_dist)/_enforcer_dist_range)
+	pass
+
+func _get_closest_enforcer_dist() -> float:
+	if enforcers.is_empty():
+		return DEFAULT_NO_ENFORCER_DIST
+	elif enforcers.size() == 1:
+		return character.global_position.distance_to(enforcers[0].global_position)
+	
+	var char_global: Vector3 = character.global_position
+	var lowestSquareDist : float = INF
+	for e in enforcers:
+		var eSquareDist = e.global_position.distance_squared_to(char_global)
+		if eSquareDist < lowestSquareDist:
+			lowestSquareDist = eSquareDist
+	return sqrt(lowestSquareDist)

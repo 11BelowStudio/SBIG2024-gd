@@ -6,6 +6,7 @@ extends Node3D
 @onready var _anchor: StaticBody3D = $door_anchor
 @onready var _door: RigidBody3D = $door_dynamic/Node/door
 @onready var _doorNoisePlayer: AudioStreamPlayer3D = %DoorNoisePlayer
+@onready var _doorMesh = $door_dynamic/Node/door/door
 
 ## set this to lock/unlock the door as needed
 @export var door_state: DoorStates = DoorStates.LOCKED:
@@ -14,6 +15,9 @@ extends Node3D
 		_on_update_door_state(value)
 
 enum DoorStates {LOCKED, OPEN}
+
+@export_group("the material override")
+@export var _doorMaterialOverride: BaseMaterial3D
 
 func is_open() -> bool:
 	return door_state == DoorStates.OPEN
@@ -42,11 +46,15 @@ func _on_update_door_state(newState: DoorStates) -> void:
 		if newState == DoorStates.LOCKED:
 			_door.mass = 100
 		else:
-			_door.mass = 1
+			_door.mass = 0.25
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	if _doorMaterialOverride:
+		_doorMesh.material_override = _doorMaterialOverride
+	
 	_on_update_door_state(door_state)
 	pass # Replace with function body.
 
