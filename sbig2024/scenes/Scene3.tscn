@@ -21,4 +21,4 @@ _apartment_door_open = true
 bus = &"Master"
 intensity = 1.0
 
-[connection signal="player_in_room" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_in_room"]
+[connection signal="player_room_midpoint" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_room_midpoint"]

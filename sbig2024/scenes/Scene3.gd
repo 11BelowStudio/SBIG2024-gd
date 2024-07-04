@@ -15,8 +15,7 @@ func _process(delta: float) -> void:
 	apartment.fpui.vignette_intensity(character.real_fov_intensity)
 	pass
 
-
-func _on_apartment_hall_scene_player_in_room() -> void:
+func _on_apartment_hall_scene_player_room_midpoint() -> void:
 	if _reached_room:
 		return
 	_reached_room = true

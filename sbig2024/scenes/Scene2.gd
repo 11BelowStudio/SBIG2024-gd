@@ -3,6 +3,8 @@ extends Node
 signal level_won
 signal level_lost
 
+@onready var _alleyBlocker: AnimatableBody3D = %AlleyBlocker
+
 const DEFAULT_NO_ENFORCER_DIST: float = -1
 
 @export var min_enforcer_dist: float = 4:
@@ -183,6 +185,9 @@ func _jumpscare_time() -> void:
 	if _state != Scene2States.STICKER_PLACED:
 		return
 	_state = Scene2States.JUMPSCARE
+	
+	_alleyBlocker.free()
+	_alleyBlocker = null
 	ui.hide_instruction()
 	
 	_enforcer = _enforcerScene.instantiate()

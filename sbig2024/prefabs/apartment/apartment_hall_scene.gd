@@ -4,6 +4,8 @@ extends Node3D
 
 @onready var enforcerDoor: DynamicDoor = %EnforcerDoor
 @onready var apartmentDoor: DynamicDoor = %ApartmentDoor
+## exit door node
+@onready var exitDoor: Node3D = %exitDoor
 
 @onready var sticker: UseGetSticker = $StickerGet
 
@@ -42,8 +44,8 @@ extends Node3D
 		_enforcer_door_open = value
 		set_enforcer_door_open(value)
 
-## emitted when player in room
-signal player_in_room
+## emitted when player in room midpoint
+signal player_room_midpoint
 
 ## emitted when player at door area
 signal player_door_area
@@ -59,6 +61,12 @@ signal player_hall_3
 
 ## emitted when player at exit area
 signal player_exit_area
+
+
+signal player_entered_room
+signal player_left_room
+signal player_entered_hall
+signal player_left_hall
 
 
 # Called when the node enters the scene tree for the first time.
@@ -123,7 +131,7 @@ func _on_apt_door_trigger_body_entered(body: Node3D) -> void:
 func _on_in_room_trigger_body_entered(body: Node3D) -> void:
 	var player: FPCharacter = body as FPCharacter
 	if player:
-		player_in_room.emit()
+		player_room_midpoint.emit()
 	pass # Replace with function body.
 
 
@@ -155,3 +163,31 @@ func _on_use_get_sticker_sticker_obtained_signal() -> void:
 
 
 
+
+
+func _on_entire_room_trigger_body_entered(body: Node3D) -> void:
+	var player: FPCharacter = body as FPCharacter
+	if player:
+		player_entered_room.emit()
+	pass # Replace with function body.
+
+
+func _on_entire_room_trigger_body_exited(body: Node3D) -> void:
+	var player: FPCharacter = body as FPCharacter
+	if player:
+		player_left_room.emit()
+	pass # Replace with function body.
+
+
+func _on_entire_hall_trigger_body_entered(body: Node3D) -> void:
+	var player: FPCharacter = body as FPCharacter
+	if player:
+		player_entered_hall.emit()
+	pass # Replace with function body.
+
+
+func _on_entire_hall_trigger_body_exited(body: Node3D) -> void:
+	var player: FPCharacter = body as FPCharacter
+	if player:
+		player_left_hall.emit()
+	pass # Replace with function body.

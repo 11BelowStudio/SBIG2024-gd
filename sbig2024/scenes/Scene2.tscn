@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://4b5jwug58moo"]
+[gd_scene load_steps=25 format=3 uid="uid://4b5jwug58moo"]
 
 [ext_resource type="PackedScene" uid="uid://tt1dhet81x6t" path="res://addons/kenney_prototype_tools/scenes/light/light_02.tscn" id="1_6ucl6"]
 [ext_resource type="Script" path="res://scenes/Scene2.gd" id="1_218to"]
@@ -50,6 +50,9 @@ size = Vector3(3, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n1cjn"]
 size = Vector3(1, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3h8a"]
+size = Vector3(1, 3, 3.5)
 
 [node name="Scene2" type="Node3D"]
 script = ExtResource("1_218to")
@@ -107,6 +110,15 @@ collision_layer = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/PlayerBlockers/Blocker2"]
 shape = SubResource("BoxShape3D_n1cjn")
+
+[node name="AlleyBlocker" type="AnimatableBody3D" parent="World/PlayerBlockers"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -2.5)
+collision_layer = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/PlayerBlockers/AlleyBlocker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+shape = SubResource("BoxShape3D_v3h8a")
 
 [node name="Buildings" type="Node3D" parent="World"]
 
@@ -175,7 +187,7 @@ unique_name_in_owner = true
 bus = &"Master"
 
 [node name="Character" parent="." node_paths=PackedStringArray("look_target") instance=ExtResource("10_atl1s")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 0, -8)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 0, -11)
 look_target = NodePath("../World/StickerPlace")
 min_modifier_dist = 5.0
 max_modifier_dist = 15.0

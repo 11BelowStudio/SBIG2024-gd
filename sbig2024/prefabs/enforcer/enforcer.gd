@@ -394,7 +394,13 @@ func _physics_process(delta: float) -> void:
 	var offset: Vector3 = _nav_agent.get_next_path_position() - global_position
 	offset.y = 0
 	if offset != Vector3.ZERO:
-		look_at(global_position + offset, Vector3.UP)
+		#look_at(global_position + offset, Vector3.UP)
+		
+		global_transform.basis = global_transform.basis.slerp(
+			global_transform.looking_at(_nav_agent.get_next_path_position(), Vector3.UP).basis,
+		delta * 5)
+		
+		
 	
 	
 	

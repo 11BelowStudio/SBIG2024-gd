@@ -110,7 +110,7 @@ _subresources={
 "physics/shape_type": 2
 },
 "PATH:Node/Walls/Door Wall": {
-"generate/physics": true,
+"import/skip_import": true,
 "physics/shape_type": 2
 },
 "PATH:Node/Walls/Side Wall": {

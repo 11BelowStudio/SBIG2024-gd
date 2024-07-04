@@ -31,7 +31,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(wnoise_filter.cutoff_hz)
 	wnoise_filter.cutoff_hz = lerpf(wnoise_filter.cutoff_hz, target_filter_hz, _filter_target_lerp)
 	pass
 

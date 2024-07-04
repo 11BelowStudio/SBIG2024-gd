@@ -26,7 +26,30 @@ extends AudioStreamPlayer
 		intensity = value
 		var delay_range : float = _max_delay_delta - _min_delay_delta
 		_current_delay = _max_delay_delta - (delay_range * value)
-		
+
+@export_range(0,1) var _vol: float = 0:
+	set(value):
+		if value < 0:
+			value = 0
+		elif value > 1:
+			value = 1
+		volume_db = linear_to_db(value)
+	get:
+		return db_to_linear(volume_db)
+
+@export_range(0,1) var vol_target: float = 0:
+	set(value):
+		if value < 0:
+			value = 0
+		elif value > 1:
+			value = 1
+		vol_target = value
+
+@export var _delta_lerp_vol: float = 0.75
+
+func set_volume_01(newVol01: float) -> void:
+	vol_target = newVol01
+	_vol = newVol01
 
 var _current_delay: float = _max_delay_delta
 
@@ -46,6 +69,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	var currentVol = _vol
+	if currentVol != vol_target:
+		_vol = lerpf(currentVol, vol_target, _delta_lerp_vol * delta)
 	
 	if intensity != intensity_target:
 		var delta_lerp = _delta_lerp_amount

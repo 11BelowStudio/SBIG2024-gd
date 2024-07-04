@@ -6,5 +6,8 @@
 [node name="Heartbeater" type="AudioStreamPlayer"]
 stream = ExtResource("1_oj1ph")
 max_polyphony = 2
-bus = &"heartbeat"
+bus = &"_heartbeat"
 script = ExtResource("2_xfihx")
+_delta_lerp_amount = 0.9
+_vol = 1.0
+vol_target = 1.0

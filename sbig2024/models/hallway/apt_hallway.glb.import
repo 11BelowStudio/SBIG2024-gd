@@ -35,18 +35,6 @@ _subresources={
 "generate/physics": true,
 "physics/shape_type": 1
 },
-"PATH:Node/AptDoors/door10": {
-"generate/physics": true,
-"physics/shape_type": 1
-},
-"PATH:Node/AptDoors/door11": {
-"generate/physics": true,
-"physics/shape_type": 1
-},
-"PATH:Node/AptDoors/door12": {
-"generate/physics": true,
-"physics/shape_type": 1
-},
 "PATH:Node/AptDoors/door2": {
 "generate/physics": true,
 "physics/shape_type": 1
@@ -103,6 +91,66 @@ _subresources={
 "generate/physics": true,
 "physics/shape_type": 1
 },
+"PATH:Node/EnforcerHole2/Ceiling3": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole2/Floor3": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole2/Wall4": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole2/Wall5": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole2/Wall6": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole3/Ceiling4": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole3/Floor4": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole3/Wall7": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole3/Wall8": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole3/Wall9": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole4/Ceiling5": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole4/Floor5": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole4/Wall10": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole4/Wall11": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/EnforcerHole4/Wall12": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
 "PATH:Node/Floor": {
 "generate/physics": true,
 "physics/shape_type": 1
@@ -141,7 +189,7 @@ _subresources={
 },
 "PATH:Node/Walls/Doorframe_textured10": {
 "generate/physics": true,
-"physics/shape_type": 1
+"physics/shape_type": 2
 },
 "PATH:Node/Walls/Doorframe_textured11": {
 "generate/physics": true,
@@ -149,7 +197,7 @@ _subresources={
 },
 "PATH:Node/Walls/Doorframe_textured12": {
 "generate/physics": true,
-"physics/shape_type": 2
+"physics/shape_type": 1
 },
 "PATH:Node/Walls/Doorframe_textured13": {
 "generate/physics": true,
@@ -161,11 +209,11 @@ _subresources={
 },
 "PATH:Node/Walls/Doorframe_textured15": {
 "generate/physics": true,
-"physics/shape_type": 1
+"physics/shape_type": 2
 },
 "PATH:Node/Walls/Doorframe_textured2": {
 "generate/physics": true,
-"physics/shape_type": 1
+"physics/shape_type": 2
 },
 "PATH:Node/Walls/Doorframe_textured3": {
 "generate/physics": true,
@@ -173,7 +221,7 @@ _subresources={
 },
 "PATH:Node/Walls/Doorframe_textured4": {
 "generate/physics": true,
-"physics/shape_type": 1
+"physics/shape_type": 2
 },
 "PATH:Node/Walls/Doorframe_textured5": {
 "generate/physics": true,
@@ -181,7 +229,7 @@ _subresources={
 },
 "PATH:Node/Walls/Doorframe_textured6": {
 "generate/physics": true,
-"physics/shape_type": 1
+"physics/shape_type": 2
 },
 "PATH:Node/Walls/Doorframe_textured7": {
 "generate/physics": true,

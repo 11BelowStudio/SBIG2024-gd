@@ -36,6 +36,17 @@ enum Scene1State {
 @export var _sticker_progress: float = 0
 @export var _sticker_decay_delta: float = 0.9
 
+
+@export var intensity: float = 0
+@export var _min_door_dist_intensity: float = 6
+@export var _max_door_dist_intensity: float = 24
+
+func _door_dist_intensity_range():
+	return _max_door_dist_intensity - _min_door_dist_intensity
+
+var _player_in_hall: bool = false
+@onready var _heartbeater = $Heartbeater
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -49,6 +60,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if _player_in_hall:
+		var dist_to_door: float = character.global_position.distance_to(apartment.exitDoor.global_position)
+		if dist_to_door >= _max_door_dist_intensity:
+			intensity = 0
+		elif dist_to_door <= _min_door_dist_intensity:
+			intensity = 1
+		else:
+			intensity = 1 - ((dist_to_door - _min_door_dist_intensity)/_door_dist_intensity_range())
+		_heartbeater.intensity_target = intensity
+		apartment.fpui.vignette_intensity(intensity)
 	
 	if _state == Scene1State.SPAWNED:
 		match sticker_state:
@@ -133,4 +155,16 @@ func _on_apartment_hall_scene_player_exit_area() -> void:
 	if _state != Scene1State.DONE:
 		_state = Scene1State.DONE
 		level_won.emit()
+	pass # Replace with function body.
+
+
+func _on_apartment_hall_scene_player_entered_hall() -> void:
+	_player_in_hall = true
+	_heartbeater.vol_target = 1
+	pass # Replace with function body.
+
+
+func _on_apartment_hall_scene_player_left_hall() -> void:
+	_player_in_hall = false
+	_heartbeater.vol_target = 0
 	pass # Replace with function body.

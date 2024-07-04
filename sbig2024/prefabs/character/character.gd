@@ -578,9 +578,18 @@ func _process(delta: float) -> void:
 	
 	if look_target: # if we have a look target
 		$UserInterface/DebugPanel.add_property("Target dist",_look_target_dist, 5)
-		if !Input.is_action_pressed(LOOK_AROUND): # if 'LOOK AROUND' action not held
+		if (
+			_look_target_dist < max_modifier_dist # if within range of the target
+			and 
+			!Input.is_action_pressed(LOOK_AROUND) # if 'LOOK AROUND' action not held
+		):
 			# look at the look target.
-			HEAD.look_at(look_target.global_position)
+			
+			#HEAD.look_at(look_target.global_position)
+			
+			HEAD.global_transform.basis = HEAD.global_transform.basis.slerp(
+				HEAD.global_transform.looking_at(look_target.global_position, Vector3.UP).basis,
+			delta * 5.0)
 		else:
 			# free look!
 			pass

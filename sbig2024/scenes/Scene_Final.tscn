@@ -13,17 +13,19 @@ _enforcerScene = ExtResource("2_qaarp")
 max_enforcer_dist = 50.0
 
 [node name="Character" parent="." instance=ExtResource("1_qlmnn")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.5, 0, 5)
-_initial_fov_intensity = 1.0
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+sprint_enabled = true
 
 [node name="ApartmentHallScene" parent="." instance=ExtResource("2_qgcx3")]
-hide_sticker = true
+_apartment_door_open = true
 
 [node name="Heartbeater" parent="." instance=ExtResource("4_4eqkm")]
-bus = &"Master"
-intensity = 1.0
+_vol = 0.0
+vol_target = 0.0
 
 [node name="WhiteNoiseControl" parent="." instance=ExtResource("5_wfnxm")]
 
 [connection signal="hit_by_enforcer" from="Character" to="." method="_on_character_hit_by_enforcer"]
+[connection signal="player_entered_hall" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_entered_hall"]
 [connection signal="player_hall_3" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_hall_3"]
+[connection signal="player_left_hall" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_left_hall"]
