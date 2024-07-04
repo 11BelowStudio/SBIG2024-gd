@@ -41,7 +41,16 @@ func set_open(open: bool) -> void:
 func _on_update_door_state(newState: DoorStates) -> void:
 	
 	if _hinge:
-		_hinge.set_flag(HingeJoint3D.FLAG_USE_LIMIT, newState == DoorStates.LOCKED)
+		# _hinge.set_flag(HingeJoint3D.FLAG_USE_LIMIT, newState == DoorStates.LOCKED)
+		if newState == DoorStates.LOCKED:
+			#_hinge.PARAM_LIMIT_LOWER = 0
+			_hinge.set_param(HingeJoint3D.PARAM_LIMIT_LOWER, 0)
+			_hinge.set_param(HingeJoint3D.PARAM_LIMIT_UPPER, 0)
+			pass
+		else:
+			_hinge.set_param(HingeJoint3D.PARAM_LIMIT_LOWER, -90)
+			_hinge.set_param(HingeJoint3D.PARAM_LIMIT_UPPER, 90)
+			pass
 	if _door:
 		if newState == DoorStates.LOCKED:
 			_door.mass = 100

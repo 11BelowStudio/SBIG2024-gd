@@ -139,3 +139,7 @@ func _get_closest_enforcer_dist() -> float:
 		if eSquareDist < lowestSquareDist:
 			lowestSquareDist = eSquareDist
 	return sqrt(lowestSquareDist)
+
+
+func _on_exit_zone_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.

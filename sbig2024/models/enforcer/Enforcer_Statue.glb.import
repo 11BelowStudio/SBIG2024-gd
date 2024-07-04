@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/Enforcer_Statue.glb-f20fe3e8712c79d7d18e50c26
 [params]
 
 nodes/root_type=""
-nodes/root_name=""
+nodes/root_name="enforcer_statue"
 nodes/apply_root_scale=true
 nodes/root_scale=4.0
 meshes/ensure_tangents=true

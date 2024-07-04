@@ -84,8 +84,8 @@ func __get_patrol_nodes() -> Array[EnforcerPatrolNode]:
 @export var _moveSpeed_patrol: float = 3
 
 var _chase_target: Node3D
-var _patrol_global_position: Vector3 = Vector3.ZERO
-var _patrol_next_global_position: Vector3 = Vector3.ZERO
+var _patrol_global_position: Vector3 = Vector3.INF
+var _patrol_next_global_position: Vector3 = Vector3.INF
 var _patrol_new_next_pos_needed: bool = true
 var _investigate_global_position: Vector3 = Vector3.ZERO
 
@@ -168,6 +168,19 @@ func set_ai_state(new_ai_state: AiState) -> void:
 	_ai_state = new_ai_state
 	if _ai_type == AiType.GIGA_MONTY:
 		return
+	elif _ai_override == AiOverride.PASSIVE or _ai_state == AiState.PATROL:
+		if _patrol_next_global_position == Vector3.INF:
+			_update_next_patrol_position()
+		if _patrol_global_position == Vector3.INF:
+			_patrol_global_position = _patrol_next_global_position
+			_patrol_new_next_pos_needed = true
+		set_movement_target(_patrol_global_position)
+	elif _ai_state == AiState.INVESTIGATE:
+		set_movement_target(_investigate_global_position)
+	elif _ai_state == AiState.CHASE:
+		if !aggroSource.playing:
+			aggroSource.play()
+		set_movement_target(_chase_target.global_position)
 	
 
 func set_ai_override(new_ai_override: AiOverride) -> void:
@@ -252,7 +265,8 @@ func _complicated_investigate_phys_update() -> void:
 		set_movement_target(_chase_target.global_position)
 	if _nav_agent.is_navigation_finished():
 		# if reached target when investigating, go back to patrolling.
-		_ai_state = AiState.PATROL
+		set_ai_state(AiState.PATROL)
+		#_ai_state = AiState.PATROL
 		set_movement_target(_patrol_global_position)
 	pass
 
@@ -298,10 +312,7 @@ func _mark_nearby_patrol_nodes_as_visited(nearThisNode: EnforcerPatrolNode) -> v
 		func(pnode) : return pnode not in nearNodes
 	)
 
-func _complicated_patrol_update() -> void:
-	
-	if !_patrol_new_next_pos_needed:
-		return
+func _update_next_patrol_position():
 	if _patrol_nodes_unvisited.is_empty():
 		#_patrol_nodes_unvisited.append_array(_all_patrol_nodes)
 		_patrol_nodes_unvisited = __get_patrol_nodes()
@@ -313,7 +324,11 @@ func _complicated_patrol_update() -> void:
 	_mark_nearby_patrol_nodes_as_visited(nearest_node)
 	_patrol_next_global_position = nearest_node.global_position
 	_patrol_new_next_pos_needed = false
+
+func _complicated_patrol_update() -> void:
 	
+	if _patrol_new_next_pos_needed:
+		_update_next_patrol_position()
 	pass
 
 
