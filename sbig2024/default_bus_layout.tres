@@ -1,7 +1,11 @@
-[gd_resource type="AudioBusLayout" load_steps=8 format=3 uid="uid://dls51gwxiajqq"]
+[gd_resource type="AudioBusLayout" load_steps=9 format=3 uid="uid://dls51gwxiajqq"]
+
+[sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_ehvtm"]
+resource_name = "StereoEnhance"
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_8smlf"]
 resource_name = "Amplify"
+volume_db = 1.0
 
 [sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_ws5se"]
 resource_name = "Distortion"
@@ -49,15 +53,17 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"SFX"
-bus/3/effect/0/effect = SubResource("AudioEffectAmplify_8smlf")
+bus/3/effect/0/effect = SubResource("AudioEffectStereoEnhance_ehvtm")
 bus/3/effect/0/enabled = true
-bus/3/effect/1/effect = SubResource("AudioEffectDistortion_ws5se")
+bus/3/effect/1/effect = SubResource("AudioEffectAmplify_8smlf")
 bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectDistortion_ws5se")
+bus/3/effect/2/enabled = false
 bus/4/name = &"_whitenoise"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -0.00162125
+bus/4/volume_db = -5.04538
 bus/4/send = &"SFX"
 bus/4/effect/0/effect = SubResource("AudioEffectBandPassFilter_gkbsf")
 bus/4/effect/0/enabled = true

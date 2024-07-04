@@ -41,40 +41,40 @@ audio0 = ExtResource("6_cu2ew")
 unique_name_in_owner = true
 bus = &"Master"
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="TheWorld" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_30dnp")
 
-[node name="Cube" parent="NavigationRegion3D" instance=ExtResource("8_cnvir")]
+[node name="Cube" parent="TheWorld" instance=ExtResource("8_cnvir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 realScale = Vector3(50, 2, 50)
 
-[node name="PatrolNodeParent" parent="NavigationRegion3D" instance=ExtResource("9_6km0l")]
+[node name="PatrolNodeParent" parent="TheWorld" instance=ExtResource("9_6km0l")]
 unique_name_in_owner = true
 
-[node name="EnfPatrolNode" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+[node name="EnfPatrolNode" parent="TheWorld/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 
-[node name="EnfPatrolNode2" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+[node name="EnfPatrolNode2" parent="TheWorld/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 15)
 
-[node name="EnfPatrolNode3" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+[node name="EnfPatrolNode3" parent="TheWorld/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
 
-[node name="EnfPatrolNode4" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+[node name="EnfPatrolNode4" parent="TheWorld/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 
-[node name="EnfPatrolNode5" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+[node name="EnfPatrolNode5" parent="TheWorld/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15)
 
-[node name="EnfPatrolNode6" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+[node name="EnfPatrolNode6" parent="TheWorld/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -15)
 
-[node name="EnfPatrolNode7" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+[node name="EnfPatrolNode7" parent="TheWorld/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
 
-[node name="EnfPatrolNode8" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+[node name="EnfPatrolNode8" parent="TheWorld/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
 
-[node name="EnfPatrolNode9" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+[node name="EnfPatrolNode9" parent="TheWorld/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 
 [node name="Enforcer" parent="." instance=ExtResource("11_063yl")]
