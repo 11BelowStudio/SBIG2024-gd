@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="4_o4mxg"]
 [ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/sticker_place_outside.tscn" id="5_1myyf"]
 [ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="5_qhtn7"]
-[ext_resource type="AudioStream" uid="uid://fu1t0d577moj" path="res://sounds/718580__brunoauzet__lyon-fourviere-night.ogg" id="6_16rhk"]
+[ext_resource type="AudioStream" uid="uid://fu1t0d577moj" path="res://sounds/ambient/718580__brunoauzet__lyon-fourviere-night.ogg" id="6_16rhk"]
 [ext_resource type="PackedScene" uid="uid://kkfbqa8vyuq7" path="res://prefabs/buildings/building_a.tscn" id="7_3to5q"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="7_jprn3"]
 [ext_resource type="PackedScene" uid="uid://dubmgmel3dhc6" path="res://prefabs/buildings/building_b.tscn" id="8_5hy1m"]
@@ -160,8 +160,6 @@ _pos = Vector3(-22, -15, 8)
 [node name="EnforcerSpawn" type="Node3D" parent="World/Spawnpoints"]
 unique_name_in_owner = true
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 3, 0, -13)
-
-[node name="Geometry" type="Node" parent="."]
 
 [node name="Effects" type="Node" parent="."]
 

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="8_2orm4"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="9_7ggkp"]
 [ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="10_pisy3"]
-[ext_resource type="AudioStream" uid="uid://bmj2cmshpv10g" path="res://sounds/740972__nexotron__semibusy-citystreet-construction-site.ogg" id="11_2bjc3"]
+[ext_resource type="AudioStream" uid="uid://bmj2cmshpv10g" path="res://sounds/ambient/740972__nexotron__semibusy-citystreet-construction-site.ogg" id="11_2bjc3"]
 [ext_resource type="PackedScene" uid="uid://dw7r4hu0l2ybu" path="res://models/apartment/Apartment.glb" id="12_27hn0"]
 [ext_resource type="PackedScene" uid="uid://dh762ctlju3ks" path="res://prefabs/sticker_place_outside.tscn" id="12_bu4e5"]
 [ext_resource type="PackedScene" uid="uid://vtsrnm2snj21" path="res://models/hallway/apt_hallway.glb" id="13_6m3uw"]

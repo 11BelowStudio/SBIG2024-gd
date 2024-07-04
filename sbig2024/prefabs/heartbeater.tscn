@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rfla4vbmdnoc"]
 
-[ext_resource type="AudioStream" uid="uid://b0glf02m26dht" path="res://sounds/418788__name__heartbeat-single.wav" id="1_oj1ph"]
+[ext_resource type="AudioStream" uid="uid://b0glf02m26dht" path="res://sounds/ambient/418788__name__heartbeat-single.wav" id="1_oj1ph"]
 [ext_resource type="Script" path="res://scripts/heartbeater.gd" id="2_xfihx"]
 
 [node name="Heartbeater" type="AudioStreamPlayer"]

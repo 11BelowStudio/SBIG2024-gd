@@ -1,5 +1,5 @@
 class_name EnforcerPatrolNode
-extends Area3D
+extends StaticBody3D
 
 @onready var _nearbyCast = $NearbyCast
 

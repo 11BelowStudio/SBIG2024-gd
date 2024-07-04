@@ -45,7 +45,7 @@ var theSticker: StickerBase
 
 
 @export var _instruction_1: String = "Act natural, walk up to the box, get it done."
-@export var _instruction_2: String = "Get a bit closer, keep an eye out for enforcers (Q)..."
+@export var _instruction_2: String = "Get a bit closer, keep an eye out for enforcers (hold Q to look around)..."
 @export var _instruction_3: String = "Hold E to stick."
 @export var _instruction_4: String = "Keep calm, walk away, act natural..."
 
@@ -185,21 +185,23 @@ func _jumpscare_time() -> void:
 	_state = Scene2States.JUMPSCARE
 	ui.hide_instruction()
 	
-	character.sprint_enabled = true
-	
-	
 	_enforcer = _enforcerScene.instantiate()
 	
-	_enforcer.ai_type = Enforcer.AiType.GIGA_MONTY
-	
+	character.sprint_enabled = true
 	_enforcer.look_at_from_position(
 		_enforcerSpawn.position,
 		character.position,
 		Vector3.UP
 	)
 	
-	add_child(_enforcer)
+	
+	_enforcer.init_ai(Enforcer.AiType.GIGA_MONTY)
 	_enforcer.set_target_gm(character)
+	add_child(_enforcer)
+	
+	
+	
+	#_enforcer.set_ai_type(Enforcer.AiType.GIGA_MONTY)
 	enforcers.append(_enforcer)
 	
 

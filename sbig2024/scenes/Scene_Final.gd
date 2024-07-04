@@ -47,11 +47,14 @@ func _on_apartment_hall_scene_player_hall_3() -> void:
 	
 	_enforcer.navigation_finished.connect(Callable(_on_enforcer_navigation_finished))
 	
-	_enforcer.ai_type = Enforcer.AiType.GIGA_MONTY
+	
+	_enforcer.init_ai(Enforcer.AiType.GIGA_MONTY)
+	_enforcer.set_target_gm(apartment.enforcerMidHall)
+	
 	
 	add_child(_enforcer)
 	
-	_enforcer.set_target_gm(apartment.enforcerMidHall)
+	
 	#_enforcer._target = apartment.enforcerMidHall
 	
 	apartment.enforcerDoor.open_door()
@@ -74,8 +77,8 @@ func _on_enforcer_navigation_finished() -> void:
 
 func _on_character_hit_by_enforcer() -> void:
 	print("get dunked on")
-	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-	get_tree().quit()
+	#get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	#get_tree().quit()
 	pass # Replace with function body.
 
 

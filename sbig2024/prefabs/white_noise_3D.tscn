@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ew1y5u8lyyoc"]
 
-[ext_resource type="AudioStream" uid="uid://dki8digsx4r2q" path="res://sounds/whitenoise.wav" id="1_yq86d"]
+[ext_resource type="AudioStream" uid="uid://dki8digsx4r2q" path="res://sounds/enforcer/whitenoise.wav" id="1_yq86d"]
 [ext_resource type="Script" path="res://prefabs/white_noise_3D.gd" id="2_ua1r2"]
 
 [node name="WhiteNoise3D" type="AudioStreamPlayer3D"]

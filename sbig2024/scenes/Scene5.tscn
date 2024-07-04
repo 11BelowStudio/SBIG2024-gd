@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://6oxi8q1lji6q"]
+
+[ext_resource type="Script" path="res://scenes/Scene5.gd" id="1_5k3eb"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://prefabs/character/character.tscn" id="2_khp30"]
+[ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/ui/fpui.tscn" id="3_2hloj"]
+[ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="4_5n8ct"]
+[ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="5_l1xgv"]
+[ext_resource type="AudioStream" uid="uid://bmj2cmshpv10g" path="res://sounds/ambient/740972__nexotron__semibusy-citystreet-construction-site.ogg" id="6_cu2ew"]
+[ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="7_p2tau"]
+[ext_resource type="PackedScene" uid="uid://dykr0bp3jd62a" path="res://addons/kenney_prototype_tools/scenes/light/light_01.tscn" id="8_cnvir"]
+[ext_resource type="PackedScene" uid="uid://c5ft6puqrj1xn" path="res://prefabs/enforcer/patrol_node_parent.tscn" id="9_6km0l"]
+[ext_resource type="PackedScene" uid="uid://bmkb4vilpnwxo" path="res://prefabs/enforcer/enforcer_patrol_node.tscn" id="10_p2i8p"]
+[ext_resource type="PackedScene" uid="uid://dvabagf4huwm6" path="res://prefabs/enforcer/enforcer.tscn" id="11_063yl"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_30dnp"]
+vertices = PackedVector3Array(-19.5, 0.02, -19.5, -19.5, 0.02, 19.5, 19.5, 0.02, 19.5, 19.5, 0.02, -19.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 4294967041
+cell_height = 0.01
+
+[node name="Scene5" type="Node3D"]
+script = ExtResource("1_5k3eb")
+
+[node name="Character" parent="." instance=ExtResource("2_khp30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+sprint_enabled = true
+
+[node name="FPUI" parent="." instance=ExtResource("3_2hloj")]
+
+[node name="Effects" type="Node" parent="."]
+
+[node name="WhiteNoiseControl" parent="Effects" instance=ExtResource("4_5n8ct")]
+unique_name_in_owner = true
+
+[node name="TwoTrackAmbience" parent="Effects" instance=ExtResource("5_l1xgv")]
+unique_name_in_owner = true
+audio0 = ExtResource("6_cu2ew")
+
+[node name="Heartbeater" parent="Effects" instance=ExtResource("7_p2tau")]
+unique_name_in_owner = true
+bus = &"Master"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_30dnp")
+
+[node name="Cube" parent="NavigationRegion3D" instance=ExtResource("8_cnvir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+realScale = Vector3(50, 2, 50)
+
+[node name="PatrolNodeParent" parent="NavigationRegion3D" instance=ExtResource("9_6km0l")]
+unique_name_in_owner = true
+
+[node name="EnfPatrolNode" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+
+[node name="EnfPatrolNode2" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 15)
+
+[node name="EnfPatrolNode3" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
+
+[node name="EnfPatrolNode4" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="EnfPatrolNode5" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15)
+
+[node name="EnfPatrolNode6" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -15)
+
+[node name="EnfPatrolNode7" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+
+[node name="EnfPatrolNode8" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+
+[node name="EnfPatrolNode9" parent="NavigationRegion3D/PatrolNodeParent" instance=ExtResource("10_p2i8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="Enforcer" parent="." instance=ExtResource("11_063yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 8)
+_ai_override = 1
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.211325, -0.846467, 0.488708, 0, 0.5, 0.866025, -0.977416, 0.183013, -0.105662, 0, 24, 0)
+shadow_enabled = true

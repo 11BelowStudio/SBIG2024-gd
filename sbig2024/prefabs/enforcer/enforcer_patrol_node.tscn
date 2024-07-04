@@ -7,7 +7,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_p8cub"]
 radius = 5.0
 
-[node name="EnfPatrolNode" type="StaticBody3D"]
+[node name="EnfPatrolNode" type="StaticBody3D" groups=["enforcer_patrol"]]
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("1_fyu22")
