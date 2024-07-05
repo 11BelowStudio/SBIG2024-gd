@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=9 format=3 uid="uid://dls51gwxiajqq"]
+[gd_resource type="AudioBusLayout" load_steps=13 format=3 uid="uid://dls51gwxiajqq"]
 
 [sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_ehvtm"]
 resource_name = "StereoEnhance"
@@ -30,7 +30,21 @@ hipass = 0.2
 dry = 0.6
 wet = 0.4
 
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_ebjrh"]
+resource_name = "Compressor"
+
 [sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_iuo5k"]
+resource_name = "Distortion"
+mode = 3
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_lgjpj"]
+resource_name = "Amplify"
+volume_db = 4.0
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_y3vru"]
+resource_name = "Compressor"
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_jci6b"]
 resource_name = "Distortion"
 mode = 3
 
@@ -85,5 +99,19 @@ bus/6/mute = false
 bus/6/bypass_fx = false
 bus/6/volume_db = 0.0
 bus/6/send = &"SFX"
-bus/6/effect/0/effect = SubResource("AudioEffectDistortion_iuo5k")
+bus/6/effect/0/effect = SubResource("AudioEffectCompressor_ebjrh")
 bus/6/effect/0/enabled = true
+bus/6/effect/1/effect = SubResource("AudioEffectDistortion_iuo5k")
+bus/6/effect/1/enabled = true
+bus/6/effect/2/effect = SubResource("AudioEffectAmplify_lgjpj")
+bus/6/effect/2/enabled = true
+bus/7/name = &"_vidscreen"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.0
+bus/7/send = &"SFX"
+bus/7/effect/0/effect = SubResource("AudioEffectCompressor_y3vru")
+bus/7/effect/0/enabled = true
+bus/7/effect/1/effect = SubResource("AudioEffectDistortion_jci6b")
+bus/7/effect/1/enabled = true

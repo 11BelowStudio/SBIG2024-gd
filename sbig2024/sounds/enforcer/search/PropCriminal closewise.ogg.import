@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://chhpq587cpke5"
+path="res://.godot/imported/PropCriminal closewise.ogg-cdeb791d1a7c654b135a76d744532570.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/enforcer/search/PropCriminal closewise.ogg"
+dest_files=["res://.godot/imported/PropCriminal closewise.ogg-cdeb791d1a7c654b135a76d744532570.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

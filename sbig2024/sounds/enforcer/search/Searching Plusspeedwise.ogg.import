@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://nch30m6usvrm"
+path="res://.godot/imported/Searching Plusspeedwise.ogg-7a6d6885b381a3df14ac9f44e2c3cdb9.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/enforcer/search/Searching Plusspeedwise.ogg"
+dest_files=["res://.godot/imported/Searching Plusspeedwise.ogg-7a6d6885b381a3df14ac9f44e2c3cdb9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

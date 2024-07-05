@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bw6cll3lxu858"
+path="res://.godot/imported/Plusgood Antenoon Citizen.ogg-aacab24d5af5e9cbeb64056cb9b96db6.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/enforcer/passive/Plusgood Antenoon Citizen.ogg"
+dest_files=["res://.godot/imported/Plusgood Antenoon Citizen.ogg-aacab24d5af5e9cbeb64056cb9b96db6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

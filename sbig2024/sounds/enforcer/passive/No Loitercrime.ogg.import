@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://can3fvcl0dmus"
+path="res://.godot/imported/No Loitercrime.ogg-71845562e8312ab5793ecb65323ead5f.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/enforcer/passive/No Loitercrime.ogg"
+dest_files=["res://.godot/imported/No Loitercrime.ogg-71845562e8312ab5793ecb65323ead5f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

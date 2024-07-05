@@ -67,7 +67,8 @@ func __get_patrol_nodes() -> Array[EnforcerPatrolNode]:
 		push_error("cannot get patrol nodes whilst node isn't ready and such!")
 		return []
 
-
+@export var _stuck_timer_duration: float = 3
+var _stuck_timer: float = -INF
 
 @onready var _nav_agent: NavigationAgent3D = $NavigationAgent3D
 
@@ -143,6 +144,7 @@ func actor_setup():
 	if _ai_type == AiType.GIGA_MONTY:
 		if _target_gm:
 			set_movement_target(_target_gm.global_position)
+			_say_chase_line()
 
 
 func init_ai(ai_type: AiType, ai_override: AiOverride = AiOverride.PASSIVE, ai_state: AiState = AiState.PATROL):
@@ -159,7 +161,7 @@ func set_ai_type(new_ai_type: AiType) -> void:
 				set_movement_target(_target_gm.global_position)
 			__aggro_startup()
 			if is_node_ready():
-				aggroSource.play()
+				_say_chase_line()
 			pass
 		AiType.COMPLICATED:
 			set_ai_override(_ai_override)
@@ -178,10 +180,10 @@ func set_ai_state(new_ai_state: AiState) -> void:
 			_patrol_new_next_pos_needed = true
 		set_movement_target(_patrol_global_position)
 	elif _ai_state == AiState.INVESTIGATE:
+		_say_hunt_line()
 		set_movement_target(_investigate_global_position)
 	elif _ai_state == AiState.CHASE:
-		if !aggroSource.playing:
-			aggroSource.play()
+		_say_chase_line()
 		set_movement_target(_chase_target.global_position)
 	
 
@@ -209,6 +211,26 @@ func __aggro_startup() -> void:
 		whiteNoiseSource.play()
 		glowingRedLight.visible = true
 		passiveSource.stop()
+
+
+func _say_passive_line() -> void:
+	print("say_passive_line")
+	if !passiveSource.playing:
+		passiveSource.play()
+
+func _say_chase_line() -> void:
+	print("say_chase_line")
+	passiveSource.stop()
+	if !aggroSource.playing:
+		huntingSource.stop()
+		aggroSource.play()
+
+func _say_hunt_line() -> void:
+	print("say_hunt_line")
+	if !huntingSource.playing:
+		if !aggroSource.playing:
+			huntingSource.play()
+	pass
 
 
 ## give a node as a target for Giga Monty mode
@@ -264,6 +286,7 @@ func _complicated_investigate_phys_update() -> void:
 	if _can_see_player():
 		## start chasing if we can see the player
 		_ai_state = AiState.CHASE
+		_say_chase_line()
 		huntingSource.stop()
 		aggroSource.play()
 		_chase_target = character
@@ -283,6 +306,7 @@ func _complicated_patrol_phys_update() -> void:
 		_chase_target = character
 		_investigate_global_position = character.global_position
 		set_movement_target(_chase_target.global_position)
+		_say_chase_line()
 	if _nav_agent.is_navigation_finished():
 		# if reached current patrol target, go to the queued target.
 		# indicate that we need to queue a new patrol target
@@ -346,6 +370,13 @@ func _process(delta: float) -> void:
 		AiType.GIGA_MONTY:
 			pass
 		AiType.COMPLICATED:
+			
+			# bodge fix for enforcers getting stuck on doors
+			if self.get_real_velocity().is_zero_approx():
+				#push_error("wee woo wee woo %s is stuck" % self.name)
+				_patrol_global_position = Vector3.INF
+				set_ai_state(AiState.PATROL)
+			
 			match _ai_override:
 				AiOverride.PASSIVE:
 					_complicated_patrol_update()
@@ -377,7 +408,7 @@ func _physics_process(delta: float) -> void:
 				AiOverride.PASSIVE:
 					if !passiveSource.playing:
 						if _can_see_player_peaceful():
-							passiveSource.play()
+							_say_passive_line()
 					_complicated_patrol_phys_update()
 				AiOverride.AGGRESSIVE:
 					_detection_ray_update()

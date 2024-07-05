@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dt8ekn8018gyd"
+path="res://.godot/imported/The Anthem Of The Regime.ogg-58133f7b3da8940ea7a098d730abcb95.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/The Anthem Of The Regime.ogg"
+dest_files=["res://.godot/imported/The Anthem Of The Regime.ogg-58133f7b3da8940ea7a098d730abcb95.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

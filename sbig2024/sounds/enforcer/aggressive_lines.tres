@@ -1,3 +1,17 @@
-[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://cffdgr2i7dtfl"]
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://cffdgr2i7dtfl"]
+
+[ext_resource type="AudioStream" uid="uid://3hxa0cnrakn4" path="res://sounds/enforcer/aggro/Propcriminal Detected.ogg" id="1_f7wyv"]
+[ext_resource type="AudioStream" uid="uid://bces2xdsui1mu" path="res://sounds/enforcer/aggro/Unproceed Propcriminal.ogg" id="2_rcwmr"]
+[ext_resource type="AudioStream" uid="uid://d3qawrxjossvy" path="res://sounds/enforcer/aggro/Unproceed.ogg" id="3_we7bd"]
+[ext_resource type="AudioStream" uid="uid://bir0vqxgqh13b" path="res://sounds/enforcer/aggro/Assume the position.ogg" id="4_78qqk"]
 
 [resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_f7wyv")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_rcwmr")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_we7bd")
+stream_2/weight = 0.75
+stream_3/stream = ExtResource("4_78qqk")
+stream_3/weight = 0.5

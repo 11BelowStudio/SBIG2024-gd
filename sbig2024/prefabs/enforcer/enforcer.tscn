@@ -264,7 +264,6 @@ bus = &"_enforcer_vocals"
 [node name="WhiteNoise" parent="Noise" instance=ExtResource("3_k2io5")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
-stream_paused = true
 max_distance = 15.0
 doppler_tracking = 2
 

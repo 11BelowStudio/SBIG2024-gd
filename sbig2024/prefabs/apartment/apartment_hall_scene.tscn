@@ -208,7 +208,7 @@ bus = &"Ambience"
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3125, 1.75, 2.3125)
 max_distance = 10.0
-bus = &"SFX"
+bus = &"_vidscreen"
 
 [node name="WindowAudio" type="AudioStreamPlayer3D" parent="AudioSources"]
 unique_name_in_owner = true

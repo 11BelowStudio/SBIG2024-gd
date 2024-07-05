@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://byvydukidk6i2"]
+[gd_scene load_steps=9 format=3 uid="uid://byvydukidk6i2"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/scenes/Menus/MainMenu/MainMenu.tscn" id="1_pss7b"]
 [ext_resource type="Theme" uid="uid://ckl3wagahv1hk" path="res://fonts/comic_neue_theme.tres" id="2_t6t8g"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c1g50h2avck3w" path="res://maaack_examples/scenes/Credits/Credits.tscn" id="3_vmius"]
 [ext_resource type="PackedScene" uid="uid://dvh2vqgob2niq" path="res://prefabs/apartment/apartment_hall_scene.tscn" id="4_s5sat"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://prefabs/character/character.tscn" id="5_i2hkq"]
+[ext_resource type="AudioStream" uid="uid://ds6iqnv54eaes" path="res://sounds/The Nondescript Dystopian National Anthem.ogg" id="6_armtm"]
 
 [node name="MainMenu" instance=ExtResource("1_pss7b")]
 theme = ExtResource("2_t6t8g")
@@ -14,6 +15,9 @@ script = ExtResource("2_y71rv")
 game_scene_path = "res://maaack_examples/scenes/GameScene/GameUI.tscn"
 options_packed_scene = ExtResource("3_lqjmk")
 credits_packed_scene = ExtResource("3_vmius")
+
+[node name="BackgroundMusicPlayer" parent="." index="1"]
+stream = ExtResource("6_armtm")
 
 [node name="Title" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="0"]
 text = "Flypost"

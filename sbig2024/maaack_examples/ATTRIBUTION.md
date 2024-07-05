@@ -7,6 +7,10 @@ Developed by [11BelowStudio](https://11BelowStudio.itch.io)
 
 3D models by [Delta100](https://itch.io/profile/delta100)
 
+Percival was voiced by himself, unfortunately.
+
+The rest of the voice acting was provided by [Virety Rammithel](https://www.twitch.tv/virety_rammithel)
+
 ## License stuff
 
 #### Quality First Person Controller v2

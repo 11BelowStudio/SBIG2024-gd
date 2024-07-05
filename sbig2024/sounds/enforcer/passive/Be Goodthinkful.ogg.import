@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://oydeo3wmvlue"
+path="res://.godot/imported/Be Goodthinkful.ogg-7912252f2acf10eccf1d77a1aabffa2a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/enforcer/passive/Be Goodthinkful.ogg"
+dest_files=["res://.godot/imported/Be Goodthinkful.ogg-7912252f2acf10eccf1d77a1aabffa2a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl03t5imc42nl"]
+[gd_scene load_steps=8 format=3 uid="uid://cl03t5imc42nl"]
 
 [ext_resource type="Script" path="res://scenes/Scene_Final.gd" id="1_lcaip"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://prefabs/character/character.tscn" id="1_qlmnn"]
+[ext_resource type="AudioStream" uid="uid://cbl8ay863k86p" path="res://sounds/announcements/Announcement 3.mp3" id="2_7hghf"]
 [ext_resource type="PackedScene" uid="uid://dvabagf4huwm6" path="res://prefabs/enforcer/enforcer.tscn" id="2_qaarp"]
 [ext_resource type="PackedScene" uid="uid://dvh2vqgob2niq" path="res://prefabs/apartment/apartment_hall_scene.tscn" id="2_qgcx3"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="4_4eqkm"]
@@ -9,6 +10,7 @@
 
 [node name="SceneFinal" type="Node3D"]
 script = ExtResource("1_lcaip")
+vidscreen_sound = ExtResource("2_7hghf")
 _enforcerScene = ExtResource("2_qaarp")
 max_enforcer_dist = 50.0
 

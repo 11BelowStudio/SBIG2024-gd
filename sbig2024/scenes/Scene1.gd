@@ -30,6 +30,7 @@ enum Scene1State {
 
 @export var _intro_text_1: String = "11BelowStudio presents"
 @export var _intro_text_2: String = "This year's SBIGJam entry"
+@export_multiline var _intro_text_2a:String = "3D Models: Delta100\nPercival: Himself\nThe other voice acting: Virety Rammithel"
 @export var _intro_text_3: String = "Flypost"
 
 @export var _sticker_duration: float = 3
@@ -140,14 +141,16 @@ func _on_apartment_hall_scene_player_hall_1() -> void:
 func _on_apartment_hall_scene_player_hall_2() -> void:
 	if _state == Scene1State.HALL_1:
 		apartment.fpui.show_intro_a(_intro_text_2)
+		apartment.fpui.show_instruction(_intro_text_2a)
 		_state = Scene1State.HALL_2
 	pass # Replace with function body.
 
 
 func _on_apartment_hall_scene_player_hall_3() -> void:
 	if _state == Scene1State.HALL_2:
-		apartment.fpui.show_intro_a("")
+		apartment.fpui.hide_intro_a()
 		apartment.fpui.show_intro_b(_intro_text_3)
+		apartment.fpui.hide_instruction()
 		_state = Scene1State.HALL_3
 	pass # Replace with function body.
 

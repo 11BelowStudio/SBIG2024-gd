@@ -1,3 +1,26 @@
-[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://b1rmvnn4wi1gp"]
+[gd_resource type="AudioStreamRandomizer" load_steps=8 format=3 uid="uid://b1rmvnn4wi1gp"]
+
+[ext_resource type="AudioStream" uid="uid://oydeo3wmvlue" path="res://sounds/enforcer/passive/Be Goodthinkful.ogg" id="1_cpjq8"]
+[ext_resource type="AudioStream" uid="uid://c5h60m4vog6sw" path="res://sounds/enforcer/passive/Be Uncrimeful.ogg" id="2_r2aa5"]
+[ext_resource type="AudioStream" uid="uid://mp8oklqyl7hp" path="res://sounds/enforcer/passive/Doubleplusgood antenoon citizen.ogg" id="3_41ft4"]
+[ext_resource type="AudioStream" uid="uid://pw27slvoo0o2" path="res://sounds/enforcer/passive/Doubleplusgood.ogg" id="4_bp0jb"]
+[ext_resource type="AudioStream" uid="uid://can3fvcl0dmus" path="res://sounds/enforcer/passive/No Loitercrime.ogg" id="5_6jwi6"]
+[ext_resource type="AudioStream" uid="uid://cnna2gtmbtkqx" path="res://sounds/enforcer/passive/No Propcrime.ogg" id="6_6gsc8"]
+[ext_resource type="AudioStream" uid="uid://bw6cll3lxu858" path="res://sounds/enforcer/passive/Plusgood Antenoon Citizen.ogg" id="7_yie0o"]
 
 [resource]
+streams_count = 7
+stream_0/stream = ExtResource("1_cpjq8")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_r2aa5")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_41ft4")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_bp0jb")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_6jwi6")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_6gsc8")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("7_yie0o")
+stream_6/weight = 1.0

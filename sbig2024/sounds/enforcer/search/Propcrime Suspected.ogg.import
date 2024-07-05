@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cfhvg7y2bv4ld"
+path="res://.godot/imported/Propcrime Suspected.ogg-daba9b2ace585955fc0f966d68cfa11d.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/enforcer/search/Propcrime Suspected.ogg"
+dest_files=["res://.godot/imported/Propcrime Suspected.ogg-daba9b2ace585955fc0f966d68cfa11d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

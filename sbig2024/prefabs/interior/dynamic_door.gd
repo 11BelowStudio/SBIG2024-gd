@@ -55,7 +55,7 @@ func _on_update_door_state(newState: DoorStates) -> void:
 		if newState == DoorStates.LOCKED:
 			_door.mass = 100
 		else:
-			_door.mass = 0.25
+			_door.mass = 0.1
 
 
 # Called when the node enters the scene tree for the first time.

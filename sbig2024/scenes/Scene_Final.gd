@@ -1,5 +1,6 @@
 extends Node3D
 
+signal level_won
 
 @export var vidscreen_sound: AudioStream
 
@@ -185,8 +186,9 @@ func _on_enforcer_navigation_finished() -> void:
 
 
 func _on_character_hit_by_enforcer() -> void:
-	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-	get_tree().quit()
+	level_won.emit()
+	#get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	#get_tree().quit()
 	pass # Replace with function body.
 
 

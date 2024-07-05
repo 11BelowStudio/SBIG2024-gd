@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dg56qbam2guae"
+path="res://.godot/imported/Hunting Propcriminal.ogg-7be848dffd05e395f7c0160dbc309410.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/enforcer/search/Hunting Propcriminal.ogg"
+dest_files=["res://.godot/imported/Hunting Propcriminal.ogg-7be848dffd05e395f7c0160dbc309410.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
