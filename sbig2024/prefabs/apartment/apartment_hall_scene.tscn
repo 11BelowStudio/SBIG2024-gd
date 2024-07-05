@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dvh2vqgob2niq"]
+[gd_scene load_steps=22 format=3 uid="uid://dvh2vqgob2niq"]
 
 [ext_resource type="Script" path="res://prefabs/apartment/apartment_hall_scene.gd" id="1_mmlsi"]
 [ext_resource type="PackedScene" uid="uid://dw7r4hu0l2ybu" path="res://models/apartment/Apartment.glb" id="1_oc4nn"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://tiwtut8n2d8x" path="res://prefabs/sticker_get_apartment.tscn" id="9_lh6nj"]
 [ext_resource type="PackedScene" uid="uid://bkmyui3vwa31k" path="res://prefabs/buildings/building_d.tscn" id="9_okqdu"]
 [ext_resource type="AudioStream" uid="uid://b0t8hvjqe7vex" path="res://sounds/ambient/198957__mydo1__roomtone.ogg" id="11_1he6f"]
+[ext_resource type="AudioStream" uid="uid://2n8vtpfnpymr" path="res://sounds/The Antedaymessage Attentionsound.ogg" id="15_s6myr"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cy88a"]
 vertices = PackedVector3Array(3.75, 3.27, 6.5, 4, 3.27, 3.75, 2.75, 3.27, 3.75, 3.75, 3.27, 6.5, 2.75, 3.27, 3.75, 2.25, 3.27, 3.25, -1.25, 3.27, 6.25, 2.25, 3.27, 3.25, 2.25, 3.27, -2.75, -1.25, 3.27, -2.75, -1.25, 3.27, 6.25, 1.5, 0.64, -1.5, 1.5, 0.64, -1, 2, 0.64, -1, 2, 0.64, -2.25, -1, 0.02, 1.25, -2.75, 0.02, 1.25, -0.75, 0.02, 1.75, 0.25, 0.02, -0.25, 0.25, 0.02, -1, -0.75, 0.02, -1, -1, 0.02, 1.25, -0.75, 0.02, 1.75, -0.75, 0.02, 2.75, -0.25, 0.02, 3, 0.25, 0.02, 3, 13.75, 0.02, 8.25, 14.5, 0.02, 8.25, 14.5, 0.02, 6, 13.5, 0.02, 6, 20.75, 0.02, 8.25, 21.5, 0.02, 8.25, 21.25, 0.02, 6.25, 20.5, 0.02, 6, 14.5, 0.02, 6, 17, 0.02, 6, 22, 0.02, 4.25, 20.5, 0.02, 6, 21.25, 0.02, 6.25, 22.25, 0.02, 5.5, 1.5, 0.02, 1.5, 1.25, 0.02, 0.25, 0.25, 0.02, -0.25, -1, 0.02, 1.25, -0.75, 0.02, 1.75, 0.25, 0.02, 3, 0.5, 0.02, 4.25, 6.5, 0.02, 6, 7.5, 0.02, 6, 17, 0.02, 6, 18, 0.02, 6, 22, 0.02, 4.25, 0.5, 0.02, 4.25, -0.75, 0.02, 6, 6.5, 0.02, 6, 13.5, 0.02, 6, 14.5, 0.02, 6, 22, 0.02, 4.25, 0.5, 0.02, 4.25, 0.25, 0.02, 3, -0.25, 0.02, 3, -0.75, 0.02, 6, 17.25, 0.02, 8.25, 18, 0.02, 8.25, 18, 0.02, 6, 17, 0.02, 6, 20.5, 0.02, 6, 22.25, 0.02, 5.5, 22, 0.02, 4.25, 18, 0.02, 6, 6.75, 0.02, 8.25, 7.5, 0.02, 8.25, 7.5, 0.02, 6, 6.5, 0.02, 6, 13.5, 0.02, 6, 22, 0.02, 4.25, 0.5, 0.02, 4.25, 7.5, 0.02, 6, -3.25, 2.77, 0.75, -3.25, 2.77, 2, -2.25, 2.77, 2, -2.25, 2.77, 0.75, 13.25, 3.27, 8.5, 14.75, 3.27, 8.5, 14.75, 3.27, 6.5, 13, 3.27, 6.25, 4, 3.27, 3.75, 6, 3.27, 6.25, 8, 3.27, 6.25, 16.75, 3.27, 8.5, 18.25, 3.27, 8.5, 18.25, 3.27, 6.5, 16.5, 3.27, 6.25, 16.5, 3.27, 6.25, 18.25, 3.27, 6.5, 20, 3.27, 6.25, 22.25, 3.27, 3.75, 20.25, 3.27, 8.5, 21.75, 3.27, 8.5, 21.75, 3.27, 6.5, 20, 3.27, 6.25, 13, 3.27, 6.25, 14.75, 3.27, 6.5, 16.5, 3.27, 6.25, 22.25, 3.27, 3.75, 4, 3.27, 3.75, 20, 3.27, 6.25, 21.75, 3.27, 6.5, 22.25, 3.27, 6.25, 22.25, 3.27, 3.75, 6, 3.27, 6.25, 6.25, 3.27, 8.5, 7.75, 3.27, 8.5, 8, 3.27, 6.25, 4, 3.27, 3.75, 8, 3.27, 6.25, 13, 3.27, 6.25, 4, 3.27, 3.75, 3.75, 3.27, 6.5, 6, 3.27, 6.25)
@@ -206,8 +207,13 @@ bus = &"Ambience"
 
 [node name="VidscreenAudio" type="AudioStreamPlayer3D" parent="AudioSources"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3125, 1.75, 2.3125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.813, 1.75, 2.313)
 max_distance = 10.0
+bus = &"_vidscreen"
+
+[node name="VidscreenFanfare" type="AudioStreamPlayer3D" parent="AudioSources/VidscreenAudio"]
+unique_name_in_owner = true
+stream = ExtResource("15_s6myr")
 bus = &"_vidscreen"
 
 [node name="WindowAudio" type="AudioStreamPlayer3D" parent="AudioSources"]
@@ -265,5 +271,6 @@ shadow_enabled = true
 [connection signal="body_entered" from="AreaTriggers/EntireHallTrigger" to="." method="_on_entire_hall_trigger_body_entered"]
 [connection signal="body_exited" from="AreaTriggers/EntireHallTrigger" to="." method="_on_entire_hall_trigger_body_exited"]
 [connection signal="finished" from="AudioSources/VidscreenAudio" to="." method="_on_vidscreen_audio_finished"]
+[connection signal="finished" from="AudioSources/VidscreenAudio/VidscreenFanfare" to="." method="_on_vidscreen_fanfare_finished"]
 
 [editable path="Geometry/Inside/hallway"]

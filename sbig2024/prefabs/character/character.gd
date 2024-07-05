@@ -622,11 +622,11 @@ func _attempt_use() -> void:
 	_use_ray_cast.force_raycast_update()
 	
 	if !_use_ray_cast.is_colliding():
-		print("nothing hit!")
+		#print("nothing hit!")
 		return
 	
 	var other: Object = _use_ray_cast.get_collider()
-	print("hit %s" % other)
+	#print("hit %s" % other)
 	if other.has_method("use"):
 		other.use()
 	
@@ -634,6 +634,11 @@ func _attempt_use() -> void:
 
 
 func _on_enforcer_collision_area_body_entered(body: Node3D) -> void:
-	print("got hit by an enforcer!")
+	#print("got hit by an enforcer!")
 	hit_by_enforcer.emit()
 	pass # Replace with function body.
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+

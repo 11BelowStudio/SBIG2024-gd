@@ -227,9 +227,9 @@ func _on_exit_zone_body_entered(body: Node3D) -> void:
 
 
 func _on_character_bumped_object() -> void:
-	print("bump!")
+	#print("bump!")
 	if _bump_cooldown <= 0:
-		print("bump (real)")
+		#print("bump (real)")
 		_bump_cooldown = _bump_interval
 	else:
 		return

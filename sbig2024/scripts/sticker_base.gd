@@ -28,7 +28,7 @@ func abort_stickering() -> void:
 
 
 func use() -> void:
-	print("use called on the sticker!")
+	#print("use called on the sticker!")
 	_in_progress_noise.stop()
 	
 	if stickered:

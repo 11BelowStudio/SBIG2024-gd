@@ -5,5 +5,5 @@
 
 [node name="WinScreen" instance=ExtResource("1_n1ig8")]
 script = ExtResource("2_ndck5")
-next_scene = "res://addons/maaacks_game_template/examples/scenes/EndCredits/EndCredits.tscn"
-main_menu_scene = "res://addons/maaacks_game_template/examples/scenes/Menus/MainMenu/MainMenuWithAnimations.tscn"
+next_scene = "res://maaack_examples/scenes/EndCredits/EndCredits.tscn"
+main_menu_scene = "res://maaack_examples/scenes/Menus/MainMenu/MainMenuWithAnimations.tscn"

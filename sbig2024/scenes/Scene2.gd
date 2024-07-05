@@ -165,7 +165,7 @@ func _on_player_reached_exit(body: Node3D) -> void:
 		return
 	var c = body as FPCharacter
 	if (c) and (c == character):
-		print("escaped!")
+		#print("escaped!")
 		level_won.emit()
 		_state = Scene2States.DONE
 	pass # Replace with function body.

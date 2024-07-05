@@ -214,19 +214,19 @@ func __aggro_startup() -> void:
 
 
 func _say_passive_line() -> void:
-	print("say_passive_line")
+	#print("say_passive_line")
 	if !passiveSource.playing:
 		passiveSource.play()
 
 func _say_chase_line() -> void:
-	print("say_chase_line")
+	#print("say_chase_line")
 	passiveSource.stop()
 	if !aggroSource.playing:
 		huntingSource.stop()
 		aggroSource.play()
 
 func _say_hunt_line() -> void:
-	print("say_hunt_line")
+	#print("say_hunt_line")
 	if !huntingSource.playing:
 		if !aggroSource.playing:
 			huntingSource.play()
@@ -478,9 +478,13 @@ func investigate_this(crime_global_position: Vector3) -> void:
 	
 	if _ai_state == AiState.CHASE:
 		return
+		
+	if _ai_state == AiState.INVESTIGATE:
+		_investigate_global_position = crime_global_position
+		set_movement_target(_investigate_global_position)
 	
 	if randf() > 0.5:
-		print("WEE WOO WEE WOO!")
+		#print("WEE WOO WEE WOO!")
 		_investigate_global_position = crime_global_position
 		set_ai_state(AiState.INVESTIGATE)
 		

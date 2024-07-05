@@ -29,7 +29,7 @@ geometry_collision_mask = 4294967041
 cell_height = 0.01
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s78by"]
-size = Vector3(3, 3, 3)
+size = Vector3(3.925, 3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8teqp"]
 size = Vector3(1, 3, 20)
@@ -700,7 +700,7 @@ environment = SubResource("Environment_3fspi")
 [node name="Lighting" type="Node" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(0.726337, -0.177192, -0.664106, 0.65122, -0.131683, 0.747377, -0.219881, -0.975327, 0.0197447, -2, 12, 0)
+transform = Transform3D(0.219881, 0.975327, -0.0197446, 0.65122, -0.131683, 0.747377, 0.726337, -0.177192, -0.664107, -2, 12, 0)
 shadow_enabled = true
 
 [node name="Enforcer" parent="." instance=ExtResource("11_063yl")]

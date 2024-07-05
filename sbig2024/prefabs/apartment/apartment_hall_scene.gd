@@ -23,6 +23,7 @@ extends Node3D
 
 ## vidscreen audio player
 @onready var vidscreen_audio: AudioStreamPlayer3D = %VidscreenAudio
+@onready var vidscreen_fanfare: AudioStreamPlayer3D = %VidscreenFanfare
 @onready var _vidscreen_model: MeshInstance3D = %Apartment/Node/DynamicFurniture/VidphoneDynamic/Screen
 ## the 'on' texture for the vidscreen
 @export var _vidscreen_on_texture: BaseMaterial3D
@@ -137,9 +138,9 @@ func _on_in_room_trigger_body_entered(body: Node3D) -> void:
 
 ## call this to play some audio from the vidscreen (will also turn the vidscreen on)
 func play_vidscreen_audio(play_this: AudioStream) -> void:
-	vidscreen_audio.stream = play_this
-	vidscreen_audio.play()
-	_vidscreen_model.material_override = _vidscreen_on_texture
+	if play_this:
+		vidscreen_audio.stream = play_this
+		vidscreen_fanfare.play()
 	pass
 
 
@@ -190,4 +191,10 @@ func _on_entire_hall_trigger_body_exited(body: Node3D) -> void:
 	var player: FPCharacter = body as FPCharacter
 	if player:
 		player_left_hall.emit()
+	pass # Replace with function body.
+
+
+func _on_vidscreen_fanfare_finished() -> void:
+	vidscreen_audio.play()
+	_vidscreen_model.material_override = _vidscreen_on_texture
 	pass # Replace with function body.

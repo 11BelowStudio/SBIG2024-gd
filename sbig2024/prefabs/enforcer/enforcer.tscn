@@ -271,7 +271,6 @@ doppler_tracking = 2
 path_desired_distance = 0.25
 target_desired_distance = 0.5
 avoidance_enabled = true
-debug_enabled = true
 debug_use_custom = true
 
 [node name="DetectionRay" type="RayCast3D" parent="."]
