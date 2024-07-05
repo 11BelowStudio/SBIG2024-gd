@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dvabagf4huwm6"]
+[gd_scene load_steps=21 format=3 uid="uid://dvabagf4huwm6"]
 
 [ext_resource type="Script" path="res://prefabs/enforcer/enforcer.gd" id="2_awpca"]
 [ext_resource type="Texture2D" uid="uid://snsm42dximib" path="res://models/enforcer/Enforcer_0.png" id="2_i8edj"]
@@ -179,12 +179,15 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_br0vk")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dhp6y"]
-radius = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_y0a80"]
+size = Vector3(0.05, 0.05, 100)
 
 [node name="Enforcer" type="CharacterBody3D" groups=["enforcers"]]
 collision_layer = 4
 collision_mask = 19
 script = ExtResource("2_awpca")
+_detection_y_range = 30.0
 
 [node name="Node" type="Node3D" parent="."]
 
@@ -269,7 +272,7 @@ doppler_tracking = 2
 path_desired_distance = 0.25
 target_desired_distance = 0.5
 avoidance_enabled = true
-radius = 0.6
+debug_enabled = true
 debug_use_custom = true
 
 [node name="DetectionRay" type="RayCast3D" parent="."]
@@ -277,6 +280,11 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 target_position = Vector3(0, 0, -100)
 collision_mask = 19
+
+[node name="StupidLineOfSightChecker" type="MeshInstance3D" parent="DetectionRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -50)
+visible = false
+mesh = SubResource("BoxMesh_y0a80")
 
 [node name="PassiveModeDetection" type="RayCast3D" parent="."]
 unique_name_in_owner = true
@@ -293,7 +301,7 @@ light_energy = 5.0
 light_cull_mask = 4294967287
 shadow_enabled = true
 distance_fade_enabled = true
-spot_range = 6.0
+spot_range = 12.5
 spot_attenuation = 0.5
 spot_angle = 30.0
 spot_angle_attenuation = 0.5

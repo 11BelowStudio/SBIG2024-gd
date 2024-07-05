@@ -39,14 +39,14 @@ func _calc_enforcer_dist_intensity(closestDist: float) -> float:
 var _enforcer: Enforcer
 @onready var _enforcerSpawn = %EnforcerSpawn
 
-var theSticker: StickerBase
+@onready var theSticker: StickerBase = %StickerPlace
 
 @onready var character: FPCharacter = $Character
 
 @onready var ui: FPUI = $FPUI
 
 
-@export var _instruction_1: String = "Act natural, walk up to the box, get it done."
+@export var _instruction_1: String = "Act natural, walk up to the statue, get it done."
 @export var _instruction_2: String = "Get a bit closer, keep an eye out for enforcers (hold Q to look around)..."
 @export var _instruction_3: String = "Hold E to stick."
 @export var _instruction_4: String = "Keep calm, walk away, act natural..."
@@ -76,7 +76,6 @@ var _intensity: float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	theSticker = %StickerPlace
 	character.look_target = theSticker
 	character.holding_sticker = true
 	ui.progress.max_value = _sticker_duration

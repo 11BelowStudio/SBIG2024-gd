@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dvh2vqgob2niq"]
+[gd_scene load_steps=21 format=3 uid="uid://dvh2vqgob2niq"]
 
 [ext_resource type="Script" path="res://prefabs/apartment/apartment_hall_scene.gd" id="1_mmlsi"]
 [ext_resource type="PackedScene" uid="uid://dw7r4hu0l2ybu" path="res://models/apartment/Apartment.glb" id="1_oc4nn"]
@@ -7,10 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://c77yvk1jsoi7h" path="res://prefabs/interior/dynamic_door.tscn" id="3_gml1m"]
 [ext_resource type="Environment" uid="uid://d2i24c60caf43" path="res://prefabs/apartment/apartment_hall_scene_env.tres" id="3_jmxjh"]
 [ext_resource type="PackedScene" uid="uid://bvwd6fp6eftlj" path="res://models/apt_door/apt_door_red.glb" id="4_l73ky"]
-[ext_resource type="Material" uid="uid://dm157s57mfhfe" path="res://addons/kenney_prototype_tools/materials/dark/material_02.tres" id="5_qjosj"]
 [ext_resource type="AudioStream" uid="uid://cpd7kdxk7g6nu" path="res://sounds/ambient/686845__pblzr__ambience-open-window-room-wind-city-noise-001.ogg" id="5_r13cg"]
+[ext_resource type="PackedScene" uid="uid://kkfbqa8vyuq7" path="res://prefabs/buildings/building_a.tscn" id="6_e3qcx"]
+[ext_resource type="PackedScene" uid="uid://dubmgmel3dhc6" path="res://prefabs/buildings/building_b.tscn" id="7_ujd0b"]
 [ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/ui/fpui.tscn" id="8_btxj1"]
+[ext_resource type="PackedScene" uid="uid://by83ykpu0hlhi" path="res://prefabs/buildings/building_c.tscn" id="8_onmt7"]
 [ext_resource type="PackedScene" uid="uid://tiwtut8n2d8x" path="res://prefabs/sticker_get_apartment.tscn" id="9_lh6nj"]
+[ext_resource type="PackedScene" uid="uid://bkmyui3vwa31k" path="res://prefabs/buildings/building_d.tscn" id="9_okqdu"]
 [ext_resource type="AudioStream" uid="uid://b0t8hvjqe7vex" path="res://sounds/ambient/198957__mydo1__roomtone.ogg" id="11_1he6f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cy88a"]
@@ -21,8 +24,6 @@ geometry_collision_mask = 4294967169
 cell_height = 0.01
 agent_height = 1.7
 agent_max_climb = 0.1
-
-[sub_resource type="BoxMesh" id="BoxMesh_v4k1m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kedbr"]
 size = Vector3(0.25, 3, 3)
@@ -57,25 +58,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 5)
 
 [node name="outside" type="Node3D" parent="Geometry"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry/outside"]
-transform = Transform3D(10.56, 0, 0, 0, 17, 0, 0, 0, 5.6, -4, -1, -8)
-material_override = ExtResource("5_qjosj")
-mesh = SubResource("BoxMesh_v4k1m")
+[node name="BuildingA" parent="Geometry/outside" instance=ExtResource("6_e3qcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1, -8)
+realScale = Vector3(10, 17, 5.5)
+_pos = Vector3(-4, -1, -8)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Geometry/outside"]
-transform = Transform3D(7.39031, 0, 0, 0, 17, 0, 0, 0, 3.696, -6, -3, -2)
-material_override = ExtResource("5_qjosj")
-mesh = SubResource("BoxMesh_v4k1m")
+[node name="BuildingB" parent="Geometry/outside" instance=ExtResource("7_ujd0b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -5, -9)
+realScale = Vector3(10.5, 17, 5.5)
+_pos = Vector3(7, -5, -9)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Geometry/outside"]
-transform = Transform3D(6.65128, 0, 0, 0, 17, 0, 0, 0, 6.50496, 8, 0, -1)
-material_override = ExtResource("5_qjosj")
-mesh = SubResource("BoxMesh_v4k1m")
+[node name="BuildingC" parent="Geometry/outside" instance=ExtResource("8_onmt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -3, -2)
+realScale = Vector3(7.39031, 17, 3.696)
+_pos = Vector3(-6, -3, -2)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Geometry/outside"]
-transform = Transform3D(10.56, 0, 0, 0, 17, 0, 0, 0, 5.6, 7, -5, -9)
-material_override = ExtResource("5_qjosj")
-mesh = SubResource("BoxMesh_v4k1m")
+[node name="BuildingD" parent="Geometry/outside" instance=ExtResource("9_okqdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -1)
+realScale = Vector3(6.65128, 17, 6.50496)
+_pos = Vector3(8, 0, -1)
 
 [node name="Doors" type="Node3D" parent="."]
 
@@ -104,6 +105,7 @@ unique_name_in_owner = true
 transform = Transform3D(-8.9407e-08, 0, -1, 0, 1, 0, 1, 0, -8.9407e-08, 7.75, 0, 6.75)
 
 [node name="StickerGet" parent="." instance=ExtResource("9_lh6nj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.245, -2.5)
 
 [node name="SpawnPoints" type="Node3D" parent="."]
 

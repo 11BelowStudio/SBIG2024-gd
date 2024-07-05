@@ -37,14 +37,14 @@ func _calc_enforcer_dist_intensity(closestDist: float) -> float:
 var _enforcer: Enforcer
 @onready var _enforcerSpawn = %EnforcerSpawn
 
-var theSticker: StickerBase
+@onready var theSticker: StickerBase = %StickerPlace
 
 @onready var character: FPCharacter = $Character
 
 @onready var ui: FPUI = $FPUI
 
 
-@export var _instruction_1: String = "Act natural, walk up to the box, get it done."
+@export var _instruction_1: String = "Act natural, walk up to the statue, get it done."
 @export var _instruction_2: String = "Get a bit closer, keep an eye out for enforcers (hold Q to look around)..."
 @export var _instruction_3: String = "Hold E to stick."
 @export var _instruction_4: String = "Keep calm, walk away, act natural..."
@@ -59,7 +59,7 @@ var theSticker: StickerBase
 enum SceneStates {
 	SPAWNED,
 	STICKER_PLACED,
-	FLEE,
+	#FLEE,
 	DONE
 }
 var _state: SceneStates = SceneStates.SPAWNED
@@ -70,6 +70,11 @@ var sticker_state: StickerStates = StickerStates.NOT_DONE
 
 ## all of the enforcers (like every one of them)
 @onready var enforcers: Array[Enforcer] = __get_enforcers()
+
+
+@export var _bump_interval: float = 0.5
+var _bump_cooldown: float = 0
+
 
 func __get_enforcers() -> Array[Enforcer]:
 	if is_node_ready():
@@ -86,31 +91,101 @@ var _intensity: float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-
-	level_won.emit()
-
+	character.look_target = theSticker
+	character.holding_sticker = true
+	ui.progress.max_value = _sticker_duration
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	if _bump_cooldown > 0:
+		_bump_cooldown -= delta
+	
 	var char_intensity: float = character.get_dist_intensity()
+	
 	character.speed_intensity = char_intensity
 	_update_enforcer_dist_intensity()
-	
 	_intensity = max(char_intensity, _enforcer_dist_intensity)
+	
+	
 	#print(_intensity)
 	
 	heartbeater.intensity_target = _intensity
 	dualAmbience.audio_weight_target = _intensity
-	whitenoise.set_intensity01(_intensity)
-	character.fov_intensity_target = _intensity
-	ui.vignette_intensity(_intensity)
+	whitenoise.set_intensity01(_enforcer_dist_intensity)
+	
+	if _state != SceneStates.SPAWNED:
+		ui.vignette_intensity(_intensity)
+		character.fov_intensity_target = _intensity
+	else:
+		ui.vignette_intensity(char_intensity)
+		character.fov_intensity_target = char_intensity
+	
+	match sticker_state:
+		StickerStates.NOT_DONE:
+			
+			if char_intensity == 0:
+				ui.show_instruction(_instruction_1)
+			elif (char_intensity >= 0.35) and (char_intensity <= 0.8):
+				ui.show_instruction(_instruction_2)
+			
+			_sticker_progress = lerpf(_sticker_progress, 0, _sticker_decay_delta * delta)
+			ui.progressBar().value = _sticker_progress
+		StickerStates.DOING:
+			_sticker_progress += delta
+			ui.progressBar().value = _sticker_progress
+			if _sticker_progress >= _sticker_duration:
+				_sticker_done()
+		_:
+			pass
+	pass
+	
+	#print("progress: %1.3f state: %s" % [_sticker_placing_progress, sticker_state])
 	
 	pass
 
+func _physics_process(delta: float) -> void:
+	
+	match sticker_state:
+		StickerStates.NOT_DONE:
+			var characterUseObj: StickerBase = character.get_use_raycast_target() as StickerBase
+			if characterUseObj and characterUseObj == theSticker:
+				ui.show_instruction(_instruction_3)
+				if Input.is_action_just_pressed(USE):
+					sticker_state = StickerStates.DOING
+					theSticker.start_stickering()
+			else:
+				ui.show_instruction(_instruction_2)
+		StickerStates.DOING:
+			if Input.is_action_pressed(USE):
+				var characterUseObj: StickerBase = character.get_use_raycast_target() as StickerBase
+				if (not characterUseObj) or (characterUseObj != theSticker):
+					sticker_state = StickerStates.NOT_DONE
+					theSticker.abort_stickering()
+			else:
+				sticker_state = StickerStates.NOT_DONE
+				theSticker.abort_stickering()
+		_:
+			pass
+	
+	
+	pass
+
+
+func _sticker_done() -> void:
+	theSticker.use()
+	character.holding_sticker = false
+	sticker_state = StickerStates.DONE
+	_state = SceneStates.STICKER_PLACED
+	#heartbeater.intensity_target = _tar
+	#dualAmbience.audio_weight_target = 0
+	character.look_target = null
+	ui.show_instruction(_instruction_4, 10)
+	for e in enforcers:
+		e.set_ai_override(Enforcer.AiOverride.AGGRESSIVE)
+	%IntroBlockers.free()
 
 
 
@@ -142,4 +217,29 @@ func _get_closest_enforcer_dist() -> float:
 
 
 func _on_exit_zone_body_entered(body: Node3D) -> void:
+	if body != character:
+		return
+	if !_state == SceneStates.STICKER_PLACED:
+		return
+	level_won.emit()
+	_state = SceneStates.DONE
+	pass # Replace with function body.
+
+
+func _on_character_bumped_object() -> void:
+	print("bump!")
+	if _bump_cooldown <= 0:
+		print("bump (real)")
+		_bump_cooldown = _bump_interval
+	else:
+		return
+	for e in enforcers:
+		e.investigate_this(character.global_position)
+	pass # Replace with function body.
+
+
+func _on_character_hit_by_enforcer() -> void:
+	if _state != SceneStates.STICKER_PLACED:
+		# YOU LOSE!
+		level_lost.emit()
 	pass # Replace with function body.

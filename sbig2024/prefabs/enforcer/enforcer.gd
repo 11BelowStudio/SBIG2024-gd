@@ -71,7 +71,9 @@ func __get_patrol_nodes() -> Array[EnforcerPatrolNode]:
 
 @onready var _nav_agent: NavigationAgent3D = $NavigationAgent3D
 
-@export var _detection_y_range: float = 45
+@export_range(0, 360) var _detection_y_range: float = 45:
+	get:
+		return deg_to_rad(_detection_y_range)
 
 ## move speed for Giga Monty mode
 @export var _moveSpeed_gm: float = 4
@@ -230,6 +232,10 @@ func _detection_ray_update() -> void:
 
 ## can the complex AI currently see the player?
 func _can_see_player() -> bool:
+	var character_head_global_offset: Vector3 = character.HEAD.global_position  - global_position
+	detection_ray.look_at(global_position + character_head_global_offset)
+	detection_ray.rotation.y = clampf(detection_ray.rotation.y, -_detection_y_range, _detection_y_range)
+	detection_ray.force_raycast_update()
 	if !detection_ray.is_colliding():
 		# nothing in the detection ray = player definitely isn't in the detection ray.
 		return false
@@ -415,18 +421,13 @@ func _physics_process(delta: float) -> void:
 		global_transform.basis = global_transform.basis.slerp(
 			global_transform.looking_at(_nav_agent.get_next_path_position(), Vector3.UP).basis,
 		delta * 5)
-		
-		
-	
-	
-	
-	
-	
+
 
 func _on_velocity_computed(safe_velocity: Vector3):
 	velocity = safe_velocity
 	#print(velocity)
 	move_and_slide()
+	
 	for col_idx in get_slide_collision_count():
 		var col := get_slide_collision(col_idx)
 		if col.get_collider() is RigidBody3D:
@@ -440,3 +441,18 @@ func _on_navigation_agent_3d_navigation_finished() -> void:
 	#print("enforcer on navigation agent navigation finished")
 	navigation_finished.emit()
 	pass # Replace with function body.
+
+
+func investigate_this(crime_global_position: Vector3) -> void:
+	
+	if _ai_state == AiState.CHASE:
+		return
+	
+	if randf() > 0.5:
+		print("WEE WOO WEE WOO!")
+		_investigate_global_position = crime_global_position
+		set_ai_state(AiState.INVESTIGATE)
+		
+	
+	pass
+

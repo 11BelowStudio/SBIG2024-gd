@@ -246,6 +246,7 @@ func _get_closest_enforcer_dist() -> float:
 
 func _on_apartment_hall_scene_player_entered_hall() -> void:
 	_player_in_hall = true
+	apartment.fpui.hide_instruction()
 	heartbeater.vol_target = 1
 	pass # Replace with function body.
 

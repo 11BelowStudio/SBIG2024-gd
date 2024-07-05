@@ -1,7 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2s5f4p5kchsa"]
+[gd_scene load_steps=5 format=3 uid="uid://cssp8lqlreuhj"]
 
-[ext_resource type="PackedScene" uid="uid://dyxxelmn6wkga" path="res://scenes/Scene3.tscn" id="1_eypwr"]
+[ext_resource type="Script" path="res://scenes/Scene3.gd" id="1_6fisn"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://prefabs/character/character.tscn" id="2_r1qup"]
+[ext_resource type="PackedScene" uid="uid://dvh2vqgob2niq" path="res://prefabs/apartment/apartment_hall_scene.tscn" id="3_gb2bk"]
+[ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="4_t3xrr"]
 
-[node name="Scene6" type="Node3D"]
+[node name="Scene3" type="Node3D"]
+script = ExtResource("1_6fisn")
 
-[node name="Scene3" parent="." instance=ExtResource("1_eypwr")]
+[node name="Character" parent="." instance=ExtResource("2_r1qup")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22, 0, 5)
+_initial_fov_intensity = 1.0
+sprint_enabled = true
+
+[node name="ApartmentHallScene" parent="." instance=ExtResource("3_gb2bk")]
+hide_sticker = true
+_apartment_door_open = true
+
+[node name="Heartbeater" parent="." instance=ExtResource("4_t3xrr")]
+bus = &"Master"
+intensity = 1.0
+
+[connection signal="player_room_midpoint" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_room_midpoint"]
