@@ -1,50 +1,17 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=16 format=3 uid="uid://dvn2cnf6cqqx1"]
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://dvn2cnf6cqqx1"]
 
-[ext_resource type="AudioStream" uid="uid://b75qcotmdy425" path="res://addons/kenney impact sounds/impact_wood_medium_004.ogg" id="1_fyps3"]
-[ext_resource type="AudioStream" uid="uid://uy0evekwvpkt" path="res://addons/kenney impact sounds/impact_wood_medium_003.ogg" id="2_ryoj2"]
-[ext_resource type="AudioStream" uid="uid://bouf775ip2t2b" path="res://addons/kenney impact sounds/impact_plank_medium_000.ogg" id="3_1judc"]
-[ext_resource type="AudioStream" uid="uid://cvhiaodip7dux" path="res://addons/kenney impact sounds/impact_plank_medium_001.ogg" id="4_jurip"]
-[ext_resource type="AudioStream" uid="uid://3xc12i1ckgkw" path="res://addons/kenney impact sounds/impact_plank_medium_002.ogg" id="5_5itg7"]
-[ext_resource type="AudioStream" uid="uid://csobk0hs6dij" path="res://addons/kenney impact sounds/impact_plank_medium_003.ogg" id="6_n8jug"]
-[ext_resource type="AudioStream" uid="uid://bcqnvgel0l23e" path="res://addons/kenney impact sounds/impact_plank_medium_004.ogg" id="7_xog0h"]
-[ext_resource type="AudioStream" uid="uid://dfbgdgtcq16q7" path="res://addons/kenney impact sounds/impact_wood_medium_002.ogg" id="8_ben81"]
-[ext_resource type="AudioStream" uid="uid://r5reqm0mw1wi" path="res://addons/kenney impact sounds/impact_wood_medium_001.ogg" id="9_2fuvc"]
-[ext_resource type="AudioStream" uid="uid://vbrclkqwtu43" path="res://addons/kenney impact sounds/impact_wood_medium_000.ogg" id="10_85gg0"]
-[ext_resource type="AudioStream" uid="uid://cys1ir5o8r6kf" path="res://addons/kenney impact sounds/impact_wood_light_004.ogg" id="11_ye622"]
-[ext_resource type="AudioStream" uid="uid://dp3haav7oyvj1" path="res://addons/kenney impact sounds/impact_wood_light_003.ogg" id="12_xay6l"]
-[ext_resource type="AudioStream" uid="uid://c7ien4oa2n5pq" path="res://addons/kenney impact sounds/impact_wood_light_002.ogg" id="13_ymoiu"]
-[ext_resource type="AudioStream" uid="uid://bem5yft4rm124" path="res://addons/kenney impact sounds/impact_wood_light_001.ogg" id="14_0ouv4"]
-[ext_resource type="AudioStream" uid="uid://b7pvjb5mkljbw" path="res://addons/kenney impact sounds/impact_wood_light_000.ogg" id="15_l10vw"]
+[ext_resource type="AudioStream" uid="uid://og0cb5pjiwnw" path="res://sounds/door/646454__drinkingpeter__aggressive-door-pounding A.wav" id="1_qflw4"]
+[ext_resource type="AudioStream" uid="uid://rqar2bl030vc" path="res://sounds/door/646454__drinkingpeter__aggressive-door-pounding B.wav" id="2_6kudf"]
+[ext_resource type="AudioStream" uid="uid://c1ce853lxlbhg" path="res://sounds/door/646454__drinkingpeter__aggressive-door-pounding C.wav" id="3_8x34k"]
+[ext_resource type="AudioStream" uid="uid://bf2unctt2pl0" path="res://sounds/door/646455__drinkingpeter__aggressive-door-slam.wav" id="4_3f5jn"]
 
 [resource]
-streams_count = 15
-stream_0/stream = ExtResource("1_fyps3")
+streams_count = 4
+stream_0/stream = ExtResource("1_qflw4")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("2_ryoj2")
+stream_1/stream = ExtResource("2_6kudf")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("8_ben81")
-stream_2/weight = 1.0
-stream_3/stream = ExtResource("9_2fuvc")
+stream_2/stream = ExtResource("3_8x34k")
+stream_2/weight = 0.01
+stream_3/stream = ExtResource("4_3f5jn")
 stream_3/weight = 1.0
-stream_4/stream = ExtResource("10_85gg0")
-stream_4/weight = 1.0
-stream_5/stream = ExtResource("11_ye622")
-stream_5/weight = 1.0
-stream_6/stream = ExtResource("12_xay6l")
-stream_6/weight = 1.0
-stream_7/stream = ExtResource("13_ymoiu")
-stream_7/weight = 1.0
-stream_8/stream = ExtResource("14_0ouv4")
-stream_8/weight = 1.0
-stream_9/stream = ExtResource("15_l10vw")
-stream_9/weight = 1.0
-stream_10/stream = ExtResource("3_1judc")
-stream_10/weight = 1.0
-stream_11/stream = ExtResource("4_jurip")
-stream_11/weight = 1.0
-stream_12/stream = ExtResource("5_5itg7")
-stream_12/weight = 1.0
-stream_13/stream = ExtResource("6_n8jug")
-stream_13/weight = 1.0
-stream_14/stream = ExtResource("7_xog0h")
-stream_14/weight = 1.0

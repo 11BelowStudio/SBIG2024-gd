@@ -35,13 +35,15 @@ func _calc_enforcer_dist_intensity(closestDist: float) -> float:
 
 @export var _enforcerScene: PackedScene
 var _enforcer: Enforcer
-@onready var _enforcerSpawn = %EnforcerSpawn
+
 
 @onready var theSticker: StickerBase = %StickerPlace
 
 @onready var character: FPCharacter = $Character
 
 @onready var ui: FPUI = $FPUI
+
+@onready var drumLooper: DrumLooper = %DrumLooper
 
 
 @export var _instruction_1: String = "Act natural, walk up to the statue, get it done."
@@ -69,7 +71,9 @@ enum StickerStates { NOT_DONE, DOING, DONE }
 var sticker_state: StickerStates = StickerStates.NOT_DONE
 
 ## all of the enforcers (like every one of them)
-@onready var enforcers: Array[Enforcer] = __get_enforcers()
+@onready var enforcers: Array[Enforcer] = __get_enforcers():
+	get:
+		return __get_enforcers()
 
 
 @export var _bump_interval: float = 0.5
@@ -94,6 +98,13 @@ func _ready() -> void:
 	character.look_target = theSticker
 	character.holding_sticker = true
 	ui.progress.max_value = _sticker_duration
+	
+	
+	
+	for e in enforcers:
+		e.ai_state_changed.connect(_on_enforcer_state_changed)
+	
+	
 	pass # Replace with function body.
 
 
@@ -185,6 +196,7 @@ func _sticker_done() -> void:
 	ui.show_instruction(_instruction_4, 10)
 	for e in enforcers:
 		e.set_ai_override(Enforcer.AiOverride.AGGRESSIVE)
+	_on_enforcer_state_changed()
 	%IntroBlockers.free()
 
 
@@ -239,7 +251,42 @@ func _on_character_bumped_object() -> void:
 
 
 func _on_character_hit_by_enforcer() -> void:
-	if _state != SceneStates.STICKER_PLACED:
+	
+	if _state == SceneStates.STICKER_PLACED:
 		# YOU LOSE!
 		level_lost.emit()
+		print("you got got!")
 	pass # Replace with function body.
+
+
+func _on_enforcer_state_changed() -> void:
+	if _state != SceneStates.STICKER_PLACED:
+		pass
+	
+	var most_danger: Enforcer.DangerState = Enforcer.DangerState.SAFE
+	for e in enforcers:
+		match e.get_danger_state():
+			Enforcer.DangerState.SAFE:
+				continue
+			Enforcer.DangerState.MID:
+				most_danger = Enforcer.DangerState.MID
+				continue
+			Enforcer.DangerState.HIGH:
+				most_danger = Enforcer.DangerState.HIGH
+				break
+	
+	match most_danger:
+		Enforcer.DangerState.SAFE:
+			drumLooper.drum_state = DrumLooper.DrumStates.LOOP0
+		Enforcer.DangerState.MID:
+			drumLooper.drum_state = DrumLooper.DrumStates.LOOP1
+		Enforcer.DangerState.HIGH:
+			drumLooper.drum_state = DrumLooper.DrumStates.LOOP2
+	
+	#if enforcers.any(func(e): return e.is_danger_state()):
+		#drumLooper.drum_state = DrumLooper.DrumStates.LOOP2
+	#else:
+		#drumLooper.drum_state = DrumLooper.DrumStates.LOOP1
+		#pass
+	
+	pass

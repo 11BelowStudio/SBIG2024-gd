@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl03t5imc42nl"]
+[gd_scene load_steps=9 format=3 uid="uid://cl03t5imc42nl"]
 
 [ext_resource type="Script" path="res://scenes/Scene_Final.gd" id="1_lcaip"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://prefabs/character/character.tscn" id="1_qlmnn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dvh2vqgob2niq" path="res://prefabs/apartment/apartment_hall_scene.tscn" id="2_qgcx3"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="4_4eqkm"]
 [ext_resource type="PackedScene" uid="uid://byj4hpp1jdr74" path="res://prefabs/white_noise_control.tscn" id="5_wfnxm"]
+[ext_resource type="PackedScene" uid="uid://b6i7tudh1caaj" path="res://prefabs/drum_looper.tscn" id="8_y255x"]
 
 [node name="SceneFinal" type="Node3D"]
 script = ExtResource("1_lcaip")
@@ -26,6 +27,9 @@ _vol = 0.0
 vol_target = 0.0
 
 [node name="WhiteNoiseControl" parent="." instance=ExtResource("5_wfnxm")]
+
+[node name="DrumLooper" parent="." instance=ExtResource("8_y255x")]
+unique_name_in_owner = true
 
 [connection signal="hit_by_enforcer" from="Character" to="." method="_on_character_hit_by_enforcer"]
 [connection signal="player_entered_hall" from="ApartmentHallScene" to="." method="_on_apartment_hall_scene_player_entered_hall"]

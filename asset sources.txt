@@ -7,10 +7,6 @@
 	* https://godotengine.org/asset-library/asset/2709
 	* Maaack
 	* MIT license
-* BMOD
-	* https://godotengine.org/asset-library/asset/2884
-	* kpids
-	* MIT license
 
 * Impact sounds
 	* https://kenney.nl/assets/impact-sounds

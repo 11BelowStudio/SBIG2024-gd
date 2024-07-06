@@ -5,6 +5,9 @@ extends CharacterBody3D
 # https://docs.godotengine.org/en/stable/tutorials/navigation/navigation_introduction_3d.html#setup-for-3d-scene
 # https://docs.godotengine.org/en/stable/tutorials/navigation/navigation_using_navigationagents.html#actor-as-characterbody3d
 
+
+signal ai_state_changed
+
 ## navigation target for Giga Monty mode.
 var _target_gm: Node3D
 
@@ -20,6 +23,14 @@ enum AiType {
 
 ## given by the scene itself
 @onready var character: FPCharacter = get_tree().get_first_node_in_group("character")
+
+func _find_character() -> FPCharacter:
+	var chars: Array[Node] = get_tree().get_nodes_in_group("character")
+	
+	for c in chars:
+		if is_instance_valid(c) && c is FPCharacter:
+			return c	
+	return null
 
 @onready var enforcerMoveNoise: AudioStreamPlayer3D = %EnforcerMoveNoise
 @onready var passiveSource: AudioStreamPlayer3D = %PassiveSource
@@ -40,7 +51,13 @@ enum AiState {
 	CHASE
 }
 
-@export var _ai_state: AiState = AiState.PATROL
+@export var _ai_state: AiState = AiState.PATROL:
+	set(value):
+		if _ai_state != value:
+			_ai_state = value
+			emit_signal("ai_state_changed")
+
+
 
 ## An optional override for the enemy AI (in complicated mode).
 ## Giga Monty mode ignores these.
@@ -54,13 +71,16 @@ enum AiOverride {
 
 ## The scene must give the enforcer all of the patrol nodes.
 #@onready var _all_patrol_nodes: Array[EnforcerPatrolNode] = __get_patrol_nodes()
-@onready var _patrol_nodes_unvisited: Array[EnforcerPatrolNode] = __get_patrol_nodes()
+@onready var _patrol_nodes_unvisited: Array[EnforcerPatrolNode] = __get_patrol_nodes():
+	get:
+		_patrol_nodes_unvisited = _patrol_nodes_unvisited.filter(func(n): return is_instance_valid(n))
+		return _patrol_nodes_unvisited
 
 func __get_patrol_nodes() -> Array[EnforcerPatrolNode]:
 	if is_node_ready():
 		var result: Array[EnforcerPatrolNode] = []
 		for n in get_tree().get_nodes_in_group("enforcer_patrol"):#.filter(func(n): return n is EnforcerPatrolNode) as Array[EnforcerPatrolNode]
-			if n is EnforcerPatrolNode:
+			if is_instance_valid(n) && n is EnforcerPatrolNode:
 				result.append(n as EnforcerPatrolNode)
 		return result
 	else:
@@ -94,6 +114,8 @@ var _investigate_global_position: Vector3 = Vector3.ZERO
 
 var _can_set_target: bool = false
 var _pre_physics_target: Vector3 = Vector3.INF
+
+var _stuck: bool = false
 
 func move_speed() -> float:
 	match _ai_type:
@@ -371,23 +393,27 @@ func _process(delta: float) -> void:
 			pass
 		AiType.COMPLICATED:
 			
-			# bodge fix for enforcers getting stuck on doors
-			if self.get_real_velocity().is_zero_approx():
+			if _stuck:
+				_stuck = false
+				set_ai_state(AiState.PATROL)
+			elif self.get_real_velocity().is_zero_approx():
 				#push_error("wee woo wee woo %s is stuck" % self.name)
 				_patrol_global_position = Vector3.INF
-				set_ai_state(AiState.PATROL)
-			
-			match _ai_override:
-				AiOverride.PASSIVE:
-					_complicated_patrol_update()
-				AiOverride.AGGRESSIVE:
-					match _ai_state:
-						AiState.PATROL:
-							_complicated_patrol_update()
-						AiState.INVESTIGATE:
-							_complicated_investigate_update()
-						AiState.CHASE:
-							_complicated_chase_update()
+				_stuck = true
+				## DO NOT SET AI STATE SAME FRAME (CAUSES ISSUES WITH SCENE RELOADING)
+				#set_ai_state(AiState.PATROL)
+			else:
+				match _ai_override:
+					AiOverride.PASSIVE:
+						_complicated_patrol_update()
+					AiOverride.AGGRESSIVE:
+						match _ai_state:
+							AiState.PATROL:
+								_complicated_patrol_update()
+							AiState.INVESTIGATE:
+								_complicated_investigate_update()
+							AiState.CHASE:
+								_complicated_chase_update()
 	
 	pass
 
@@ -395,6 +421,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	match _ai_type:
 		AiType.GIGA_MONTY:
+			_detection_ray_update()
 			if _target_gm:
 				if !_target_gm.global_position.is_equal_approx(_nav_agent.target_position):
 					set_movement_target(_target_gm.global_position)
@@ -491,3 +518,32 @@ func investigate_this(crime_global_position: Vector3) -> void:
 	
 	pass
 
+enum DangerState {
+	SAFE, MID, HIGH
+}
+
+
+func get_danger_state() -> DangerState:
+	
+	if _ai_type == AiType.GIGA_MONTY:
+		if _can_see_player():
+			return DangerState.HIGH
+		return DangerState.MID
+	if _ai_override == AiOverride.PASSIVE:
+		if _can_see_player_peaceful():
+			return DangerState.MID
+		return DangerState.SAFE
+	match _ai_state:
+		AiState.PATROL:
+			return DangerState.SAFE
+		AiState.INVESTIGATE:
+			return DangerState.MID
+		AiState.CHASE:
+			return DangerState.HIGH
+	return DangerState.MID
+	
+func is_danger_state_basic() -> bool:
+	return (
+		(_ai_type == AiType.GIGA_MONTY) ||
+		(_ai_override == AiOverride.AGGRESSIVE && _ai_state != AiState.PATROL)
+	)

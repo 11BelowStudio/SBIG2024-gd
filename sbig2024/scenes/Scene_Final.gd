@@ -47,6 +47,8 @@ func _door_dist_intensity_range():
 
 var _player_in_hall: bool = false
 
+@onready var drumLooper: DrumLooper = %DrumLooper
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -83,6 +85,14 @@ func _process(delta: float) -> void:
 		_update_enforcer_dist_intensity()
 		
 		#print(_intensity)
+		
+		match _enforcer.get_danger_state():
+			Enforcer.DangerState.SAFE:
+				drumLooper.drum_state = DrumLooper.DrumStates.LOOP0
+			Enforcer.DangerState.MID:
+				drumLooper.drum_state = DrumLooper.DrumStates.LOOP1
+			Enforcer.DangerState.HIGH:
+				drumLooper.drum_state = DrumLooper.DrumStates.LOOP2
 		
 		heartbeater.intensity_target = _enforcer_dist_intensity
 		wNoiseControl.set_intensity01(_enforcer_dist_intensity)
@@ -154,12 +164,11 @@ func _on_apartment_hall_scene_player_hall_3() -> void:
 		Vector3.UP
 	)
 	
-	_enforcer.navigation_finished.connect(Callable(_on_enforcer_navigation_finished))
+	_enforcer.navigation_finished.connect(_on_enforcer_navigation_finished)
 	
 	
 	_enforcer.init_ai(Enforcer.AiType.GIGA_MONTY)
 	_enforcer.set_target_gm(apartment.enforcerMidHall)
-	#_enforcer.set_target_gm(character)
 	
 	
 	add_child(_enforcer)
@@ -172,7 +181,7 @@ func _on_apartment_hall_scene_player_hall_3() -> void:
 	_update_enforcer_dist_intensity()
 	wNoiseControl.set_intensity01(_enforcer_dist_intensity)
 	heartbeater.intensity = _enforcer_dist_intensity
-	
+	drumLooper.drum_state = DrumLooper.DrumStates.LOOP1
 	pass # Replace with function body.
 
 
@@ -258,5 +267,6 @@ func _on_apartment_hall_scene_player_left_hall() -> void:
 	if _state != FSceneState.CHASE:
 		heartbeater.vol_target = 0
 	pass # Replace with function body.
+
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://6oxi8q1lji6q"]
+[gd_scene load_steps=30 format=3 uid="uid://6oxi8q1lji6q"]
 
 [ext_resource type="Script" path="res://scenes/Scene5.gd" id="1_5k3eb"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://prefabs/character/character.tscn" id="2_khp30"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c7baexarjgo18" path="res://prefabs/two_track_ambience.tscn" id="5_l1xgv"]
 [ext_resource type="AudioStream" uid="uid://bmj2cmshpv10g" path="res://sounds/ambient/740972__nexotron__semibusy-citystreet-construction-site.ogg" id="6_cu2ew"]
 [ext_resource type="PackedScene" uid="uid://rfla4vbmdnoc" path="res://prefabs/heartbeater.tscn" id="7_p2tau"]
+[ext_resource type="PackedScene" uid="uid://b6i7tudh1caaj" path="res://prefabs/drum_looper.tscn" id="8_0xmxg"]
 [ext_resource type="PackedScene" uid="uid://dykr0bp3jd62a" path="res://addons/kenney_prototype_tools/scenes/light/light_01.tscn" id="8_cnvir"]
 [ext_resource type="PackedScene" uid="uid://c5ft6puqrj1xn" path="res://prefabs/enforcer/patrol_node_parent.tscn" id="9_6km0l"]
 [ext_resource type="PackedScene" uid="uid://bmkb4vilpnwxo" path="res://prefabs/enforcer/enforcer_patrol_node.tscn" id="10_p2i8p"]
@@ -59,6 +60,12 @@ fog_sky_affect = 0.9
 [node name="Scene5" type="Node3D"]
 script = ExtResource("1_5k3eb")
 
+[node name="Enforcer" parent="." instance=ExtResource("11_063yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.794, 0, 6.551)
+
+[node name="Enforcer3" parent="." instance=ExtResource("11_063yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 0)
+
 [node name="Character" parent="." instance=ExtResource("2_khp30")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, 0)
 sprint_enabled = true
@@ -77,6 +84,9 @@ audio0 = ExtResource("6_cu2ew")
 [node name="Heartbeater" parent="Effects" instance=ExtResource("7_p2tau")]
 unique_name_in_owner = true
 bus = &"Master"
+
+[node name="DrumLooper" parent="Effects" instance=ExtResource("8_0xmxg")]
+unique_name_in_owner = true
 
 [node name="TheWorld" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_30dnp")
@@ -702,12 +712,6 @@ environment = SubResource("Environment_3fspi")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(0.219881, 0.975327, -0.0197446, 0.65122, -0.131683, 0.747377, 0.726337, -0.177192, -0.664107, -2, 12, 0)
 shadow_enabled = true
-
-[node name="Enforcer" parent="." instance=ExtResource("11_063yl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.794, 0, 6.551)
-
-[node name="Enforcer3" parent="." instance=ExtResource("11_063yl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 0)
 
 [connection signal="bumped_object" from="Character" to="." method="_on_character_bumped_object"]
 [connection signal="hit_by_enforcer" from="Character" to="." method="_on_character_hit_by_enforcer"]

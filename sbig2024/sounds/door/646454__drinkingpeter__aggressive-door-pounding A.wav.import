@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://og0cb5pjiwnw"
+path="res://.godot/imported/646454__drinkingpeter__aggressive-door-pounding A.wav-510a7358579deecbb0a5a719e1d797f4.sample"
+
+[deps]
+
+source_file="res://sounds/door/646454__drinkingpeter__aggressive-door-pounding A.wav"
+dest_files=["res://.godot/imported/646454__drinkingpeter__aggressive-door-pounding A.wav-510a7358579deecbb0a5a719e1d797f4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

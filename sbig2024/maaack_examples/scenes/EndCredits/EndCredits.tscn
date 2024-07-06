@@ -10,7 +10,7 @@
 [node name="EndCredits" instance=ExtResource("1_885d8")]
 theme = ExtResource("2_jh5ji")
 script = ExtResource("2_6pwj4")
-main_menu_scene = "res://addons/maaacks_game_template/examples/scenes/Menus/MainMenu/MainMenuWithAnimations.tscn"
+main_menu_scene = "res://maaack_examples/scenes/Menus/MainMenu/MainMenu.tscn"
 
 [node name="BackgroundMusicPlayer" parent="." index="0" instance=ExtResource("3_v7acr")]
 stream = ExtResource("4_s8w5b")

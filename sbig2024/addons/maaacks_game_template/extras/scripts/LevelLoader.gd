@@ -63,7 +63,17 @@ func advance_and_load_level():
 		load_level()
 
 func reload_level():
-	load_level()
+	if !pls_reload:
+		_clear_current_level()
+		pls_reload = true
+	#load_level()
+
+var pls_reload: bool = false	
+
+func _process(delta: float) -> void:
+	if pls_reload:
+		pls_reload = false
+		load_level()
 
 func _ready():
 	if Engine.is_editor_hint():

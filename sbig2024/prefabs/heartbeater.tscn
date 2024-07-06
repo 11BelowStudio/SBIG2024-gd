@@ -5,6 +5,7 @@
 
 [node name="Heartbeater" type="AudioStreamPlayer"]
 stream = ExtResource("1_oj1ph")
+autoplay = true
 max_polyphony = 2
 bus = &"_heartbeat"
 script = ExtResource("2_xfihx")

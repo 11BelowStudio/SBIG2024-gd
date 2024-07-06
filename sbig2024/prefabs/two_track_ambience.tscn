@@ -11,7 +11,9 @@ _track_bias = 2
 
 [node name="Track0" type="AudioStreamPlayer" parent="."]
 autoplay = true
+bus = &"Ambience"
 
 [node name="Track1" type="AudioStreamPlayer" parent="."]
 volume_db = -80.0
 autoplay = true
+bus = &"Ambience"

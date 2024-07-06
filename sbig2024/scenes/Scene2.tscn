@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://4b5jwug58moo"]
+[gd_scene load_steps=29 format=3 uid="uid://4b5jwug58moo"]
 
 [ext_resource type="PackedScene" uid="uid://tt1dhet81x6t" path="res://addons/kenney_prototype_tools/scenes/light/light_02.tscn" id="1_6ucl6"]
 [ext_resource type="Script" path="res://scenes/Scene2.gd" id="1_218to"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://prefabs/character/character.tscn" id="10_atl1s"]
 [ext_resource type="PackedScene" uid="uid://bkmyui3vwa31k" path="res://prefabs/buildings/building_d.tscn" id="10_rvlrq"]
 [ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/ui/fpui.tscn" id="11_fyrmw"]
+[ext_resource type="PackedScene" uid="uid://b6i7tudh1caaj" path="res://prefabs/drum_looper.tscn" id="17_edhrp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbb7a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -201,6 +202,9 @@ audio0 = ExtResource("6_16rhk")
 [node name="Heartbeater" parent="Effects" instance=ExtResource("7_jprn3")]
 unique_name_in_owner = true
 bus = &"Master"
+
+[node name="DrumLooper" parent="Effects" instance=ExtResource("17_edhrp")]
+unique_name_in_owner = true
 
 [node name="Character" parent="." node_paths=PackedStringArray("look_target") instance=ExtResource("10_atl1s")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 0, -11)

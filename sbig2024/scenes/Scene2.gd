@@ -74,6 +74,8 @@ var sticker_state: StickerStates = StickerStates.NOT_DONE
 
 var _intensity: float = 0
 
+@onready var drumLooper: DrumLooper = %DrumLooper
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	character.look_target = theSticker
@@ -116,6 +118,15 @@ func _process(delta: float) -> void:
 		_:
 			pass
 	pass
+	
+	if _enforcer:
+		match _enforcer.get_danger_state():
+			Enforcer.DangerState.SAFE:
+				drumLooper.drum_state = DrumLooper.DrumStates.LOOP0
+			Enforcer.DangerState.MID:
+				drumLooper.drum_state = DrumLooper.DrumStates.LOOP1
+			Enforcer.DangerState.HIGH:
+				drumLooper.drum_state = DrumLooper.DrumStates.LOOP2
 	
 	#print("progress: %1.3f state: %s" % [_sticker_placing_progress, sticker_state])
 

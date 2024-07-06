@@ -64,6 +64,7 @@ func _ready() -> void:
 	intensity = intensity
 	_timer0 = _current_delay
 	_timer1 = _current_delay + second_beat_delay
+	play()
 	pass # Replace with function body.
 
 
