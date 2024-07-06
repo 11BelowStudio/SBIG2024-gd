@@ -9,7 +9,7 @@ Developed by [11BelowStudio](https://11BelowStudio.itch.io)
 
 Percival was voiced by himself, unfortunately.
 
-The rest of the voice acting was provided by [Virety Rammithel](https://www.twitch.tv/virety_rammithel)
+The enforcers and the final daymessage were voiced by [Virety Rammithel](https://www.twitch.tv/virety_rammithel)
 
 ## License stuff
 
@@ -21,6 +21,11 @@ License: [MIT License](https://github.com/ColormaticStudios/quality-godot-first-
 #### Heartbeat Single
 Author: [.name](https://freesound.org/people/.name)
 Source: [https://freesound.org/people/.name/sounds/418788/](https://freesound.org/people/.name/sounds/418788/)
+License: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+
+#### Stainless Steel Lid 2.wav
+Author: [Benboncan](https://freesound.org/people/Benboncan)
+Source: [https://freesound.org/people/Benboncan/sounds/69354/](https://freesound.org/people/Benboncan/sounds/69354/)
 License: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
 
 #### Godot-Post-Process-Plugin

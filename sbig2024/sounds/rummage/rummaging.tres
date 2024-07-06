@@ -1,0 +1,23 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://cfh3bfuuyu4ew"]
+
+[ext_resource type="AudioStream" uid="uid://ddl66th5dni18" path="res://sounds/rummage/257570__kodack__searching-through-shit.wav" id="1_o7xwf"]
+[ext_resource type="AudioStream" uid="uid://bgjggfddfii8l" path="res://sounds/rummage/321479__dslrguide__cutlery-in-a-drawer.wav" id="2_3aogb"]
+[ext_resource type="AudioStream" uid="uid://bvihfhclvr3fy" path="res://sounds/rummage/340575__mickyman5000__scrap_metal_rummaging.wav" id="3_i2dwi"]
+[ext_resource type="AudioStream" uid="uid://u3t33m1lywhk" path="res://sounds/rummage/365532__caitlin_100__rummaging-in-a-drawer.mp3" id="4_2u5xc"]
+[ext_resource type="AudioStream" uid="uid://y7exem6ba4kx" path="res://sounds/rummage/697257__tyballer92__picky-rummaging.wav" id="5_comyc"]
+[ext_resource type="AudioStream" uid="uid://deixlsxhcah3e" path="res://sounds/rummage/698147__tyballer92__rummaging-the-small-stuff.wav" id="6_230o7"]
+
+[resource]
+streams_count = 6
+stream_0/stream = ExtResource("1_o7xwf")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_3aogb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_i2dwi")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_2u5xc")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_comyc")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_230o7")
+stream_5/weight = 1.0

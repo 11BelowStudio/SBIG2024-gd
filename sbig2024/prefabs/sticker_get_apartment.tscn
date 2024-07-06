@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://tiwtut8n2d8x"]
+[gd_scene load_steps=8 format=3 uid="uid://tiwtut8n2d8x"]
 
 [ext_resource type="Script" path="res://scripts/use_get_sticker.gd" id="1_y8eq8"]
 [ext_resource type="Material" uid="uid://5lriymwl1hwe" path="res://materials/an_sticker.tres" id="2_2yrog"]
+[ext_resource type="AudioStream" uid="uid://cfh3bfuuyu4ew" path="res://sounds/rummage/rummaging.tres" id="3_oexwu"]
+[ext_resource type="AudioStream" uid="uid://bbjvdfqek4kpv" path="res://sounds/misc/69354__benboncan__stainless-steel-lid-2.wav" id="4_w4qgr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_diobt"]
 
@@ -34,7 +36,10 @@ mesh = SubResource("QuadMesh_snnsk")
 skeleton = NodePath("../..")
 
 [node name="ProgressNoisePlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_oexwu")
+volume_db = -6.0
 bus = &"SFX"
 
 [node name="DoneNoisePlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_w4qgr")
 bus = &"SFX"

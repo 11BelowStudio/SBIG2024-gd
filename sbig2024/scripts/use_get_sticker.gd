@@ -25,5 +25,6 @@ func _process(delta: float) -> void:
 	pass
 
 func use() -> void:
+	super.use()
 	visual.visible = false
 	pass

@@ -7,7 +7,10 @@
 	* https://godotengine.org/asset-library/asset/2709
 	* Maaack
 	* MIT license
-
+* Godot-Post-Process-Plugin
+	* https://github.com/ItsKorin/Godot-Post-Process-Plugin
+	* ItsKorin
+	* MIT License
 * Impact sounds
 	* https://kenney.nl/assets/impact-sounds
 	* kenney.nl
@@ -16,7 +19,6 @@
 	* https://godotengine.org/asset-library/asset/1630
 	* geroveni
 	* CC0
-
 * heartbeat single
 	* https://freesound.org/people/.name/sounds/418788/
 	* .name
@@ -45,3 +47,7 @@
 	* https://freesound.org/people/leonelmail/sounds/427840/
 	* leonelmail
 	* CC0
+* Stainless Steel Lid 2.wav
+	* https://freesound.org/people/Benboncan/sounds/69354/
+	* Benboncan
+	* CC-BY-4.0

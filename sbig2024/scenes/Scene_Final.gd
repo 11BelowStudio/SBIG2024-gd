@@ -122,7 +122,7 @@ func _physics_process(delta: float) -> void:
 					apartment.fpui.show_instruction(_instruction_2)
 					if Input.is_action_just_pressed(character.USE):
 						sticker_state = StickerStates.DOING
-						#theSticker.placing_started()
+						apartment.sticker.start_stickering()
 				else:
 					apartment.fpui.show_instruction(_instruction_1)
 			StickerStates.DOING:
@@ -130,10 +130,10 @@ func _physics_process(delta: float) -> void:
 					var characterUseObj: StickerBase = character.get_use_raycast_target() as StickerBase
 					if (not characterUseObj) or (characterUseObj != apartment.sticker):
 						sticker_state = StickerStates.NOT_DONE
-						#theSticker.placing_aborted()
+						apartment.sticker.abort_stickering()
 				else:
 					sticker_state = StickerStates.NOT_DONE
-					#theSticker.placing_aborted()
+					apartment.sticker.abort_stickering()
 			_:
 				pass
 		pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvh2vqgob2niq"]
+[gd_scene load_steps=25 format=3 uid="uid://dvh2vqgob2niq"]
 
 [ext_resource type="Script" path="res://prefabs/apartment/apartment_hall_scene.gd" id="1_mmlsi"]
 [ext_resource type="PackedScene" uid="uid://dw7r4hu0l2ybu" path="res://models/apartment/Apartment.glb" id="1_oc4nn"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bkmyui3vwa31k" path="res://prefabs/buildings/building_d.tscn" id="9_okqdu"]
 [ext_resource type="AudioStream" uid="uid://b0t8hvjqe7vex" path="res://sounds/ambient/198957__mydo1__roomtone.ogg" id="11_1he6f"]
 [ext_resource type="AudioStream" uid="uid://2n8vtpfnpymr" path="res://sounds/The Antedaymessage Attentionsound.ogg" id="15_s6myr"]
+[ext_resource type="Texture2D" uid="uid://cqlteoy3784w" path="res://textures/an sticker.png" id="17_x8fvh"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cy88a"]
 vertices = PackedVector3Array(3.75, 3.27, 6.5, 4, 3.27, 3.75, 2.75, 3.27, 3.75, 3.75, 3.27, 6.5, 2.75, 3.27, 3.75, 2.25, 3.27, 3.25, -1.25, 3.27, 6.25, 2.25, 3.27, 3.25, 2.25, 3.27, -2.75, -1.25, 3.27, -2.75, -1.25, 3.27, 6.25, 1.5, 0.64, -1.5, 1.5, 0.64, -1, 2, 0.64, -1, 2, 0.64, -2.25, -1, 0.02, 1.25, -2.75, 0.02, 1.25, -0.75, 0.02, 1.75, 0.25, 0.02, -0.25, 0.25, 0.02, -1, -0.75, 0.02, -1, -1, 0.02, 1.25, -0.75, 0.02, 1.75, -0.75, 0.02, 2.75, -0.25, 0.02, 3, 0.25, 0.02, 3, 13.75, 0.02, 8.25, 14.5, 0.02, 8.25, 14.5, 0.02, 6, 13.5, 0.02, 6, 20.75, 0.02, 8.25, 21.5, 0.02, 8.25, 21.25, 0.02, 6.25, 20.5, 0.02, 6, 14.5, 0.02, 6, 17, 0.02, 6, 22, 0.02, 4.25, 20.5, 0.02, 6, 21.25, 0.02, 6.25, 22.25, 0.02, 5.5, 1.5, 0.02, 1.5, 1.25, 0.02, 0.25, 0.25, 0.02, -0.25, -1, 0.02, 1.25, -0.75, 0.02, 1.75, 0.25, 0.02, 3, 0.5, 0.02, 4.25, 6.5, 0.02, 6, 7.5, 0.02, 6, 17, 0.02, 6, 18, 0.02, 6, 22, 0.02, 4.25, 0.5, 0.02, 4.25, -0.75, 0.02, 6, 6.5, 0.02, 6, 13.5, 0.02, 6, 14.5, 0.02, 6, 22, 0.02, 4.25, 0.5, 0.02, 4.25, 0.25, 0.02, 3, -0.25, 0.02, 3, -0.75, 0.02, 6, 17.25, 0.02, 8.25, 18, 0.02, 8.25, 18, 0.02, 6, 17, 0.02, 6, 20.5, 0.02, 6, 22.25, 0.02, 5.5, 22, 0.02, 4.25, 18, 0.02, 6, 6.75, 0.02, 8.25, 7.5, 0.02, 8.25, 7.5, 0.02, 6, 6.5, 0.02, 6, 13.5, 0.02, 6, 22, 0.02, 4.25, 0.5, 0.02, 4.25, 7.5, 0.02, 6, -3.25, 2.77, 0.75, -3.25, 2.77, 2, -2.25, 2.77, 2, -2.25, 2.77, 0.75, 13.25, 3.27, 8.5, 14.75, 3.27, 8.5, 14.75, 3.27, 6.5, 13, 3.27, 6.25, 4, 3.27, 3.75, 6, 3.27, 6.25, 8, 3.27, 6.25, 16.75, 3.27, 8.5, 18.25, 3.27, 8.5, 18.25, 3.27, 6.5, 16.5, 3.27, 6.25, 16.5, 3.27, 6.25, 18.25, 3.27, 6.5, 20, 3.27, 6.25, 22.25, 3.27, 3.75, 20.25, 3.27, 8.5, 21.75, 3.27, 8.5, 21.75, 3.27, 6.5, 20, 3.27, 6.25, 13, 3.27, 6.25, 14.75, 3.27, 6.5, 16.5, 3.27, 6.25, 22.25, 3.27, 3.75, 4, 3.27, 3.75, 20, 3.27, 6.25, 21.75, 3.27, 6.5, 22.25, 3.27, 6.25, 22.25, 3.27, 3.75, 6, 3.27, 6.25, 6.25, 3.27, 8.5, 7.75, 3.27, 8.5, 8, 3.27, 6.25, 4, 3.27, 3.75, 8, 3.27, 6.25, 13, 3.27, 6.25, 4, 3.27, 3.75, 3.75, 3.27, 6.5, 6, 3.27, 6.25)
@@ -37,6 +38,12 @@ size = Vector3(7, 1, 6.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4jgd2"]
 size = Vector3(25, 3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx68v"]
+transparency = 1
+albedo_texture = ExtResource("17_x8fvh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_aqeci"]
 
 [node name="ApartmentHallScene" type="Node3D"]
 script = ExtResource("1_mmlsi")
@@ -208,7 +215,7 @@ bus = &"Ambience"
 [node name="VidscreenAudio" type="AudioStreamPlayer3D" parent="AudioSources"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.813, 1.75, 2.313)
-max_distance = 10.0
+max_distance = 20.0
 bus = &"_vidscreen"
 
 [node name="VidscreenFanfare" type="AudioStreamPlayer3D" parent="AudioSources/VidscreenAudio"]
@@ -259,6 +266,53 @@ light_color = Color(1, 0.968627, 0.615686, 1)
 light_energy = 0.2
 light_cull_mask = 4294967283
 shadow_enabled = true
+
+[node name="funni stickers" type="Node3D" parent="."]
+
+[node name="StickerVisual" type="MeshInstance3D" parent="funni stickers"]
+transform = Transform3D(0.498473, -0.0195234, 0, 0.0390469, 0.249237, 0, 0, 0, 1, 0, 1.3348, -2.99)
+material_override = SubResource("StandardMaterial3D_kx68v")
+mesh = SubResource("QuadMesh_aqeci")
+
+[node name="StickerVisual2" type="MeshInstance3D" parent="funni stickers"]
+transform = Transform3D(0.497804, 0.0234054, 0, -0.0468109, 0.248902, 0, 0, 0, 1, 0.661042, 1.3348, -2.99)
+material_override = SubResource("StandardMaterial3D_kx68v")
+mesh = SubResource("QuadMesh_aqeci")
+
+[node name="StickerVisual3" type="MeshInstance3D" parent="funni stickers"]
+transform = Transform3D(0.467112, -0.0891723, 0, 0.178345, 0.233556, 0, 0, 0, 1, 1.34905, 1.64176, -2.99)
+material_override = SubResource("StandardMaterial3D_kx68v")
+mesh = SubResource("QuadMesh_aqeci")
+
+[node name="StickerVisual4" type="MeshInstance3D" parent="funni stickers"]
+transform = Transform3D(-0.492618, -0.0428017, 0, 0.0856035, -0.246309, 0, 0, 0, 1, 0.0667517, 1.79805, -2.99)
+material_override = SubResource("StandardMaterial3D_kx68v")
+mesh = SubResource("QuadMesh_aqeci")
+
+[node name="StickerVisual5" type="MeshInstance3D" parent="funni stickers"]
+transform = Transform3D(0.494343, -0.0375003, 0, 0.0750007, 0.247171, 0, 0, 0, 1, 1.23363, 0.990432, -2.99)
+material_override = SubResource("StandardMaterial3D_kx68v")
+mesh = SubResource("QuadMesh_aqeci")
+
+[node name="StickerVisual6" type="MeshInstance3D" parent="funni stickers"]
+transform = Transform3D(0.494343, -0.0375003, 0, 0.0750007, 0.247171, 0, 0, 0, 1, -0.963186, 1.47602, -2.99)
+material_override = SubResource("StandardMaterial3D_kx68v")
+mesh = SubResource("QuadMesh_aqeci")
+
+[node name="StickerVisual7" type="MeshInstance3D" parent="funni stickers"]
+transform = Transform3D(0.476474, 0.0757838, 0, -0.151568, 0.238237, 0, 0, 0, 1, 1.92331, 0.8305, -2.99)
+material_override = SubResource("StandardMaterial3D_kx68v")
+mesh = SubResource("QuadMesh_aqeci")
+
+[node name="StickerVisual8" type="MeshInstance3D" parent="funni stickers"]
+transform = Transform3D(0.476474, 0.0757838, 0, -0.151568, 0.238237, 0, 0, 0, 1, 1.64617, 1.30619, -2.99)
+material_override = SubResource("StandardMaterial3D_kx68v")
+mesh = SubResource("QuadMesh_aqeci")
+
+[node name="StickerVisual9" type="MeshInstance3D" parent="funni stickers"]
+transform = Transform3D(0.499072, -0.0152273, 0, 0.0304546, 0.249536, 0, 0, 0, 1, -1.15482, 1.81398, -2.99)
+material_override = SubResource("StandardMaterial3D_kx68v")
+mesh = SubResource("QuadMesh_aqeci")
 
 [connection signal="body_entered" from="AreaTriggers/ExitTrigger" to="." method="_on_exit_trigger_body_entered"]
 [connection signal="body_entered" from="AreaTriggers/HallTrigger3" to="." method="_on_hall_trigger_3_body_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://prefabs/interior/dynamic_door.gd" id="1_f50ao"]
 [ext_resource type="PackedScene" uid="uid://dg2ywt0a4ti7n" path="res://models/apt_door/apt_door.glb" id="2_i55s8"]
 [ext_resource type="Script" path="res://prefabs/interior/dynamic_door_itself.gd" id="3_0e8fi"]
-[ext_resource type="AudioStream" uid="uid://dvn2cnf6cqqx1" path="res://sounds/random_door_noise.tres" id="4_go2uy"]
+[ext_resource type="AudioStream" uid="uid://dvn2cnf6cqqx1" path="res://sounds/door/random_door_noise.tres" id="4_go2uy"]
 
 [node name="dynamic_door" type="Node3D"]
 script = ExtResource("1_f50ao")

@@ -292,7 +292,7 @@ func _can_see_player_peaceful() -> bool:
 		# nothing in the detection ray = player definitely isn't in the detection ray.
 		return false
 	var detected_object : CollisionObject3D = passive_mode_detection.get_collider()
-	return passive_mode_detection == character
+	return detected_object == character
 
 func _complicated_chase_phys_update() -> void:
 	if _can_see_player():
@@ -334,6 +334,8 @@ func _complicated_patrol_phys_update() -> void:
 		# indicate that we need to queue a new patrol target
 		set_movement_target(_patrol_next_global_position)
 		_patrol_new_next_pos_needed = true
+		if randf() < 0.25:
+			_say_passive_line()
 	pass
 
 func _complicated_chase_update() -> void:
