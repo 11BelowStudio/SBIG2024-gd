@@ -638,7 +638,4 @@ func _on_enforcer_collision_area_body_entered(body: Node3D) -> void:
 	hit_by_enforcer.emit()
 	pass # Replace with function body.
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_PREDELETE:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

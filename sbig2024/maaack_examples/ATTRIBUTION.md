@@ -1,6 +1,7 @@
 
 # Flypost
 [https://11BelowStudio.itch.io/Flypost](https://11BelowStudio.itch.io/Flypost)
+[https://github.com/11BelowStudio/SBIG2024-gd](https://github.com/11BelowStudio/SBIG2024-gd)
 Made for the 2024 So Bad It's Good Jam
 
 Developed by [11BelowStudio](https://11BelowStudio.itch.io)

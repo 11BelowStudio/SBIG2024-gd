@@ -23,3 +23,6 @@ sbig2024/mono_crash.*.json
 
 # vs code
 sbig2024/.vscode
+
+# builds
+build/

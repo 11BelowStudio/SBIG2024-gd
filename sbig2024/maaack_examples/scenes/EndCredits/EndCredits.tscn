@@ -37,6 +37,59 @@ stretch_mode = 5
 [node name="ScrollContainer" parent="." index="3"]
 scroll_vertical = 0
 
+[node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
+text = "[center][font_size=64]Flypost[/font_size]
+[url=https://11BelowStudio.itch.io/Flypost]https://11BelowStudio.itch.io/Flypost[/url]
+[url=https://github.com/11BelowStudio/SBIG2024-gd]https://github.com/11BelowStudio/SBIG2024-gd[/url]
+Made for the 2024 So Bad It's Good Jam
+
+Developed by [url=https://11BelowStudio.itch.io]11BelowStudio[/url]
+
+3D models by [url=https://itch.io/profile/delta100]Delta100[/url]
+
+Percival was voiced by himself, unfortunately.
+
+The enforcers and the final daymessage were voiced by [url=https://www.twitch.tv/virety_rammithel]Virety Rammithel[/url]
+
+[font_size=48]License stuff[/font_size]
+
+[font_size=24]Quality First Person Controller v2[/font_size]
+Author: [url=https://github.com/ColormaticStudios]ColormaticStudios[/url]
+Source:[url=https://github.com/ColormaticStudios/quality-godot-first-person-2]https://github.com/ColormaticStudios/quality-godot-first-person-2[/url]
+License: [url=https://github.com/ColormaticStudios/quality-godot-first-person-2/blob/main/LICENSE]MIT License[/url]
+
+[font_size=24]Heartbeat Single[/font_size]
+Author: [url=https://freesound.org/people/.name].name[/url]
+Source: [url=https://freesound.org/people/.name/sounds/418788/]https://freesound.org/people/.name/sounds/418788/[/url]
+License: [url=https://creativecommons.org/licenses/by/4.0/]CC-BY-4.0[/url]
+
+[font_size=24]Stainless Steel Lid 2.wav[/font_size]
+Author: [url=https://freesound.org/people/Benboncan]Benboncan[/url]
+Source: [url=https://freesound.org/people/Benboncan/sounds/69354/]https://freesound.org/people/Benboncan/sounds/69354/[/url]
+License: [url=https://creativecommons.org/licenses/by/4.0/]CC-BY-4.0[/url]
+
+[font_size=24]Godot-Post-Process-Plugin[/font_size]
+Author:[url=https://github.com/ItsKorin]ItsKorin[/url]
+Source: [url=https://github.com/ItsKorin/Godot-Post-Process-Plugin]https://github.com/ItsKorin/Godot-Post-Process-Plugin[/url]
+License: [url=https://github.com/ItsKorin/Godot-Post-Process-Plugin/blob/main/LICENSE]MIT License[/url]
+
+[font_size=48]Tools[/font_size]
+[font_size=24]Godot[/font_size]
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
+Source: [url=https://godotengine.org/]godotengine.org[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
+
+[font_size=24]Git[/font_size]
+Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
+Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+
+[font_size=24]Godot Game Template[/font_size]
+Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]  
+Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+[/center]"
+
 [node name="CenterContainer" type="CenterContainer" parent="." index="4"]
 layout_mode = 0
 anchor_right = 1.0
