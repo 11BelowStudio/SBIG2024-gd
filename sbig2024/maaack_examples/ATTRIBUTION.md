@@ -6,7 +6,7 @@ Made for the 2024 So Bad It's Good Jam
 
 Developed by [11BelowStudio](https://11BelowStudio.itch.io)
 
-3D models by [Delta100](https://itch.io/profile/delta100)
+3D models by [David Lowe](https://itch.io/profile/delta100)
 
 Percival was voiced by himself, unfortunately.
 

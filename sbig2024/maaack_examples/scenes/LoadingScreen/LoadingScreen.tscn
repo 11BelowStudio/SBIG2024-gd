@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddeagbc67f52m"]
+[gd_scene load_steps=4 format=3 uid="uid://ddeagbc67f52m"]
 
 [ext_resource type="PackedScene" uid="uid://cd0jbh4metflb" path="res://addons/maaacks_game_template/base/scenes/LoadingScreen/LoadingScreen.tscn" id="1_2dnq1"]
 [ext_resource type="Script" path="res://maaack_examples/scenes/LoadingScreen/LoadingScreen.gd" id="2_vcpo6"]
+[ext_resource type="Theme" uid="uid://ckl3wagahv1hk" path="res://fonts/comic_neue_theme.tres" id="3_db30x"]
 
 [node name="LoadingScreen" instance=ExtResource("1_2dnq1")]
 script = ExtResource("2_vcpo6")
+
+[node name="Control" parent="." index="0"]
+theme = ExtResource("3_db30x")

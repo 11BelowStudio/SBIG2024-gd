@@ -25,6 +25,8 @@ func _unhandled_input(event):
 		elif %SubMenuContainer.visible:
 			close_options_menu()
 		else:
+			if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			InGameMenuController.close_menu()
 
 func _setup_options():

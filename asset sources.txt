@@ -1,4 +1,18 @@
 
+
+* Design and development and such
+	* 11BelowStudio (Rachel Lowe)
+	* https://11BelowStudio.itch.io
+	* https://11BelowStudio.github.io
+
+* 3D modelling
+	* David Lowe
+	* https://itch.io/profile/delta100
+* Voice acting (enforcers/final announcement)
+	* Virety Rammithel
+	* https://www.twitch.tv/virety_rammithel
+
+
 * Quality First Person Controller v2
 	* https://github.com/ColormaticStudios/quality-godot-first-person-2
 	* Colormatic Studios
@@ -51,3 +65,35 @@
 	* https://freesound.org/people/Benboncan/sounds/69354/
 	* Benboncan
 	* CC-BY-4.0
+* Aggressive door pounding
+	* https://freesound.org/people/drinkingpeter/sounds/646454/
+	* Drinkingpeter
+	* CC0
+* Aggressive door slam
+	* https://freesound.org/people/drinkingpeter/sounds/646455/
+	* Drinkingpeter
+	* CC0
+* Searching through shit
+	* https://freesound.org/people/kodack/sounds/257570/
+	* kodack
+	* CC0
+* cutlery in a drawer
+	* https://freesound.org/people/dslrguide/sounds/321479/
+	* dslrguide
+	* CC0
+* scrap metal rummaging
+	* https://freesound.org/people/mickeyman5000/sounds/340575/
+	* name
+	* CC0
+* rummaging in a drawer
+	* https://freesound.org/people/caitlin_100/sounds/365532/
+	* name
+	* CC0
+* Picky rummaging
+	* https://freesound.org/people/tyballer/sounds/697257/
+	* name
+	* CC0
+* Rummaging the small stuff
+	* https://freesound.org/people/tyballer/sounds/698147/
+	* name
+	* CC0

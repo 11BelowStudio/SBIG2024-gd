@@ -4,6 +4,7 @@ extends Credits
 @export_file("*.tscn") var main_menu_scene : String
 
 func _end_reached():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	%EndMessagePanel.show()
 	super._end_reached()
 

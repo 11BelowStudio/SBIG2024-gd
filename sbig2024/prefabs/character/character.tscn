@@ -403,6 +403,7 @@ JUMP_ANIMATION = NodePath("Head/JumpAnimation")
 CROUCH_ANIMATION = NodePath("CrouchAnimation")
 COLLISION_MESH = NodePath("Collision")
 CROUCH = "crouch"
+pausing_enabled = false
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -429,7 +430,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999391, -0.0348995, 0, 0.0348995, 0.999391
 libraries = {
 "": SubResource("AnimationLibrary_o0unb")
 }
-blend_times = [&"RESET", &"RESET", 0.5, &"RESET", &"walk", 0.5, &"walk", &"RESET", 0.5]
+blend_times = [&"walk", &"RESET", 0.5, &"RESET", &"walk", 0.5, &"RESET", &"RESET", 0.5]
 
 [node name="JumpAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {

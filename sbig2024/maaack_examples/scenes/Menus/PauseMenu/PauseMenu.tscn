@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qeqh1euot2d0"]
+[gd_scene load_steps=5 format=3 uid="uid://qeqh1euot2d0"]
 
 [ext_resource type="PackedScene" uid="uid://cdwvtbtwmrqbn" path="res://addons/maaacks_game_template/extras/scenes/PauseMenu/PauseMenu.tscn" id="1_ny4ah"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/examples/scenes/Menus/PauseMenu/PauseMenu.gd" id="2_jo5x7"]
 [ext_resource type="PackedScene" uid="uid://dr1ard3qf6t81" path="res://maaack_examples/scenes/Menus/OptionsMenu/MiniOptionsMenuWithReset.tscn" id="3_xfi56"]
+[ext_resource type="Theme" uid="uid://ckl3wagahv1hk" path="res://fonts/comic_neue_theme.tres" id="4_ph5dp"]
 
 [node name="PauseMenu" instance=ExtResource("1_ny4ah")]
 script = ExtResource("2_jo5x7")
@@ -15,8 +16,20 @@ color = Color(0, 0, 0, 0.25098)
 [node name="BackgroundTextureRect" parent="." index="2"]
 visible = false
 
+[node name="MenuContainer" parent="." index="3"]
+theme = ExtResource("4_ph5dp")
+
 [node name="RestartButton" parent="MenuContainer/VBoxContainer/MenuButtons" index="1"]
 visible = false
 
-[node name="MainMenuButton" parent="MenuContainer/VBoxContainer/MenuButtons" index="3"]
-visible = false
+[node name="SubMenuContainer" parent="." index="4"]
+theme = ExtResource("4_ph5dp")
+
+[node name="ConfirmRestart" parent="." index="5"]
+theme = ExtResource("4_ph5dp")
+
+[node name="ConfirmMainMenu" parent="." index="6"]
+theme = ExtResource("4_ph5dp")
+
+[node name="ConfirmExit" parent="." index="7"]
+theme = ExtResource("4_ph5dp")

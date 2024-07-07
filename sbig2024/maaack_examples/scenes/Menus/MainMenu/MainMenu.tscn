@@ -20,15 +20,30 @@ credits_packed_scene = ExtResource("3_vmius")
 stream = ExtResource("6_armtm")
 
 [node name="Title" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="0"]
+theme_override_font_sizes/font_size = 128
 text = "Flypost"
 
 [node name="SubTitle" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="1"]
 visible = false
 
-[node name="ApartmentHallScene" parent="." index="8" instance=ExtResource("4_s5sat")]
+[node name="SubTitle" type="Label" parent="." index="8"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "11BelowStudio and contributors (2024)"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ApartmentHallScene" parent="." index="9" instance=ExtResource("4_s5sat")]
 discard_ui = true
 
-[node name="Character" parent="." index="9" instance=ExtResource("5_i2hkq")]
+[node name="Character" parent="." index="10" instance=ExtResource("5_i2hkq")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.25, 0, -1)
 capture_mouse = false
 immobile = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://4b5jwug58moo"]
+[gd_scene load_steps=30 format=3 uid="uid://4b5jwug58moo"]
 
 [ext_resource type="PackedScene" uid="uid://tt1dhet81x6t" path="res://addons/kenney_prototype_tools/scenes/light/light_02.tscn" id="1_6ucl6"]
 [ext_resource type="Script" path="res://scenes/Scene2.gd" id="1_218to"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bkmyui3vwa31k" path="res://prefabs/buildings/building_d.tscn" id="10_rvlrq"]
 [ext_resource type="PackedScene" uid="uid://dqqa714610ej0" path="res://prefabs/ui/fpui.tscn" id="11_fyrmw"]
 [ext_resource type="PackedScene" uid="uid://b6i7tudh1caaj" path="res://prefabs/drum_looper.tscn" id="17_edhrp"]
+[ext_resource type="LightmapGIData" uid="uid://cwdys57yymq4i" path="res://scenes/Scene2.lmbake" id="20_0w6d1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbb7a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -217,9 +218,23 @@ holding_sticker = true
 
 [node name="Lighting" type="Node" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(0.726337, -0.177192, -0.664106, 0.65122, -0.131683, 0.747377, -0.219881, -0.975327, 0.0197447, -2, 12, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.286669, 0.956879, -0.0469434, 0.375402, -0.0671143, 0.924429, 0.881416, -0.282628, -0.378454, 8.49582, 12, 0)
 shadow_enabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 2.26267e-08, 0.965926, -0.258819, 8.44439e-08, -0.258819, -0.965926, 8, 2.46897, 7)
+light_cull_mask = 4294967281
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 30.0
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 2
+bounces = 4
+directional = true
+generate_probes_subdiv = 4
+light_data = ExtResource("20_0w6d1")
 
 [connection signal="body_entered" from="World/TriggerAreas/ExitJumpscareTrigger" to="." method="_on_exit_jumpscare_trigger_body_entered"]
 [connection signal="body_entered" from="World/TriggerAreas/LevelExitTrigger" to="." method="_on_player_reached_exit"]
