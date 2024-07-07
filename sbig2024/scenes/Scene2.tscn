@@ -239,3 +239,6 @@ light_data = ExtResource("20_0w6d1")
 [connection signal="body_entered" from="World/TriggerAreas/ExitJumpscareTrigger" to="." method="_on_exit_jumpscare_trigger_body_entered"]
 [connection signal="body_entered" from="World/TriggerAreas/LevelExitTrigger" to="." method="_on_player_reached_exit"]
 [connection signal="hit_by_enforcer" from="Character" to="." method="_on_character_hit_by_enforcer"]
+
+[editable path="World/exit_door"]
+[editable path="World/exit_door/door_dynamic"]
