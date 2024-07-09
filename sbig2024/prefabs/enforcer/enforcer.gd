@@ -71,10 +71,10 @@ enum AiOverride {
 
 ## The scene must give the enforcer all of the patrol nodes.
 #@onready var _all_patrol_nodes: Array[EnforcerPatrolNode] = __get_patrol_nodes()
-@onready var _patrol_nodes_unvisited: Array[EnforcerPatrolNode] = __get_patrol_nodes():
-	get:
-		_patrol_nodes_unvisited = _patrol_nodes_unvisited.filter(func(n): return is_instance_valid(n))
-		return _patrol_nodes_unvisited
+@onready var _patrol_nodes_unvisited: Array[EnforcerPatrolNode] = __get_patrol_nodes()#:
+	#get:
+	#	_patrol_nodes_unvisited = _patrol_nodes_unvisited.filter(func(n): return is_instance_valid(n))
+	#	return _patrol_nodes_unvisited
 
 func __get_patrol_nodes() -> Array[EnforcerPatrolNode]:
 	if is_node_ready():

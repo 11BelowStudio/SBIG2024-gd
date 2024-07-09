@@ -18,5 +18,3 @@ func _unhandled_input(event):
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			InGameMenuController.close_menu()
 
-
-func _on
