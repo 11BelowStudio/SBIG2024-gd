@@ -97,3 +97,7 @@
 	* https://freesound.org/people/tyballer/sounds/698147/
 	* name
 	* CC0
+* Blessing.wav
+	* https://freesound.org/people/younoise/sounds/616106/
+	* younoise
+	* CC0

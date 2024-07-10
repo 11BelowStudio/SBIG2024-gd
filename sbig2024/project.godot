@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Flypost"
 config/description="Hmm yes today I shall place a sticker outside. Doubleplusgood!"
-config/version="0.0.3"
+config/version="0.0.4"
 run/main_scene="res://maaack_examples/scenes/Menus/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://images/11BelowStudio faint outline v2.png"

@@ -25,6 +25,8 @@ text = "Flypost"
 
 [node name="SubTitle" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="1"]
 visible = false
+theme_override_font_sizes/font_size = 40
+text = "(web build - please use the downloadable version instead)"
 
 [node name="SubTitle" type="Label" parent="." index="8"]
 layout_mode = 1
