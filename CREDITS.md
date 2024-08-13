@@ -65,6 +65,14 @@
 	* https://freesound.org/people/Benboncan/sounds/69354/
 	* Benboncan
 	* CC-BY-4.0
+* complete loop.wav
+	* https://freesound.org/people/deller24/sounds/112458/
+	* deller24
+	* CC0
+* mother of all.wav
+	* https://freesound.org/people/deller24/sounds/112468/
+	* deller24
+	* CC0
 * Aggressive door pounding
 	* https://freesound.org/people/drinkingpeter/sounds/646454/
 	* Drinkingpeter
